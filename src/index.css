@@ -2,95 +2,108 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap');
+
+/* Pegasus Premium Design System - Industrial Luxury Aesthetic */
 
 @layer base {
   :root {
+    /* Core Palette - Industrial Charcoal & Warm Bronze */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 220 20% 10%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 220 15% 97%;
+    --card-foreground: 220 20% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 220 20% 10%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary - Deep Charcoal */
+    --primary: 220 20% 12%;
+    --primary-foreground: 0 0% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary - Warm Slate */
+    --secondary: 220 10% 94%;
+    --secondary-foreground: 220 20% 12%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Accent - Premium Bronze/Copper */
+    --accent: 30 60% 50%;
+    --accent-foreground: 0 0% 100%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Muted tones */
+    --muted: 220 10% 96%;
+    --muted-foreground: 220 10% 45%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 220 15% 90%;
+    --input: 220 15% 90%;
+    --ring: 30 60% 50%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 98%;
+    /* Custom Premium Colors */
+    --copper: 30 60% 50%;
+    --copper-light: 30 50% 65%;
+    --copper-dark: 30 70% 35%;
+    --charcoal: 220 20% 12%;
+    --charcoal-light: 220 15% 20%;
+    --slate: 220 10% 45%;
+    --cream: 40 30% 96%;
 
-    --sidebar-foreground: 240 5.3% 26.1%;
+    /* Gradients */
+    --gradient-copper: linear-gradient(135deg, hsl(30 60% 50%) 0%, hsl(25 70% 40%) 100%);
+    --gradient-charcoal: linear-gradient(180deg, hsl(220 20% 12%) 0%, hsl(220 25% 8%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(220 20% 8%) 0%, hsl(220 25% 15%) 50%, hsl(220 20% 12%) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(220 10% 96%) 0%, hsl(0 0% 100%) 100%);
 
-    --sidebar-primary: 240 5.9% 10%;
+    /* Shadows */
+    --shadow-sm: 0 2px 8px -2px hsl(220 20% 12% / 0.08);
+    --shadow-md: 0 8px 24px -8px hsl(220 20% 12% / 0.12);
+    --shadow-lg: 0 16px 48px -16px hsl(220 20% 12% / 0.16);
+    --shadow-copper: 0 8px 32px -8px hsl(30 60% 50% / 0.3);
+    --shadow-elevated: 0 24px 64px -24px hsl(220 20% 12% / 0.2);
 
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Sidebar */
+    --sidebar-background: 220 20% 12%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 30 60% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 15% 20%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 220 15% 25%;
+    --sidebar-ring: 30 60% 50%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 220 20% 8%;
+    --foreground: 0 0% 98%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 220 20% 12%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 220 20% 10%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 220 20% 12%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 220 15% 18%;
+    --secondary-foreground: 0 0% 98%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 220 15% 18%;
+    --muted-foreground: 220 10% 60%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 30 60% 55%;
+    --accent-foreground: 220 20% 8%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 220 15% 20%;
+    --input: 220 15% 20%;
+    --ring: 30 60% 55%;
   }
 }
 
@@ -99,7 +112,157 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold tracking-tight;
+  }
+
+  /* Premium Selection */
+  ::selection {
+    @apply bg-accent/20 text-accent-foreground;
+  }
+}
+
+@layer components {
+  /* Premium Button Variants */
+  .btn-premium {
+    @apply relative inline-flex items-center justify-center px-8 py-4 font-display font-semibold text-sm uppercase tracking-widest transition-all duration-500 ease-out overflow-hidden;
+  }
+
+  .btn-premium-primary {
+    @apply btn-premium bg-primary text-primary-foreground hover:bg-charcoal-light;
+  }
+
+  .btn-premium-copper {
+    @apply btn-premium text-white;
+    background: var(--gradient-copper);
+    box-shadow: var(--shadow-copper);
+  }
+
+  .btn-premium-copper:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px -8px hsl(30 60% 50% / 0.4);
+  }
+
+  .btn-premium-outline {
+    @apply btn-premium bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground;
+  }
+
+  /* Hero specific button */
+  .btn-hero {
+    @apply btn-premium text-white border-2 border-white/30 bg-white/10 backdrop-blur-sm hover:bg-white hover:text-primary;
+  }
+
+  /* Animated underline for links */
+  .link-underline {
+    @apply relative;
+  }
+
+  .link-underline::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-px bg-current transition-all duration-500 ease-out;
+  }
+
+  .link-underline:hover::after {
+    @apply w-full;
+  }
+
+  /* Section spacing */
+  .section-padding {
+    @apply py-24 md:py-32 lg:py-40;
+  }
+
+  .section-padding-sm {
+    @apply py-16 md:py-24;
+  }
+
+  /* Container widths */
+  .container-narrow {
+    @apply max-w-5xl mx-auto px-6;
+  }
+
+  .container-wide {
+    @apply max-w-7xl mx-auto px-6;
+  }
+
+  /* Text reveal animation base */
+  .text-reveal {
+    @apply overflow-hidden;
+  }
+
+  .text-reveal span {
+    @apply inline-block;
+  }
+
+  /* Premium card styling */
+  .card-premium {
+    @apply bg-card rounded-lg p-8 transition-all duration-500 ease-out;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .card-premium:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+  }
+
+  /* Copper accent line */
+  .accent-line {
+    @apply w-16 h-1 bg-accent rounded-full;
+  }
+
+  /* Industrial grid pattern */
+  .grid-pattern {
+    background-image: 
+      linear-gradient(hsl(220 15% 90% / 0.5) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(220 15% 90% / 0.5) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  /* Premium input styling */
+  .input-premium {
+    @apply w-full bg-transparent border-b-2 border-border py-4 text-foreground placeholder:text-muted-foreground focus:border-accent focus:outline-none transition-colors duration-300;
+  }
+
+  .textarea-premium {
+    @apply w-full bg-secondary/50 border-2 border-border rounded-lg p-4 text-foreground placeholder:text-muted-foreground focus:border-accent focus:outline-none transition-colors duration-300 resize-none;
+  }
+}
+
+@layer utilities {
+  /* Text gradient */
+  .text-gradient-copper {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-copper);
+  }
+
+  /* Smooth scroll container */
+  .smooth-scroll {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom easing */
+  .ease-premium {
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Backdrop blur variations */
+  .backdrop-premium {
+    @apply backdrop-blur-xl bg-background/80;
+  }
+
+  /* Hide scrollbar */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }
