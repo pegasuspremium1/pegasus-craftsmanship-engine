@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, ArrowRight } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const productCategories = [
   { name: "Anchors & Nails", href: "/products/anchors-nails" },
@@ -75,7 +76,7 @@ export function Navbar() {
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
             ? "bg-background/95 backdrop-blur-xl shadow-premium-md py-3"
-            : "bg-transparent py-6"
+            : "bg-background/80 backdrop-blur-sm py-4"
         }`}
       >
         <div className="container-wide flex items-center justify-between">
@@ -86,21 +87,11 @@ export function Navbar() {
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.2 }}
             >
-              <div className="w-10 h-10 bg-gradient-copper rounded-lg flex items-center justify-center">
-                <span className="text-white font-display font-bold text-xl">P</span>
-              </div>
-              <div className="flex flex-col">
-                <span className={`font-display font-bold text-lg leading-tight ${
-                  isScrolled ? "text-foreground" : "text-white"
-                }`}>
-                  Pegasus
-                </span>
-                <span className={`text-[10px] uppercase tracking-[0.2em] ${
-                  isScrolled ? "text-muted-foreground" : "text-white/70"
-                }`}>
-                  Premium
-                </span>
-              </div>
+              <img 
+                src={logo} 
+                alt="Pegasus Premium" 
+                className="h-12 w-auto object-contain"
+              />
             </motion.div>
           </Link>
 
@@ -115,11 +106,7 @@ export function Navbar() {
               >
                 <Link
                   to={item.href}
-                  className={`flex items-center gap-1 px-4 py-2 font-medium text-sm transition-colors duration-300 ${
-                    isScrolled
-                      ? "text-foreground hover:text-accent"
-                      : "text-white/90 hover:text-white"
-                  }`}
+                  className="flex items-center gap-1 px-4 py-2 font-medium text-sm transition-colors duration-300 text-foreground hover:text-primary"
                 >
                   {item.name}
                   {(item.children || item.hasProducts) && (
@@ -144,7 +131,7 @@ export function Navbar() {
                           <Link
                             key={child.name}
                             to={child.href}
-                            className="flex items-center justify-between px-4 py-3 rounded-lg text-sm text-foreground hover:bg-secondary hover:text-accent transition-colors group"
+                            className="flex items-center justify-between px-4 py-3 rounded-lg text-sm text-foreground hover:bg-secondary hover:text-primary transition-colors group"
                           >
                             {child.name}
                             <ArrowRight className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
@@ -176,14 +163,14 @@ export function Navbar() {
                                 <Link
                                   key={category.name}
                                   to={category.href}
-                                  className="px-3 py-2 rounded-lg text-sm text-foreground hover:bg-secondary hover:text-accent transition-colors"
+                                  className="px-3 py-2 rounded-lg text-sm text-foreground hover:bg-secondary hover:text-primary transition-colors"
                                 >
                                   {category.name}
                                 </Link>
                               ))}
                             </div>
                           </div>
-                          <div className="w-64 bg-gradient-charcoal rounded-xl p-6 text-white">
+                          <div className="w-64 bg-primary rounded-xl p-6 text-white">
                             <h3 className="font-display font-bold text-lg mb-2">
                               Need Help?
                             </h3>
@@ -192,7 +179,7 @@ export function Navbar() {
                             </p>
                             <Link
                               to="/contact"
-                              className="inline-flex items-center gap-2 text-copper text-sm font-semibold hover:gap-3 transition-all"
+                              className="inline-flex items-center gap-2 text-white text-sm font-semibold hover:gap-3 transition-all"
                             >
                               Contact Us <ArrowRight className="w-4 h-4" />
                             </Link>
@@ -210,11 +197,7 @@ export function Navbar() {
           <div className="hidden lg:flex items-center gap-4">
             <Link
               to="/solutions/how-to-order"
-              className={`btn-premium text-xs px-6 py-3 ${
-                isScrolled
-                  ? "bg-gradient-copper text-white shadow-copper"
-                  : "bg-white text-primary hover:bg-white/90"
-              }`}
+              className="btn-premium text-xs px-6 py-3 bg-primary text-white hover:bg-primary/90 shadow-blue"
             >
               Order Online
             </Link>
@@ -223,7 +206,7 @@ export function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={`lg:hidden p-2 ${isScrolled ? "text-foreground" : "text-white"}`}
+            className="lg:hidden p-2 text-foreground"
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -257,7 +240,7 @@ export function Navbar() {
                           <Link
                             key={child.name}
                             to={child.href}
-                            className="block py-2 text-muted-foreground hover:text-foreground"
+                            className="block py-2 text-muted-foreground hover:text-primary"
                           >
                             {child.name}
                           </Link>

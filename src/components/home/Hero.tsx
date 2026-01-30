@@ -1,55 +1,53 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero">
       {/* Animated grid pattern */}
-      <div className="absolute inset-0 opacity-[0.03]">
+      <div className="absolute inset-0 opacity-[0.4]">
         <div 
           className="absolute inset-0"
           style={{
             backgroundImage: `
-              linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
+              linear-gradient(hsl(220 15% 88% / 0.5) 1px, transparent 1px),
+              linear-gradient(90deg, hsl(220 15% 88% / 0.5) 1px, transparent 1px)
             `,
             backgroundSize: '80px 80px',
           }}
         />
       </div>
 
-      {/* Gradient orbs */}
+      {/* Gradient orbs - Blue themed */}
       <motion.div
         animate={{
           scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3],
+          opacity: [0.15, 0.25, 0.15],
         }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/4 -right-1/4 w-[800px] h-[800px] rounded-full bg-copper/20 blur-[120px]"
+        className="absolute top-1/4 -right-1/4 w-[800px] h-[800px] rounded-full bg-primary/20 blur-[120px]"
       />
       <motion.div
         animate={{
           scale: [1.2, 1, 1.2],
-          opacity: [0.2, 0.4, 0.2],
+          opacity: [0.1, 0.2, 0.1],
         }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -bottom-1/4 -left-1/4 w-[600px] h-[600px] rounded-full bg-charcoal-light/50 blur-[100px]"
+        className="absolute -bottom-1/4 -left-1/4 w-[600px] h-[600px] rounded-full bg-secondary/80 blur-[100px]"
       />
 
       <div className="container-wide relative z-10 pt-32 pb-20">
         <div className="max-w-5xl">
-          {/* Eyebrow */}
+          {/* Eyebrow with Logo */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex items-center gap-3 mb-8"
+            className="flex items-center gap-4 mb-8"
           >
-            <div className="w-12 h-px bg-copper" />
-            <span className="text-copper text-sm font-semibold uppercase tracking-[0.2em]">
-              Industrial Excellence
-            </span>
+            <img src={logo} alt="Pegasus Premium" className="h-16 w-auto" />
           </motion.div>
 
           {/* Main Headline */}
@@ -58,7 +56,7 @@ export function Hero() {
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
               transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="font-display text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-[0.95] tracking-tight"
+              className="font-display text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-foreground leading-[0.95] tracking-tight"
             >
               Precision Fasteners
             </motion.h1>
@@ -70,7 +68,7 @@ export function Hero() {
               transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
               className="font-display text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-[0.95] tracking-tight"
             >
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-copper to-copper-light">
+              <span className="text-gradient-blue">
                 Engineered for Industry
               </span>
             </motion.h1>
@@ -81,7 +79,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="text-xl md:text-2xl text-white/60 max-w-2xl mb-12 font-light leading-relaxed"
+            className="text-xl md:text-2xl text-muted-foreground max-w-2xl mb-12 font-light leading-relaxed"
           >
             Premium industrial fasteners and engineered components. 
             Trusted by manufacturers worldwide for quality, reliability, and precision.
@@ -110,7 +108,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.9 }}
-          className="mt-24 pt-12 border-t border-white/10"
+          className="mt-24 pt-12 border-t border-border"
         >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-16">
             {[
@@ -126,10 +124,10 @@ export function Hero() {
                 transition={{ duration: 0.5, delay: 1 + index * 0.1 }}
                 className="text-center md:text-left"
               >
-                <div className="font-display text-3xl lg:text-4xl font-bold text-white mb-2">
+                <div className="font-display text-3xl lg:text-4xl font-bold text-primary mb-2">
                   {stat.value}
                 </div>
-                <div className="text-sm text-white/50 uppercase tracking-widest">
+                <div className="text-sm text-muted-foreground uppercase tracking-widest">
                   {stat.label}
                 </div>
               </motion.div>
@@ -148,9 +146,9 @@ export function Hero() {
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          className="w-6 h-10 border-2 border-white/30 rounded-full flex items-start justify-center p-2"
+          className="w-6 h-10 border-2 border-primary/30 rounded-full flex items-start justify-center p-2"
         >
-          <motion.div className="w-1 h-2 bg-copper rounded-full" />
+          <motion.div className="w-1 h-2 bg-primary rounded-full" />
         </motion.div>
       </motion.div>
     </section>

@@ -62,6 +62,15 @@ export default {
         },
         slate: "hsl(var(--slate))",
         cream: "hsl(var(--cream))",
+        pegasus: {
+          blue: "hsl(var(--pegasus-blue))",
+          "blue-light": "hsl(var(--pegasus-blue-light))",
+          "blue-dark": "hsl(var(--pegasus-blue-dark))",
+          silver: "hsl(var(--pegasus-silver))",
+          "silver-light": "hsl(var(--pegasus-silver-light))",
+          black: "hsl(var(--pegasus-black))",
+          charcoal: "hsl(var(--pegasus-charcoal))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",

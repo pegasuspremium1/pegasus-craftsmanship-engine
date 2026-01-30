@@ -4,11 +4,11 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap');
 
-/* Pegasus Premium Design System - Industrial Luxury Aesthetic */
+/* Pegasus Premium Design System - Light Mode with Blue/Silver/Black from Logo */
 
 @layer base {
   :root {
-    /* Core Palette - Industrial Charcoal & Warm Bronze */
+    /* Core Palette - Light Mode with Blue, Silver, Black */
     --background: 0 0% 100%;
     --foreground: 220 20% 10%;
 
@@ -18,93 +18,76 @@
     --popover: 0 0% 100%;
     --popover-foreground: 220 20% 10%;
 
-    /* Primary - Deep Charcoal */
-    --primary: 220 20% 12%;
-    --primary-foreground: 0 0% 98%;
+    /* Primary - Deep Blue from logo */
+    --primary: 240 100% 35%;
+    --primary-foreground: 0 0% 100%;
 
-    /* Secondary - Warm Slate */
+    /* Secondary - Silver/Light Gray */
     --secondary: 220 10% 94%;
-    --secondary-foreground: 220 20% 12%;
+    --secondary-foreground: 220 20% 15%;
 
-    /* Accent - Premium Bronze/Copper */
-    --accent: 30 60% 50%;
+    /* Accent - Royal Blue from logo */
+    --accent: 240 100% 45%;
     --accent-foreground: 0 0% 100%;
 
-    /* Muted tones */
+    /* Muted tones - Silver spectrum */
     --muted: 220 10% 96%;
-    --muted-foreground: 220 10% 45%;
+    --muted-foreground: 220 10% 40%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 220 15% 90%;
+    --border: 220 15% 88%;
     --input: 220 15% 90%;
-    --ring: 30 60% 50%;
+    --ring: 240 100% 45%;
 
     --radius: 0.5rem;
 
-    /* Custom Premium Colors */
-    --copper: 30 60% 50%;
-    --copper-light: 30 50% 65%;
-    --copper-dark: 30 70% 35%;
-    --charcoal: 220 20% 12%;
-    --charcoal-light: 220 15% 20%;
-    --slate: 220 10% 45%;
-    --cream: 40 30% 96%;
+    /* Custom Brand Colors - Blue/Silver/Black */
+    --pegasus-blue: 240 100% 35%;
+    --pegasus-blue-light: 240 80% 55%;
+    --pegasus-blue-dark: 240 100% 25%;
+    --pegasus-silver: 220 15% 75%;
+    --pegasus-silver-light: 220 10% 90%;
+    --pegasus-black: 0 0% 10%;
+    --pegasus-charcoal: 220 15% 20%;
 
-    /* Gradients */
-    --gradient-copper: linear-gradient(135deg, hsl(30 60% 50%) 0%, hsl(25 70% 40%) 100%);
-    --gradient-charcoal: linear-gradient(180deg, hsl(220 20% 12%) 0%, hsl(220 25% 8%) 100%);
-    --gradient-hero: linear-gradient(135deg, hsl(220 20% 8%) 0%, hsl(220 25% 15%) 50%, hsl(220 20% 12%) 100%);
+    /* Legacy mappings for compatibility */
+    --copper: 240 100% 45%;
+    --copper-light: 240 80% 55%;
+    --copper-dark: 240 100% 30%;
+    --charcoal: 220 15% 15%;
+    --charcoal-light: 220 15% 25%;
+    --slate: 220 10% 45%;
+    --cream: 220 20% 98%;
+
+    /* Gradients - Blue theme */
+    --gradient-copper: linear-gradient(135deg, hsl(240 100% 35%) 0%, hsl(240 100% 50%) 100%);
+    --gradient-charcoal: linear-gradient(180deg, hsl(220 15% 12%) 0%, hsl(220 20% 8%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(220 20% 98%) 0%, hsl(220 15% 95%) 50%, hsl(220 10% 92%) 100%);
     --gradient-subtle: linear-gradient(180deg, hsl(220 10% 96%) 0%, hsl(0 0% 100%) 100%);
+    --gradient-blue: linear-gradient(135deg, hsl(240 100% 35%) 0%, hsl(240 80% 50%) 100%);
 
     /* Shadows */
     --shadow-sm: 0 2px 8px -2px hsl(220 20% 12% / 0.08);
     --shadow-md: 0 8px 24px -8px hsl(220 20% 12% / 0.12);
     --shadow-lg: 0 16px 48px -16px hsl(220 20% 12% / 0.16);
-    --shadow-copper: 0 8px 32px -8px hsl(30 60% 50% / 0.3);
+    --shadow-copper: 0 8px 32px -8px hsl(240 100% 45% / 0.25);
     --shadow-elevated: 0 24px 64px -24px hsl(220 20% 12% / 0.2);
+    --shadow-blue: 0 8px 32px -8px hsl(240 100% 45% / 0.3);
 
     /* Sidebar */
-    --sidebar-background: 220 20% 12%;
+    --sidebar-background: 220 15% 15%;
     --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 30 60% 50%;
+    --sidebar-primary: 240 100% 45%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 15% 20%;
+    --sidebar-accent: 220 15% 25%;
     --sidebar-accent-foreground: 0 0% 98%;
     --sidebar-border: 220 15% 25%;
-    --sidebar-ring: 30 60% 50%;
+    --sidebar-ring: 240 100% 45%;
   }
 
-  .dark {
-    --background: 220 20% 8%;
-    --foreground: 0 0% 98%;
-
-    --card: 220 20% 12%;
-    --card-foreground: 0 0% 98%;
-
-    --popover: 220 20% 10%;
-    --popover-foreground: 0 0% 98%;
-
-    --primary: 0 0% 98%;
-    --primary-foreground: 220 20% 12%;
-
-    --secondary: 220 15% 18%;
-    --secondary-foreground: 0 0% 98%;
-
-    --muted: 220 15% 18%;
-    --muted-foreground: 220 10% 60%;
-
-    --accent: 30 60% 55%;
-    --accent-foreground: 220 20% 8%;
-
-    --destructive: 0 62% 45%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 220 15% 20%;
-    --input: 220 15% 20%;
-    --ring: 30 60% 55%;
-  }
+  /* Remove dark mode - site is light mode only */
 }
 
 @layer base {
@@ -124,9 +107,9 @@
     @apply font-display font-bold tracking-tight;
   }
 
-  /* Premium Selection */
+  /* Premium Selection - Blue */
   ::selection {
-    @apply bg-accent/20 text-accent-foreground;
+    @apply bg-primary/20 text-primary;
   }
 }
 
@@ -137,27 +120,27 @@
   }
 
   .btn-premium-primary {
-    @apply btn-premium bg-primary text-primary-foreground hover:bg-charcoal-light;
+    @apply btn-premium bg-primary text-primary-foreground hover:bg-primary/90;
   }
 
   .btn-premium-copper {
     @apply btn-premium text-white;
-    background: var(--gradient-copper);
-    box-shadow: var(--shadow-copper);
+    background: var(--gradient-blue);
+    box-shadow: var(--shadow-blue);
   }
 
   .btn-premium-copper:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 40px -8px hsl(30 60% 50% / 0.4);
+    box-shadow: 0 12px 40px -8px hsl(240 100% 45% / 0.4);
   }
 
   .btn-premium-outline {
     @apply btn-premium bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground;
   }
 
-  /* Hero specific button */
+  /* Hero specific button - Light mode */
   .btn-hero {
-    @apply btn-premium text-white border-2 border-white/30 bg-white/10 backdrop-blur-sm hover:bg-white hover:text-primary;
+    @apply btn-premium text-primary border-2 border-primary/30 bg-primary/5 backdrop-blur-sm hover:bg-primary hover:text-white;
   }
 
   /* Animated underline for links */
@@ -203,7 +186,7 @@
 
   /* Premium card styling */
   .card-premium {
-    @apply bg-card rounded-lg p-8 transition-all duration-500 ease-out;
+    @apply bg-card rounded-lg p-8 transition-all duration-500 ease-out border border-border;
     box-shadow: var(--shadow-sm);
   }
 
@@ -212,34 +195,39 @@
     transform: translateY(-4px);
   }
 
-  /* Copper accent line */
+  /* Blue accent line */
   .accent-line {
-    @apply w-16 h-1 bg-accent rounded-full;
+    @apply w-16 h-1 bg-primary rounded-full;
   }
 
-  /* Industrial grid pattern */
+  /* Industrial grid pattern - Light mode */
   .grid-pattern {
     background-image: 
-      linear-gradient(hsl(220 15% 90% / 0.5) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(220 15% 90% / 0.5) 1px, transparent 1px);
+      linear-gradient(hsl(220 15% 90% / 0.6) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(220 15% 90% / 0.6) 1px, transparent 1px);
     background-size: 60px 60px;
   }
 
   /* Premium input styling */
   .input-premium {
-    @apply w-full bg-transparent border-b-2 border-border py-4 text-foreground placeholder:text-muted-foreground focus:border-accent focus:outline-none transition-colors duration-300;
+    @apply w-full bg-transparent border-b-2 border-border py-4 text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none transition-colors duration-300;
   }
 
   .textarea-premium {
-    @apply w-full bg-secondary/50 border-2 border-border rounded-lg p-4 text-foreground placeholder:text-muted-foreground focus:border-accent focus:outline-none transition-colors duration-300 resize-none;
+    @apply w-full bg-secondary/50 border-2 border-border rounded-lg p-4 text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none transition-colors duration-300 resize-none;
   }
 }
 
 @layer utilities {
-  /* Text gradient */
+  /* Text gradient - Blue */
   .text-gradient-copper {
     @apply bg-clip-text text-transparent;
-    background-image: var(--gradient-copper);
+    background-image: var(--gradient-blue);
+  }
+
+  .text-gradient-blue {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-blue);
   }
 
   /* Smooth scroll container */
@@ -252,9 +240,9 @@
     transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  /* Backdrop blur variations */
+  /* Backdrop blur variations - Light mode */
   .backdrop-premium {
-    @apply backdrop-blur-xl bg-background/80;
+    @apply backdrop-blur-xl bg-background/90;
   }
 
   /* Hide scrollbar */
