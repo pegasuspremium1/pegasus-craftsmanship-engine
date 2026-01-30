@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const footerLinks = {
   company: [
@@ -57,13 +58,13 @@ export function Footer() {
             >
               <Link
                 to="/contact"
-                className="btn-premium-copper text-sm"
+                className="btn-premium text-sm bg-white text-primary hover:bg-white/90"
               >
                 Get in Touch
               </Link>
               <Link
                 to="/solutions/how-to-order"
-                className="btn-hero text-sm"
+                className="btn-premium text-sm border-2 border-white/30 text-white hover:bg-white hover:text-primary"
               >
                 Order Online
               </Link>
@@ -77,18 +78,12 @@ export function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 lg:gap-12">
           {/* Brand Column */}
           <div className="col-span-2">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 bg-gradient-copper rounded-lg flex items-center justify-center">
-                <span className="text-white font-display font-bold text-xl">P</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="font-display font-bold text-lg leading-tight">
-                  Pegasus
-                </span>
-                <span className="text-[10px] uppercase tracking-[0.2em] text-white/60">
-                  Premium
-                </span>
-              </div>
+            <div className="mb-6">
+              <img 
+                src={logo} 
+                alt="Pegasus Premium" 
+                className="h-14 w-auto object-contain brightness-0 invert"
+              />
             </div>
             <p className="text-white/60 text-sm mb-6 max-w-xs">
               Industry-leading supplier of premium fasteners, fixings, and engineered components 
@@ -200,7 +195,7 @@ export function Footer() {
               href="https://architeq.co.uk" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-copper hover:text-copper-light transition-colors font-medium"
+              className="text-white/70 hover:text-white transition-colors font-medium"
             >
               Architeq Web Agency
             </a>
