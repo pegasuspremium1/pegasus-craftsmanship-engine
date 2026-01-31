@@ -25,7 +25,7 @@ const productCategories = [
 const mainNavItems = [
   { name: "Home", href: "/" },
   { 
-    name: "Our Company", 
+    name: "Company", 
     href: "/company",
     children: [
       { name: "About Pegasus Premium", href: "/company/about" },
@@ -33,7 +33,7 @@ const mainNavItems = [
       { name: "Case Studies", href: "/company/case-studies" },
     ]
   },
-  { name: "Product Range", href: "/products", hasProducts: true },
+  { name: "Products", href: "/products", hasProducts: true },
   { 
     name: "Solutions", 
     href: "/solutions",
@@ -72,31 +72,35 @@ export function Navbar() {
       <motion.header
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
-            ? "bg-background/95 backdrop-blur-xl shadow-premium-md py-3"
-            : "bg-background/80 backdrop-blur-sm py-4"
+            ? "bg-background/98 backdrop-blur-md border-b border-border py-3"
+            : "bg-transparent py-5"
         }`}
       >
         <div className="container-wide flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="relative z-10">
             <motion.div
-              className="flex items-center gap-3"
+              className="flex items-center gap-4"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.2 }}
             >
               <img 
                 src={logo} 
                 alt="Pegasus Premium" 
-                className="h-12 w-auto object-contain"
+                className="h-10 w-auto object-contain"
               />
+              <div className="hidden sm:block h-6 w-px bg-border" />
+              <span className="hidden sm:block font-mono text-xs uppercase tracking-widest text-muted-foreground">
+                Premium Fasteners
+              </span>
             </motion.div>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-1">
+          <nav className="hidden lg:flex items-center gap-0">
             {mainNavItems.map((item) => (
               <div
                 key={item.name}
@@ -106,11 +110,15 @@ export function Navbar() {
               >
                 <Link
                   to={item.href}
-                  className="flex items-center gap-1 px-4 py-2 font-medium text-sm transition-colors duration-300 text-foreground hover:text-primary"
+                  className={`flex items-center gap-1.5 px-4 py-2 font-medium text-sm transition-colors duration-300 ${
+                    location.pathname === item.href 
+                      ? "text-accent" 
+                      : "text-foreground hover:text-accent"
+                  }`}
                 >
                   {item.name}
                   {(item.children || item.hasProducts) && (
-                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${
+                    <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${
                       activeDropdown === item.name ? "rotate-180" : ""
                     }`} />
                   )}
@@ -121,20 +129,20 @@ export function Navbar() {
                   <AnimatePresence>
                     {activeDropdown === item.name && (
                       <motion.div
-                        initial={{ opacity: 0, y: 10 }}
+                        initial={{ opacity: 0, y: 8 }}
                         animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 10 }}
-                        transition={{ duration: 0.2 }}
-                        className="absolute top-full left-0 mt-2 w-64 bg-background rounded-xl shadow-elevated border border-border p-2"
+                        exit={{ opacity: 0, y: 8 }}
+                        transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                        className="absolute top-full left-0 mt-2 w-64 bg-background border border-border shadow-elevated p-2"
                       >
                         {item.children.map((child) => (
                           <Link
                             key={child.name}
                             to={child.href}
-                            className="flex items-center justify-between px-4 py-3 rounded-lg text-sm text-foreground hover:bg-secondary hover:text-primary transition-colors group"
+                            className="flex items-center justify-between px-4 py-3 text-sm text-foreground hover:bg-secondary hover:text-accent transition-colors group"
                           >
                             {child.name}
-                            <ArrowRight className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+                            <ArrowRight className="w-3.5 h-3.5 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
                           </Link>
                         ))}
                       </motion.div>
@@ -147,41 +155,43 @@ export function Navbar() {
                   <AnimatePresence>
                     {activeDropdown === item.name && (
                       <motion.div
-                        initial={{ opacity: 0, y: 10 }}
+                        initial={{ opacity: 0, y: 8 }}
                         animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 10 }}
-                        transition={{ duration: 0.2 }}
-                        className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[800px] bg-background rounded-xl shadow-elevated border border-border p-6"
+                        exit={{ opacity: 0, y: 8 }}
+                        transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                        className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[700px] bg-background border border-border shadow-elevated p-6"
                       >
                         <div className="flex gap-8">
                           <div className="flex-1">
-                            <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-4">
+                            <h3 className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-4">
                               Product Categories
                             </h3>
-                            <div className="grid grid-cols-3 gap-2">
+                            <div className="grid grid-cols-3 gap-1">
                               {productCategories.map((category) => (
                                 <Link
                                   key={category.name}
                                   to={category.href}
-                                  className="px-3 py-2 rounded-lg text-sm text-foreground hover:bg-secondary hover:text-primary transition-colors"
+                                  className="px-3 py-2 text-sm text-foreground hover:bg-secondary hover:text-accent transition-colors"
                                 >
                                   {category.name}
                                 </Link>
                               ))}
                             </div>
                           </div>
-                          <div className="w-64 bg-primary rounded-xl p-6 text-white">
-                            <h3 className="font-display font-bold text-lg mb-2">
-                              Need Help?
-                            </h3>
-                            <p className="text-sm text-white/70 mb-4">
-                              Our team is ready to assist with product selection and custom solutions.
-                            </p>
+                          <div className="w-48 bg-primary p-5 text-primary-foreground flex flex-col justify-between">
+                            <div>
+                              <h3 className="font-display font-medium text-base mb-2">
+                                Need Help?
+                              </h3>
+                              <p className="text-xs text-primary-foreground/70 mb-4">
+                                Our team is ready to assist with product selection.
+                              </p>
+                            </div>
                             <Link
                               to="/contact"
-                              className="inline-flex items-center gap-2 text-white text-sm font-semibold hover:gap-3 transition-all"
+                              className="inline-flex items-center gap-2 text-xs font-medium hover:gap-3 transition-all"
                             >
-                              Contact Us <ArrowRight className="w-4 h-4" />
+                              Contact Us <ArrowRight className="w-3.5 h-3.5" />
                             </Link>
                           </div>
                         </div>
@@ -197,9 +207,9 @@ export function Navbar() {
           <div className="hidden lg:flex items-center gap-4">
             <Link
               to="/solutions/how-to-order"
-              className="btn-premium text-xs px-6 py-3 bg-primary text-white hover:bg-primary/90 shadow-blue"
+              className="btn-editorial-primary text-xs px-6 py-3"
             >
-              Order Online
+              <span>Order Online</span>
             </Link>
           </div>
 
@@ -208,7 +218,7 @@ export function Navbar() {
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="lg:hidden p-2 text-foreground"
           >
-            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
       </motion.header>
@@ -220,39 +230,52 @@ export function Navbar() {
             initial={{ opacity: 0, x: "100%" }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
-            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="fixed inset-0 z-40 bg-background lg:hidden"
           >
             <div className="pt-24 px-6 h-full overflow-y-auto">
-              <nav className="space-y-1">
-                {mainNavItems.map((item) => (
-                  <div key={item.name}>
+              <nav className="space-y-0 border-t border-border">
+                {mainNavItems.map((item, index) => (
+                  <motion.div 
+                    key={item.name}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.05 }}
+                    className="border-b border-border"
+                  >
                     <Link
                       to={item.href}
-                      className="flex items-center justify-between py-4 text-xl font-display font-semibold text-foreground border-b border-border"
+                      className="flex items-center justify-between py-5 font-display text-xl font-medium text-foreground"
                     >
-                      {item.name}
-                      {(item.children || item.hasProducts) && <ChevronDown className="w-5 h-5" />}
+                      <span className="flex items-center gap-4">
+                        <span className="font-mono text-xs text-muted-foreground">
+                          0{index + 1}
+                        </span>
+                        {item.name}
+                      </span>
+                      {(item.children || item.hasProducts) && (
+                        <ChevronDown className="w-4 h-4 text-muted-foreground" />
+                      )}
                     </Link>
                     {item.children && (
-                      <div className="pl-4 py-2 space-y-2">
+                      <div className="pl-10 pb-4 space-y-2">
                         {item.children.map((child) => (
                           <Link
                             key={child.name}
                             to={child.href}
-                            className="block py-2 text-muted-foreground hover:text-primary"
+                            className="block py-2 text-muted-foreground hover:text-accent transition-colors"
                           >
                             {child.name}
                           </Link>
                         ))}
                       </div>
                     )}
-                  </div>
+                  </motion.div>
                 ))}
               </nav>
               <div className="mt-8">
-                <Link to="/solutions/how-to-order" className="btn-premium-copper w-full justify-center">
-                  Order Online
+                <Link to="/solutions/how-to-order" className="btn-editorial-primary w-full justify-center">
+                  <span>Order Online</span>
                 </Link>
               </div>
             </div>

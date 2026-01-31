@@ -1,109 +1,123 @@
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
-import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
-import { Shield, Truck, Award, HeadphonesIcon } from "lucide-react";
+import { Shield, Truck, Award, Users, ArrowUpRight } from "lucide-react";
 
-const features = [
+const capabilities = [
   {
+    id: "01",
     icon: Shield,
     title: "Quality Assured",
-    description: "ISO 9001 certified manufacturing processes with rigorous quality control at every stage.",
+    description: "ISO 9001 certified manufacturing with rigorous quality control at every stage of production.",
+    highlight: "ISO 9001",
   },
   {
+    id: "02",
     icon: Truck,
     title: "Fast Delivery",
-    description: "Reliable next-day delivery across the UK and efficient international shipping solutions.",
+    description: "Next-day UK delivery and efficient international shipping to keep your production moving.",
+    highlight: "Next-Day",
   },
   {
+    id: "03",
     icon: Award,
     title: "Industry Leaders",
-    description: "25+ years of expertise serving aerospace, automotive, and construction sectors.",
+    description: "25+ years serving aerospace, automotive, construction, and marine industries.",
+    highlight: "25+ Years",
   },
   {
-    icon: HeadphonesIcon,
+    id: "04",
+    icon: Users,
     title: "Expert Support",
-    description: "Dedicated technical team ready to assist with product selection and specifications.",
+    description: "Dedicated technical team for product selection, specifications, and custom solutions.",
+    highlight: "24/7 Support",
   },
-];
-
-const stats = [
-  { value: 10000, suffix: "+", label: "Products Available" },
-  { value: 25, suffix: "+", label: "Years Experience" },
-  { value: 500, suffix: "+", label: "Active Clients" },
-  { value: 98, suffix: "%", label: "On-Time Delivery" },
 ];
 
 export function TrustIndicators() {
+  const containerRef = useRef(null);
+  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
+
   return (
-    <section className="section-padding bg-secondary relative overflow-hidden">
-      {/* Subtle grid pattern */}
-      <div className="absolute inset-0 grid-pattern opacity-50" />
+    <section ref={containerRef} className="section-padding bg-background relative">
+      <div className="container-wide">
+        {/* Section marker */}
+        <div className="section-marker">
+          <span className="section-marker-number">01</span>
+          <div className="section-marker-line" />
+          <span className="section-marker-text">Why Choose Us</span>
+        </div>
 
-      <div className="container-wide relative z-10">
-        {/* Section Header */}
-        <ScrollReveal className="text-center mb-16 lg:mb-24">
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <div className="w-12 h-px bg-accent" />
-            <span className="text-accent text-sm font-semibold uppercase tracking-[0.2em]">
-              Why Choose Us
-            </span>
-            <div className="w-12 h-px bg-accent" />
+        {/* Asymmetric layout */}
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 mb-20">
+          {/* Left - Title */}
+          <ScrollReveal className="lg:col-span-5">
+            <h2 className="display-lg text-foreground mb-6">
+              Trusted by
+              <br />
+              <span className="font-serif italic text-accent">Industry Leaders</span>
+            </h2>
+            <p className="body-lg max-w-md">
+              Decades of expertise delivering precision fasteners to the world's 
+              most demanding industries. No compromises.
+            </p>
+          </ScrollReveal>
+
+          {/* Right - Large number */}
+          <div className="lg:col-span-7 flex items-end justify-end">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              className="text-right"
+            >
+              <span className="font-display text-[12rem] md:text-[16rem] lg:text-[20rem] font-medium leading-none text-muted/30">
+                25
+              </span>
+              <p className="font-mono text-sm tracking-widest text-muted-foreground -mt-8">
+                YEARS OF EXCELLENCE
+              </p>
+            </motion.div>
           </div>
-          <h2 className="font-display text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            Trusted by Industry Leaders
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Decades of expertise delivering precision fasteners to the world's most demanding industries.
-          </p>
-        </ScrollReveal>
+        </div>
 
-        {/* Features Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-20">
-          {features.map((feature, index) => (
-            <ScrollReveal key={feature.title} delay={index * 0.1}>
+        {/* Kanban-style capability cards */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-border">
+          {capabilities.map((capability, index) => (
+            <ScrollReveal key={capability.id} delay={index * 0.1}>
               <motion.div
-                whileHover={{ y: -8 }}
-                transition={{ duration: 0.3 }}
-                className="bg-background rounded-2xl p-8 h-full shadow-premium-sm hover:shadow-premium-lg transition-shadow duration-500"
+                whileHover={{ backgroundColor: "hsl(var(--card))" }}
+                className="group bg-background p-8 h-full cursor-pointer transition-colors duration-400"
               >
-                <div className="w-14 h-14 rounded-xl bg-gradient-copper flex items-center justify-center mb-6">
-                  <feature.icon className="w-7 h-7 text-white" />
+                {/* Number + Icon */}
+                <div className="flex items-start justify-between mb-6">
+                  <span className="font-mono text-xs text-muted-foreground">
+                    {capability.id}
+                  </span>
+                  <div className="w-12 h-12 rounded-full border border-border flex items-center justify-center group-hover:border-accent group-hover:bg-accent/5 transition-all duration-400">
+                    <capability.icon className="w-5 h-5 text-muted-foreground group-hover:text-accent transition-colors" />
+                  </div>
                 </div>
-                <h3 className="font-display text-xl font-bold text-foreground mb-3">
-                  {feature.title}
+
+                {/* Content */}
+                <h3 className="font-display text-xl font-medium text-foreground mb-3 group-hover:text-accent transition-colors">
+                  {capability.title}
                 </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {feature.description}
+                <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+                  {capability.description}
                 </p>
+
+                {/* Highlight tag */}
+                <div className="flex items-center justify-between">
+                  <span className="inline-block px-3 py-1 bg-stone-light text-xs font-mono uppercase tracking-wider text-muted-foreground">
+                    {capability.highlight}
+                  </span>
+                  <ArrowUpRight className="w-4 h-4 text-muted-foreground/0 group-hover:text-accent transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </div>
               </motion.div>
             </ScrollReveal>
           ))}
         </div>
-
-        {/* Stats Banner */}
-        <ScrollReveal>
-          <div className="bg-gradient-charcoal rounded-3xl p-8 lg:p-12">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-              {stats.map((stat, index) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="text-center"
-                >
-                  <div className="font-display text-4xl lg:text-5xl font-bold text-white mb-2">
-                    <AnimatedCounter end={stat.value} suffix={stat.suffix} />
-                  </div>
-                  <div className="text-sm text-white/60 uppercase tracking-widest">
-                    {stat.label}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </ScrollReveal>
       </div>
     </section>
   );
