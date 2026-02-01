@@ -1,139 +1,54 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ShoppingCart, Plus, Minus, X, ArrowRight } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { useCart } from "@/hooks/useCart";
+import { toast } from "sonner";
 
-const productCategories = [
-  {
-    name: "Anchors & Nails",
-    description: "Heavy-duty anchoring solutions and industrial nails for construction and manufacturing.",
-    image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80",
-    href: "/products/anchors-nails",
-    count: "500+",
-  },
-  {
-    name: "Furniture Fasteners",
-    description: "Specialized fasteners for furniture assembly and cabinetry applications.",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
-    href: "/products/furniture-fasteners",
-    count: "300+",
-  },
-  {
-    name: "Hexagonal Fasteners",
-    description: "Precision-engineered hex bolts, screws, and nuts for heavy-duty applications.",
-    image: "https://images.unsplash.com/photo-1572981779307-38b8cabb2407?w=800&q=80",
-    href: "/products/hexagonal-fasteners",
-    count: "800+",
-  },
-  {
-    name: "Machined Parts",
-    description: "Custom-machined components manufactured to exact specifications.",
-    image: "https://images.unsplash.com/photo-1565043666747-69f6646db940?w=800&q=80",
-    href: "/products/machined-parts",
-    count: "200+",
-  },
-  {
-    name: "Machine Screws",
-    description: "High-precision machine screws in various head styles and thread configurations.",
-    image: "https://images.unsplash.com/photo-1586864387789-628af9feed72?w=800&q=80",
-    href: "/products/machine-screws",
-    count: "1000+",
-  },
-  {
-    name: "Nuts",
-    description: "Comprehensive range of nuts including hex, lock, flange, and specialty types.",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
-    href: "/products/nuts",
-    count: "600+",
-  },
-  {
-    name: "Pins",
-    description: "Dowel pins, split pins, cotter pins, and specialty fastening pins.",
-    image: "https://images.unsplash.com/photo-1513467535987-fd81bc7d62f8?w=800&q=80",
-    href: "/products/pins",
-    count: "400+",
-  },
-  {
-    name: "Rivets",
-    description: "Permanent fastening solutions for sheet metal and structural applications.",
-    image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80",
-    href: "/products/rivets",
-    count: "350+",
-  },
-  {
-    name: "Self Drilling Screws",
-    description: "Self-drilling fasteners for metal and composite material applications.",
-    image: "https://images.unsplash.com/photo-1530124566582-a618bc2615dc?w=800&q=80",
-    href: "/products/self-drilling-screws",
-    count: "450+",
-  },
-  {
-    name: "Self Tapping Screws",
-    description: "Thread-forming screws for plastic, metal, and wood applications.",
-    image: "https://images.unsplash.com/photo-1572981779307-38b8cabb2407?w=800&q=80",
-    href: "/products/self-tapping-screws",
-    count: "550+",
-  },
-  {
-    name: "Socket Fasteners",
-    description: "Allen key fasteners for applications requiring high torque and accessibility.",
-    image: "https://images.unsplash.com/photo-1530124566582-a618bc2615dc?w=800&q=80",
-    href: "/products/socket-fasteners",
-    count: "700+",
-  },
-  {
-    name: "Threaded Rods & Studs",
-    description: "Fully and partially threaded rods and studs in various materials and sizes.",
-    image: "https://images.unsplash.com/photo-1565043666747-69f6646db940?w=800&q=80",
-    href: "/products/threaded-rods-studs",
-    count: "250+",
-  },
-  {
-    name: "Washers & Clips",
-    description: "Load distribution and securing solutions for all fastening needs.",
-    image: "https://images.unsplash.com/photo-1513467535987-fd81bc7d62f8?w=800&q=80",
-    href: "/products/washers-clips",
-    count: "400+",
-  },
-  {
-    name: "Tools & Hardware",
-    description: "Professional-grade tools and hardware for fastener installation.",
-    image: "https://images.unsplash.com/photo-1426927308491-6380b6a9936f?w=800&q=80",
-    href: "/products/tools-hardware",
-    count: "300+",
-  },
-  {
-    name: "Wood Screws",
-    description: "High-quality wood screws for carpentry and woodworking projects.",
-    image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80",
-    href: "/products/wood-screws",
-    count: "650+",
-  },
+const products = [
+  { id: "1", name: "Hex Bolts M8x50", price: 45.00, image: "https://images.unsplash.com/photo-1572981779307-38b8cabb2407?w=400&q=80", category: "Bolts" },
+  { id: "2", name: "Stainless Steel Nuts M10", price: 32.00, image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80", category: "Nuts" },
+  { id: "3", name: "Flat Washers 12mm", price: 18.50, image: "https://images.unsplash.com/photo-1513467535987-fd81bc7d62f8?w=400&q=80", category: "Washers" },
+  { id: "4", name: "Self-Tapping Screws 4x25", price: 28.00, image: "https://images.unsplash.com/photo-1586864387789-628af9feed72?w=400&q=80", category: "Screws" },
+  { id: "5", name: "Anchor Bolts M12x100", price: 85.00, image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=400&q=80", category: "Anchors" },
+  { id: "6", name: "Socket Cap Screws M6x30", price: 52.00, image: "https://images.unsplash.com/photo-1530124566582-a618bc2615dc?w=400&q=80", category: "Screws" },
+  { id: "7", name: "Spring Washers M8", price: 22.00, image: "https://images.unsplash.com/photo-1513467535987-fd81bc7d62f8?w=400&q=80", category: "Washers" },
+  { id: "8", name: "Hex Nuts M12", price: 38.00, image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80", category: "Nuts" },
+  { id: "9", name: "Carriage Bolts M10x80", price: 65.00, image: "https://images.unsplash.com/photo-1572981779307-38b8cabb2407?w=400&q=80", category: "Bolts" },
+  { id: "10", name: "Pop Rivets 4.8mm", price: 42.00, image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=400&q=80", category: "Rivets" },
+  { id: "11", name: "Threaded Rod M16x1000", price: 125.00, image: "https://images.unsplash.com/photo-1565043666747-69f6646db940?w=400&q=80", category: "Rods" },
+  { id: "12", name: "Combination Wrench Set", price: 285.00, image: "https://images.unsplash.com/photo-1426927308491-6380b6a9936f?w=400&q=80", category: "Tools" },
 ];
 
 const Products = () => {
+  const { items, addItem, removeItem, updateQuantity, total, clearCart } = useCart();
+  const [isCartOpen, setIsCartOpen] = useState(false);
+
+  const handleAddToCart = (product: typeof products[0]) => {
+    addItem({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+    });
+    toast.success(`${product.name} added to cart`);
+  };
+
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="pt-32 pb-16 lg:pb-24 bg-gradient-hero">
+      {/* Hero Section - Readable */}
+      <section className="page-hero">
         <div className="container-wide">
           <ScrollReveal>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-px bg-copper" />
-              <span className="text-copper text-sm font-semibold uppercase tracking-[0.2em]">
-                Product Range
-              </span>
-            </div>
-            <h1 className="font-display text-4xl lg:text-6xl font-bold text-white mb-6">
-              Industrial Fasteners &<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-copper to-copper-light">
-                Engineered Components
-              </span>
+            <span className="text-accent text-sm font-semibold uppercase tracking-wider mb-4 block">
+              Product Range
+            </span>
+            <h1 className="display-lg mb-4">
+              Industrial Fasteners & Components
             </h1>
-            <p className="text-xl text-white/60 max-w-2xl">
-              Comprehensive range of premium fasteners and fixings. From standard specifications 
-              to custom solutions, we have the expertise to meet your needs.
+            <p className="text-lg text-white/80 max-w-2xl">
+              Premium quality fasteners for every application. All prices shown in South African Rand (ZAR).
             </p>
           </ScrollReveal>
         </div>
@@ -142,75 +57,159 @@ const Products = () => {
       {/* Products Grid */}
       <section className="section-padding bg-background">
         <div className="container-wide">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {productCategories.map((product, index) => (
-              <ScrollReveal key={product.name} delay={index * 0.05}>
-                <Link to={product.href}>
-                  <motion.div
-                    whileHover={{ y: -8 }}
-                    transition={{ duration: 0.3 }}
-                    className="group relative bg-card rounded-2xl overflow-hidden shadow-premium-sm hover:shadow-premium-lg transition-all duration-500 h-full"
-                  >
-                    {/* Image */}
-                    <div className="aspect-[16/10] overflow-hidden">
-                      <motion.img
-                        src={product.image}
-                        alt={product.name}
-                        className="w-full h-full object-cover"
-                        whileHover={{ scale: 1.05 }}
-                        transition={{ duration: 0.6 }}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-charcoal/90 via-charcoal/40 to-transparent" />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {products.map((product, index) => (
+              <ScrollReveal key={product.id} delay={index * 0.05}>
+                <motion.div
+                  whileHover={{ y: -4 }}
+                  className="bg-card rounded-xl overflow-hidden shadow-card hover:shadow-elevated transition-all duration-300"
+                >
+                  <div className="aspect-square overflow-hidden">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="p-4">
+                    <span className="text-xs text-accent font-medium uppercase tracking-wide">
+                      {product.category}
+                    </span>
+                    <h3 className="font-semibold text-foreground mt-1 mb-2">
+                      {product.name}
+                    </h3>
+                    <div className="flex items-center justify-between">
+                      <span className="text-lg font-bold text-foreground">
+                        R{product.price.toFixed(2)}
+                      </span>
+                      <button
+                        onClick={() => handleAddToCart(product)}
+                        className="flex items-center gap-2 px-4 py-2 bg-accent text-white rounded-lg text-sm font-medium hover:bg-accent/90 transition-colors"
+                      >
+                        <Plus className="w-4 h-4" />
+                        Add
+                      </button>
                     </div>
-
-                    {/* Product count badge */}
-                    <div className="absolute top-4 right-4 bg-white/10 backdrop-blur-sm px-3 py-1 rounded-full">
-                      <span className="text-white text-sm font-semibold">{product.count} items</span>
-                    </div>
-
-                    {/* Content */}
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <div className="flex items-start justify-between">
-                        <div className="flex-1">
-                          <h3 className="font-display text-xl font-bold text-white mb-2 group-hover:text-copper transition-colors">
-                            {product.name}
-                          </h3>
-                          <p className="text-white/70 text-sm leading-relaxed">
-                            {product.description}
-                          </p>
-                        </div>
-                        <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-copper transition-colors ml-4 flex-shrink-0">
-                          <ArrowUpRight className="w-5 h-5 text-white" />
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
-                </Link>
+                  </div>
+                </motion.div>
               </ScrollReveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="section-padding-sm bg-secondary">
-        <div className="container-wide">
-          <ScrollReveal>
-            <div className="bg-gradient-charcoal rounded-3xl p-12 lg:p-16 text-center">
-              <h2 className="font-display text-3xl lg:text-4xl font-bold text-white mb-4">
-                Can't Find What You Need?
-              </h2>
-              <p className="text-white/60 text-lg max-w-2xl mx-auto mb-8">
-                We offer custom solutions and can source specialty fasteners to meet your exact specifications.
-              </p>
-              <Link to="/contact" className="btn-premium-copper">
-                <span>Contact Our Team</span>
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Link>
+      {/* Floating Cart Button */}
+      <button
+        onClick={() => setIsCartOpen(true)}
+        className="fixed bottom-6 right-6 z-40 flex items-center gap-3 px-6 py-4 bg-accent text-white rounded-full shadow-elevated hover:shadow-dramatic transition-all"
+      >
+        <ShoppingCart className="w-5 h-5" />
+        <span className="font-semibold">
+          Cart ({items.reduce((sum, i) => sum + i.quantity, 0)})
+        </span>
+        <span className="font-bold">R{total.toFixed(2)}</span>
+      </button>
+
+      {/* Cart Sidebar */}
+      {isCartOpen && (
+        <div className="fixed inset-0 z-50">
+          <div 
+            className="absolute inset-0 bg-black/50"
+            onClick={() => setIsCartOpen(false)}
+          />
+          <motion.div
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            className="absolute right-0 top-0 bottom-0 w-full max-w-md bg-background shadow-dramatic"
+          >
+            <div className="flex flex-col h-full">
+              {/* Header */}
+              <div className="flex items-center justify-between p-6 border-b border-border">
+                <h2 className="text-xl font-bold text-foreground">Your Cart</h2>
+                <button
+                  onClick={() => setIsCartOpen(false)}
+                  className="p-2 text-muted-foreground hover:text-foreground"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Cart Items */}
+              <div className="flex-1 overflow-y-auto p-6">
+                {items.length === 0 ? (
+                  <div className="text-center py-12">
+                    <ShoppingCart className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
+                    <p className="text-muted-foreground">Your cart is empty</p>
+                  </div>
+                ) : (
+                  <div className="space-y-4">
+                    {items.map((item) => (
+                      <div key={item.id} className="flex gap-4 p-4 bg-secondary rounded-lg">
+                        <img
+                          src={item.image}
+                          alt={item.name}
+                          className="w-16 h-16 object-cover rounded-lg"
+                        />
+                        <div className="flex-1">
+                          <h4 className="font-medium text-foreground">{item.name}</h4>
+                          <p className="text-sm text-muted-foreground">R{item.price.toFixed(2)}</p>
+                          <div className="flex items-center gap-2 mt-2">
+                            <button
+                              onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                              className="p-1 rounded bg-background hover:bg-accent/10"
+                            >
+                              <Minus className="w-4 h-4" />
+                            </button>
+                            <span className="w-8 text-center font-medium">{item.quantity}</span>
+                            <button
+                              onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                              className="p-1 rounded bg-background hover:bg-accent/10"
+                            >
+                              <Plus className="w-4 h-4" />
+                            </button>
+                          </div>
+                        </div>
+                        <div className="text-right">
+                          <p className="font-bold text-foreground">
+                            R{(item.price * item.quantity).toFixed(2)}
+                          </p>
+                          <button
+                            onClick={() => removeItem(item.id)}
+                            className="text-xs text-destructive mt-2"
+                          >
+                            Remove
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Footer */}
+              {items.length > 0 && (
+                <div className="p-6 border-t border-border">
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-lg font-medium text-foreground">Total:</span>
+                    <span className="text-2xl font-bold text-foreground">R{total.toFixed(2)}</span>
+                  </div>
+                  <button className="btn-accent w-full mb-3">
+                    <span>Request Quote</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                  <button
+                    onClick={clearCart}
+                    className="w-full text-sm text-muted-foreground hover:text-destructive"
+                  >
+                    Clear Cart
+                  </button>
+                </div>
+              )}
             </div>
-          </ScrollReveal>
+          </motion.div>
         </div>
-      </section>
+      )}
     </Layout>
   );
 };

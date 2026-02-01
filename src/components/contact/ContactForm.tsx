@@ -2,7 +2,6 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Send, CheckCircle } from "lucide-react";
 import { z } from "zod";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name is too long"),
@@ -25,7 +24,6 @@ export function ContactForm() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-    // Clear error when user starts typing
     if (errors[name as keyof ContactFormData]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }));
     }
@@ -47,7 +45,6 @@ export function ContactForm() {
     }
 
     setIsSubmitting(true);
-    // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 1500));
     setIsSubmitting(false);
     setIsSubmitted(true);
@@ -58,7 +55,7 @@ export function ContactForm() {
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="bg-card rounded-2xl p-12 text-center"
+        className="text-center py-12"
       >
         <motion.div
           initial={{ scale: 0 }}
@@ -68,7 +65,7 @@ export function ContactForm() {
         >
           <CheckCircle className="w-10 h-10 text-accent" />
         </motion.div>
-        <h3 className="font-display text-2xl font-bold text-foreground mb-3">
+        <h3 className="text-2xl font-bold text-foreground mb-3">
           Message Sent Successfully
         </h3>
         <p className="text-muted-foreground mb-8">
@@ -79,7 +76,7 @@ export function ContactForm() {
             setIsSubmitted(false);
             setFormData({ name: "", email: "", message: "" });
           }}
-          className="btn-premium-outline"
+          className="btn-outline"
         >
           Send Another Message
         </button>
@@ -88,10 +85,10 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-8">
+    <form onSubmit={handleSubmit} className="space-y-6">
       {/* Name Field */}
       <div>
-        <label htmlFor="name" className="block text-sm font-semibold text-foreground mb-2">
+        <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
           Full Name
         </label>
         <input
@@ -101,7 +98,7 @@ export function ContactForm() {
           value={formData.name}
           onChange={handleChange}
           placeholder="John Smith"
-          className={`input-premium ${errors.name ? "border-destructive" : ""}`}
+          className={`input-premium ${errors.name ? "border-destructive ring-destructive" : ""}`}
         />
         {errors.name && (
           <motion.p
@@ -116,7 +113,7 @@ export function ContactForm() {
 
       {/* Email Field */}
       <div>
-        <label htmlFor="email" className="block text-sm font-semibold text-foreground mb-2">
+        <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
           Email Address
         </label>
         <input
@@ -125,8 +122,8 @@ export function ContactForm() {
           name="email"
           value={formData.email}
           onChange={handleChange}
-          placeholder="john@company.com"
-          className={`input-premium ${errors.email ? "border-destructive" : ""}`}
+          placeholder="john@company.co.za"
+          className={`input-premium ${errors.email ? "border-destructive ring-destructive" : ""}`}
         />
         {errors.email && (
           <motion.p
@@ -141,7 +138,7 @@ export function ContactForm() {
 
       {/* Message Field */}
       <div>
-        <label htmlFor="message" className="block text-sm font-semibold text-foreground mb-2">
+        <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
           Your Message
         </label>
         <textarea
@@ -149,9 +146,9 @@ export function ContactForm() {
           name="message"
           value={formData.message}
           onChange={handleChange}
-          rows={6}
+          rows={5}
           placeholder="Tell us about your project requirements..."
-          className={`textarea-premium ${errors.message ? "border-destructive" : ""}`}
+          className={`textarea-premium ${errors.message ? "border-destructive ring-destructive" : ""}`}
         />
         {errors.message && (
           <motion.p
@@ -170,7 +167,7 @@ export function ContactForm() {
         disabled={isSubmitting}
         whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
         whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
-        className="btn-premium-copper w-full disabled:opacity-50 disabled:cursor-not-allowed"
+        className="btn-accent w-full disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {isSubmitting ? (
           <motion.div
@@ -181,7 +178,7 @@ export function ContactForm() {
         ) : (
           <>
             <span>Send Message</span>
-            <Send className="w-4 h-4 ml-2" />
+            <Send className="w-4 h-4" />
           </>
         )}
       </motion.button>

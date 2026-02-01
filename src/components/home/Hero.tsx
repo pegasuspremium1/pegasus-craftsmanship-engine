@@ -1,173 +1,114 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, ArrowDownRight } from "lucide-react";
+import { ArrowRight, Phone } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col overflow-hidden bg-background">
-      {/* Subtle grid background */}
-      <div className="absolute inset-0 grid-editorial opacity-40" />
+    <section className="relative min-h-[85vh] flex items-center overflow-hidden bg-background">
+      {/* Subtle background pattern */}
+      <div className="absolute inset-0 grid-editorial opacity-30" />
       
-      {/* Vertical side labels */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.8 }}
-        className="hidden lg:flex absolute left-6 top-1/2 -translate-y-1/2 z-20"
-      >
-        <span className="text-vertical font-mono text-xs tracking-[0.3em] text-muted-foreground">
-          EST. 1998 — BIRMINGHAM, UK
-        </span>
-      </motion.div>
-
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.8 }}
-        className="hidden lg:flex absolute right-6 top-1/2 -translate-y-1/2 z-20"
-      >
-        <span className="text-vertical font-mono text-xs tracking-[0.3em] text-muted-foreground">
-          INDUSTRIAL FASTENERS
-        </span>
-      </motion.div>
+      {/* Decorative shapes */}
+      <div className="absolute top-20 right-10 w-72 h-72 bg-accent/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 left-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
 
       {/* Main content */}
-      <div className="flex-1 flex items-center pt-32 pb-12">
-        <div className="container-wide">
-          <div className="grid lg:grid-cols-12 gap-8 lg:gap-6 items-end">
-            {/* Left column - Main headline */}
-            <div className="lg:col-span-8">
-              {/* Logo + Label */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="flex items-center gap-6 mb-8"
-              >
-                <img src={logo} alt="Pegasus Premium" className="h-14 w-auto" />
-                <div className="h-8 w-px bg-border" />
-                <span className="label-editorial">Premium Fasteners</span>
-              </motion.div>
+      <div className="container-wide relative z-10 py-20">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Left column - Content */}
+          <div>
+            {/* Logo + Label */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="flex items-center gap-4 mb-8"
+            >
+              <img src={logo} alt="Pegasus Premium" className="h-16 w-auto" />
+              <div className="h-10 w-px bg-border" />
+              <span className="label-sm">Premium Fasteners</span>
+            </motion.div>
 
-              {/* Headline - Split lines for impact */}
-              <div className="space-y-2 mb-10">
-                <div className="overflow-hidden">
-                  <motion.h1
-                    initial={{ y: "100%" }}
-                    animate={{ y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                    className="display-xl text-foreground"
-                  >
-                    Precision
-                  </motion.h1>
+            {/* Headline */}
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="display-xl text-foreground mb-6"
+            >
+              Quality Fasteners
+              <br />
+              <span className="text-accent">Built to Last</span>
+            </motion.h1>
+
+            {/* Description */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="body-lg mb-10 max-w-lg"
+            >
+              Your trusted partner for industrial fasteners in South Africa. 
+              Premium quality bolts, screws, nuts, and engineered components 
+              for every application.
+            </motion.p>
+
+            {/* CTAs */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="flex flex-col sm:flex-row gap-4"
+            >
+              <Link to="/products" className="btn-accent group">
+                <span>View Products</span>
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </Link>
+              <a href="tel:+27117941234" className="btn-outline">
+                <Phone className="w-4 h-4" />
+                <span>Call Us Now</span>
+              </a>
+            </motion.div>
+          </div>
+
+          {/* Right column - Image */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="relative"
+          >
+            <div className="relative rounded-2xl overflow-hidden shadow-elevated">
+              <img
+                src="https://images.unsplash.com/photo-1572981779307-38b8cabb2407?w=800&q=80"
+                alt="Industrial fasteners"
+                className="w-full aspect-[4/3] object-cover"
+              />
+              {/* Overlay gradient */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-transparent to-transparent" />
+            </div>
+            
+            {/* Floating card */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
+              className="absolute -bottom-6 -left-6 bg-card rounded-xl p-5 shadow-card border border-border"
+            >
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center">
+                  <span className="text-accent font-bold text-lg">✓</span>
                 </div>
-                <div className="overflow-hidden">
-                  <motion.h1
-                    initial={{ y: "100%" }}
-                    animate={{ y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                    className="display-xl"
-                  >
-                    <span className="font-serif italic text-accent">Engineered</span>
-                  </motion.h1>
-                </div>
-                <div className="overflow-hidden">
-                  <motion.h1
-                    initial={{ y: "100%" }}
-                    animate={{ y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                    className="display-xl text-foreground"
-                  >
-                    Excellence
-                  </motion.h1>
+                <div>
+                  <p className="font-semibold text-foreground">Trusted Supplier</p>
+                  <p className="text-sm text-muted-foreground">25+ Years Experience</p>
                 </div>
               </div>
-
-              {/* CTAs */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.8 }}
-                className="flex flex-col sm:flex-row gap-4"
-              >
-                <Link to="/products" className="btn-editorial-primary group">
-                  <span className="flex items-center gap-3">
-                    Explore Products
-                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                  </span>
-                </Link>
-                <Link to="/contact" className="btn-editorial-outline">
-                  Get a Quote
-                </Link>
-              </motion.div>
-            </div>
-
-            {/* Right column - Description + scroll hint */}
-            <div className="lg:col-span-4 lg:pb-4">
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.9 }}
-                className="body-lg mb-8"
-              >
-                Trusted by manufacturers worldwide. Over 10,000 premium fasteners 
-                and engineered components for aerospace, automotive, and construction.
-              </motion.p>
-
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 1.1 }}
-                className="flex items-center gap-4"
-              >
-                <motion.div
-                  animate={{ y: [0, 6, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                  className="w-10 h-10 rounded-full border border-border flex items-center justify-center"
-                >
-                  <ArrowDownRight className="w-4 h-4 text-muted-foreground" />
-                </motion.div>
-                <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-                  Scroll to explore
-                </span>
-              </motion.div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
-
-      {/* Bottom stats bar - Kanban style */}
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 1 }}
-        className="border-t border-border"
-      >
-        <div className="container-wide">
-          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-border">
-            {[
-              { value: "25+", label: "Years Experience" },
-              { value: "10K+", label: "Products Stocked" },
-              { value: "500+", label: "Global Partners" },
-              { value: "99.9%", label: "Quality Rating" },
-            ].map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
-                className="py-8 px-6 first:pl-0 last:pr-0"
-              >
-                <div className="stat-display mb-1">{stat.value}</div>
-                <div className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-                  {stat.label}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </motion.div>
     </section>
   );
 }

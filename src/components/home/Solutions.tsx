@@ -1,149 +1,79 @@
-import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Package, Store, Truck, ShoppingCart } from "lucide-react";
+import { motion } from "framer-motion";
+import { ArrowRight, Package, Store, Truck, Settings } from "lucide-react";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 const solutions = [
   {
-    id: "01",
     icon: Package,
     title: "Pre-Packing",
-    description: "Custom packing solutions tailored to your production line. Reduce handling time and boost efficiency.",
+    description: "Custom packing solutions tailored to your production line",
     href: "/solutions/pre-packing",
-    stat: "40%",
-    statLabel: "Time Saved",
   },
   {
-    id: "02",
     icon: Store,
     title: "Retail Sales",
-    description: "Point-of-sale ready packaging and display solutions for retail environments and trade counters.",
+    description: "Point-of-sale ready packaging for retail environments",
     href: "/solutions/retail-sales",
-    stat: "500+",
-    statLabel: "Retail Partners",
   },
   {
-    id: "03",
-    icon: ShoppingCart,
-    title: "How to Order",
-    description: "Simple, streamlined ordering with dedicated account management and flexible payment options.",
-    href: "/solutions/how-to-order",
-    stat: "24hr",
-    statLabel: "Quote Response",
-  },
-  {
-    id: "04",
     icon: Truck,
-    title: "Delivery",
-    description: "Reliable logistics with next-day UK delivery and efficient international shipping solutions.",
+    title: "Delivery Services",
+    description: "Reliable nationwide delivery across South Africa",
     href: "/solutions/delivery",
-    stat: "98%",
-    statLabel: "On-Time Rate",
+  },
+  {
+    icon: Settings,
+    title: "Custom Orders",
+    description: "Bespoke fastener solutions for unique requirements",
+    href: "/solutions/how-to-order",
   },
 ];
 
 export function Solutions() {
   return (
-    <section className="section-padding bg-primary text-primary-foreground relative overflow-hidden">
-      {/* Subtle grid */}
-      <div className="absolute inset-0 opacity-[0.03]">
-        <div 
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `
-              linear-gradient(hsl(0 0% 100% / 0.1) 1px, transparent 1px),
-              linear-gradient(90deg, hsl(0 0% 100% / 0.1) 1px, transparent 1px)
-            `,
-            backgroundSize: '60px 60px',
-          }}
-        />
-      </div>
-
-      <div className="container-wide relative z-10">
-        {/* Section marker - inverted */}
-        <div className="section-marker mb-16">
-          <span className="font-mono text-xs text-accent">03</span>
-          <div className="flex-1 h-px bg-primary-foreground/10" />
-          <span className="font-mono text-xs uppercase tracking-[0.3em] text-primary-foreground/50">
-            Our Solutions
-          </span>
-        </div>
-
-        {/* Header */}
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 mb-20">
+    <section className="section-padding bg-secondary">
+      <div className="container-wide">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          {/* Left - Content */}
           <ScrollReveal>
-            <h2 className="display-lg">
-              Tailored to
-              <br />
-              <span className="font-serif italic text-accent">Your Needs</span>
+            <span className="label-sm text-accent mb-4 block">Our Services</span>
+            <h2 className="display-lg text-foreground mb-6">
+              Solutions for Every Business
             </h2>
-          </ScrollReveal>
-
-          <ScrollReveal delay={0.1} className="flex items-end">
-            <p className="text-xl text-primary-foreground/60 max-w-md">
-              End-to-end fastener solutions designed to streamline your 
-              operations and boost efficiency at every stage.
+            <p className="body-lg mb-8">
+              From small orders to large-scale industrial supply, we provide flexible 
+              solutions that fit your needs.
             </p>
+            <Link to="/solutions" className="btn-primary">
+              <span>Explore Solutions</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </ScrollReveal>
-        </div>
 
-        {/* Solutions - Horizontal kanban cards */}
-        <div className="space-y-4">
-          {solutions.map((solution, index) => (
-            <ScrollReveal key={solution.id} delay={index * 0.1}>
-              <Link to={solution.href}>
-                <motion.div
-                  whileHover={{ x: 8 }}
-                  transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                  className="group grid grid-cols-12 gap-6 p-6 lg:p-8 border border-primary-foreground/10 hover:border-accent/50 hover:bg-primary-foreground/5 transition-all duration-400"
-                >
-                  {/* Number */}
-                  <div className="col-span-2 lg:col-span-1">
-                    <span className="font-mono text-xs text-primary-foreground/40">
-                      {solution.id}
-                    </span>
-                  </div>
-
-                  {/* Icon */}
-                  <div className="col-span-10 lg:col-span-1 flex lg:justify-center">
-                    <div className="w-12 h-12 rounded-full border border-primary-foreground/20 flex items-center justify-center group-hover:border-accent group-hover:bg-accent/10 transition-all duration-400">
-                      <solution.icon className="w-5 h-5 text-primary-foreground/60 group-hover:text-accent transition-colors" />
+          {/* Right - Cards */}
+          <div className="grid sm:grid-cols-2 gap-4">
+            {solutions.map((solution, index) => (
+              <ScrollReveal key={solution.title} delay={index * 0.1}>
+                <Link to={solution.href}>
+                  <motion.div
+                    whileHover={{ y: -4, x: 4 }}
+                    className="group bg-background rounded-xl p-6 shadow-subtle hover:shadow-card transition-all duration-300 border border-transparent hover:border-accent/20"
+                  >
+                    <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
+                      <solution.icon className="w-5 h-5 text-accent" />
                     </div>
-                  </div>
-
-                  {/* Title + Description */}
-                  <div className="col-span-12 lg:col-span-6">
-                    <h3 className="font-display text-2xl font-medium mb-2 group-hover:text-accent transition-colors">
+                    <h3 className="font-semibold text-foreground mb-2 group-hover:text-accent transition-colors">
                       {solution.title}
                     </h3>
-                    <p className="text-primary-foreground/50 text-sm leading-relaxed">
+                    <p className="text-sm text-muted-foreground">
                       {solution.description}
                     </p>
-                  </div>
-
-                  {/* Stat */}
-                  <div className="col-span-6 lg:col-span-2 flex flex-col justify-center">
-                    <span className="font-display text-3xl font-medium text-accent">
-                      {solution.stat}
-                    </span>
-                    <span className="font-mono text-xs uppercase tracking-wider text-primary-foreground/40">
-                      {solution.statLabel}
-                    </span>
-                  </div>
-
-                  {/* Arrow */}
-                  <div className="col-span-6 lg:col-span-2 flex items-center justify-end">
-                    <div className="flex items-center gap-3 text-primary-foreground/40 group-hover:text-accent transition-colors">
-                      <span className="font-mono text-xs uppercase tracking-wider hidden md:block">
-                        Learn More
-                      </span>
-                      <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-                    </div>
-                  </div>
-                </motion.div>
-              </Link>
-            </ScrollReveal>
-          ))}
+                  </motion.div>
+                </Link>
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
       </div>
     </section>
