@@ -1,79 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap');
-
-/* Pegasus Premium - Bespoke Editorial Design System */
-
 @layer base {
   :root {
-    /* Core Palette - Sharp, Distinctive */
-    --background: 60 10% 98%;
-    --foreground: 220 25% 8%;
-
-    --card: 60 5% 96%;
-    --card-foreground: 220 25% 8%;
-
-    --popover: 60 10% 98%;
-    --popover-foreground: 220 25% 8%;
-
-    /* Primary - Deep Navy from logo */
-    --primary: 230 70% 20%;
-    --primary-foreground: 60 10% 98%;
-
-    /* Secondary - Warm Stone */
-    --secondary: 40 15% 90%;
+    /* Clean Light Mode Palette */
+    --background: 0 0% 98%;
+    --foreground: 220 25% 15%;
+    
+    /* Cards & Surfaces */
+    --card: 0 0% 100%;
+    --card-foreground: 220 25% 15%;
+    
+    /* Popover */
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 25% 15%;
+    
+    /* Primary - Deep Navy Blue (from logo) */
+    --primary: 216 50% 20%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Secondary - Light Gray */
+    --secondary: 220 15% 95%;
     --secondary-foreground: 220 25% 15%;
-
-    /* Accent - Electric Blue highlight */
-    --accent: 225 85% 55%;
-    --accent-foreground: 60 10% 98%;
-
-    /* Muted tones */
-    --muted: 40 10% 92%;
-    --muted-foreground: 220 10% 45%;
-
+    
+    /* Muted */
+    --muted: 220 15% 92%;
+    --muted-foreground: 220 15% 45%;
+    
+    /* Accent - Electric Blue (from logo) */
+    --accent: 210 85% 45%;
+    --accent-foreground: 0 0% 100%;
+    
+    /* Destructive */
     --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 40 15% 85%;
-    --input: 40 15% 88%;
-    --ring: 225 85% 55%;
-
-    --radius: 0.25rem;
-
-    /* Bespoke Brand Colors */
-    --ink: 220 25% 8%;
-    --paper: 60 10% 98%;
-    --navy: 230 70% 20%;
-    --navy-light: 225 60% 35%;
-    --stone: 40 15% 75%;
-    --stone-light: 40 10% 92%;
-    --electric: 225 85% 55%;
-    --electric-muted: 225 40% 85%;
-
-    /* Editorial Grid Lines */
-    --grid-line: 40 15% 88%;
-
-    /* Typography Scale Ratios */
-    --type-scale: 1.25;
-
-    /* Shadows - Soft, Editorial */
-    --shadow-subtle: 0 1px 3px hsl(220 25% 8% / 0.04);
-    --shadow-card: 0 4px 20px -4px hsl(220 25% 8% / 0.08);
-    --shadow-elevated: 0 12px 40px -8px hsl(220 25% 8% / 0.12);
-    --shadow-dramatic: 0 24px 60px -12px hsl(220 25% 8% / 0.18);
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Border & Input */
+    --border: 220 15% 88%;
+    --input: 220 15% 88%;
+    --ring: 210 85% 45%;
+    
+    /* Radius */
+    --radius: 0.625rem;
+    
+    /* Bespoke Design Tokens */
+    --ink: 220 25% 15%;
+    --paper: 0 0% 98%;
+    --navy: 216 50% 20%;
+    --navy-light: 216 40% 30%;
+    --stone: 220 15% 92%;
+    --stone-light: 220 15% 96%;
+    --electric: 210 85% 45%;
+    --electric-muted: 210 60% 75%;
+    
+    /* Shadows */
+    --shadow-subtle: 0 1px 2px 0 rgb(0 0 0 / 0.03);
+    --shadow-card: 0 4px 24px -4px rgb(0 0 0 / 0.08);
+    --shadow-elevated: 0 12px 48px -12px rgb(0 0 0 / 0.12);
+    --shadow-dramatic: 0 24px 80px -24px rgb(0 0 0 / 0.2);
 
     /* Sidebar */
-    --sidebar-background: 230 70% 20%;
-    --sidebar-foreground: 60 10% 98%;
-    --sidebar-primary: 225 85% 55%;
-    --sidebar-primary-foreground: 60 10% 98%;
-    --sidebar-accent: 230 50% 30%;
-    --sidebar-accent-foreground: 60 10% 98%;
-    --sidebar-border: 230 50% 28%;
-    --sidebar-ring: 225 85% 55%;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 220 25% 15%;
+    --sidebar-primary: 210 85% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 15% 95%;
+    --sidebar-accent-foreground: 220 25% 15%;
+    --sidebar-border: 220 15% 88%;
+    --sidebar-ring: 210 85% 45%;
   }
 }
 
@@ -81,313 +78,187 @@
   * {
     @apply border-border;
   }
+  
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Poppins', sans-serif;
+  }
 
   html {
     scroll-behavior: smooth;
-    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
-  }
-
-  body {
-    @apply bg-background text-foreground font-body antialiased;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display tracking-tight;
-    text-wrap: balance;
+    font-family: 'Poppins', sans-serif;
   }
 
-  /* Distinctive Selection */
+  /* Custom selection color */
   ::selection {
-    background: hsl(225 85% 55% / 0.15);
-    color: hsl(230 70% 20%);
+    @apply bg-accent/20 text-foreground;
   }
 }
 
 @layer components {
-  /* Kanban Card Base */
-  .kanban-card {
-    @apply relative bg-card border border-border p-6;
-    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  /* Container utilities */
+  .container-wide {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
 
-  .kanban-card::before {
-    content: '';
-    @apply absolute top-0 left-0 w-1 h-full bg-accent opacity-0;
-    transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  .container-narrow {
+    @apply max-w-4xl mx-auto px-4 sm:px-6 lg:px-8;
   }
 
-  .kanban-card:hover::before {
-    @apply opacity-100;
+  /* Typography - Using Poppins throughout */
+  .display-xl {
+    @apply text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight;
+    font-family: 'Poppins', sans-serif;
   }
 
-  .kanban-card:hover {
-    transform: translateX(4px);
-    box-shadow: var(--shadow-card);
+  .display-lg {
+    @apply text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight;
+    font-family: 'Poppins', sans-serif;
   }
 
-  /* Bento Grid Item */
-  .bento-item {
-    @apply relative overflow-hidden border border-border bg-card;
-    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  .heading-xl {
+    @apply text-2xl sm:text-3xl font-semibold leading-tight;
+    font-family: 'Poppins', sans-serif;
   }
 
-  .bento-item:hover {
-    box-shadow: var(--shadow-elevated);
-    transform: translateY(-4px);
+  .heading-lg {
+    @apply text-xl sm:text-2xl font-semibold leading-tight;
+    font-family: 'Poppins', sans-serif;
   }
 
-  /* Editorial Label */
-  .label-editorial {
-    @apply inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.25em] text-muted-foreground;
+  .body-lg {
+    @apply text-lg leading-relaxed text-muted-foreground;
+    font-family: 'Poppins', sans-serif;
   }
 
-  .label-editorial::before {
-    content: '—';
-    @apply text-accent;
+  .body-base {
+    @apply text-base leading-relaxed;
+    font-family: 'Poppins', sans-serif;
   }
 
-  /* Section Marker */
-  .section-marker {
-    @apply flex items-center gap-4 mb-12;
+  .label-sm {
+    @apply text-xs font-medium uppercase tracking-widest text-muted-foreground;
+    font-family: 'Poppins', sans-serif;
   }
 
-  .section-marker-line {
-    @apply flex-1 h-px bg-border;
+  /* Buttons - Clean professional style */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary text-white font-semibold rounded-lg transition-all duration-300 hover:bg-primary/90 hover:shadow-lg;
+    font-family: 'Poppins', sans-serif;
   }
 
-  .section-marker-text {
-    @apply font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground;
+  .btn-accent {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-accent text-white font-semibold rounded-lg transition-all duration-300 hover:bg-accent/90 hover:shadow-lg;
+    font-family: 'Poppins', sans-serif;
   }
 
-  .section-marker-number {
-    @apply font-mono text-xs text-accent;
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-primary text-primary font-semibold rounded-lg transition-all duration-300 hover:bg-primary hover:text-white;
+    font-family: 'Poppins', sans-serif;
   }
 
-  /* Premium Buttons - Editorial */
-  .btn-editorial {
-    @apply relative inline-flex items-center justify-center font-display font-medium text-sm tracking-wide transition-all duration-400 overflow-hidden;
+  .btn-outline-white {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-white text-white font-semibold rounded-lg transition-all duration-300 hover:bg-white hover:text-primary;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  /* Legacy button classes for compatibility */
+  .btn-premium-copper {
+    @apply btn-accent;
   }
 
   .btn-editorial-primary {
-    @apply btn-editorial px-8 py-4 bg-primary text-primary-foreground;
-  }
-
-  .btn-editorial-primary::after {
-    content: '';
-    @apply absolute inset-0 bg-accent opacity-0;
-    transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-
-  .btn-editorial-primary:hover::after {
-    @apply opacity-100;
-  }
-
-  .btn-editorial-primary span {
-    @apply relative z-10;
+    @apply btn-primary;
   }
 
   .btn-editorial-outline {
-    @apply btn-editorial px-8 py-4 border-2 border-primary text-primary bg-transparent;
-  }
-
-  .btn-editorial-outline:hover {
-    @apply bg-primary text-primary-foreground;
-  }
-
-  .btn-editorial-ghost {
-    @apply btn-editorial px-0 py-2 text-foreground;
-  }
-
-  .btn-editorial-ghost::after {
-    content: '';
-    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-accent;
-    transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-
-  .btn-editorial-ghost:hover::after {
-    @apply w-full;
-  }
-
-  /* Legacy button support */
-  .btn-premium-copper {
-    @apply btn-editorial-primary;
-  }
-
-  .btn-premium-outline {
-    @apply btn-editorial-outline;
+    @apply btn-outline;
   }
 
   .btn-hero {
-    @apply btn-editorial-outline;
+    @apply btn-outline-white;
+  }
+
+  .btn-premium-outline {
+    @apply btn-outline;
+  }
+
+  /* Form inputs */
+  .input-premium {
+    @apply w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-200;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .textarea-premium {
+    @apply w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-200 resize-none;
+    font-family: 'Poppins', sans-serif;
   }
 
   /* Section spacing */
   .section-padding {
-    @apply py-24 md:py-32 lg:py-40;
+    @apply py-16 lg:py-24;
   }
 
   .section-padding-sm {
-    @apply py-16 md:py-24;
+    @apply py-12 lg:py-16;
   }
 
-  /* Container widths */
-  .container-narrow {
-    @apply max-w-5xl mx-auto px-6;
+  /* Cards */
+  .card-premium {
+    @apply bg-card rounded-xl p-6 shadow-card transition-all duration-300 hover:shadow-elevated;
   }
 
-  .container-wide {
-    @apply max-w-7xl mx-auto px-6;
+  /* Hero backgrounds - Primary is dark, so text is white */
+  .hero-gradient {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--navy-light)) 100%);
   }
 
-  .container-full {
-    @apply max-w-none mx-auto px-6 lg:px-12;
+  /* Page hero with readable white text on dark bg */
+  .page-hero {
+    @apply pt-32 pb-16 lg:pb-20 hero-gradient;
   }
 
-  /* Editorial Grid */
-  .editorial-grid {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 1.5rem;
+  .page-hero h1,
+  .page-hero p,
+  .page-hero span {
+    @apply text-white;
   }
 
-  /* Masonry-like asymmetric grid */
-  .kanban-grid {
-    display: grid;
-    gap: 1px;
-    background: hsl(var(--border));
+  .page-hero .text-accent-label {
+    @apply text-accent;
   }
 
-  .kanban-grid > * {
-    background: hsl(var(--background));
+  /* Grid background */
+  .grid-editorial {
+    background-image: 
+      linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border)) 1px, transparent 1px);
+    background-size: 80px 80px;
   }
 
-  /* Horizontal rule - editorial style */
-  .hr-editorial {
-    @apply relative h-px bg-border my-16;
-  }
-
-  .hr-editorial::after {
-    content: '●';
-    @apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-xs text-muted-foreground bg-background px-4;
-  }
-
-  /* Type treatments */
-  .display-xl {
-    @apply font-display text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-medium leading-[0.9] tracking-[-0.03em];
-  }
-
-  .display-lg {
-    @apply font-display text-4xl md:text-5xl lg:text-6xl font-medium leading-[0.95] tracking-[-0.02em];
-  }
-
-  .display-md {
-    @apply font-display text-3xl md:text-4xl font-medium leading-tight tracking-[-0.01em];
-  }
-
-  .body-lg {
-    @apply text-lg md:text-xl leading-relaxed text-muted-foreground;
-  }
-
-  /* Stat display */
-  .stat-display {
-    @apply font-display text-5xl md:text-6xl lg:text-7xl font-medium tracking-[-0.02em] text-foreground;
-  }
-
-  /* Card premium styling - editorial */
-  .card-editorial {
-    @apply bg-card border border-border p-8 transition-all duration-500;
-    box-shadow: var(--shadow-subtle);
-  }
-
-  .card-editorial:hover {
-    box-shadow: var(--shadow-card);
-    transform: translateY(-2px);
+  /* Contact banner */
+  .top-banner {
+    @apply bg-primary text-white py-2.5 text-sm;
+    font-family: 'Poppins', sans-serif;
   }
 }
 
-@layer utilities {
-  /* Gradient text */
-  .text-gradient-editorial {
-    @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
-  }
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
 
-  /* Noise texture overlay */
-  .noise-overlay {
-    position: relative;
-  }
+::-webkit-scrollbar-track {
+  @apply bg-secondary;
+}
 
-  .noise-overlay::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    opacity: 0.03;
-    pointer-events: none;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  }
+::-webkit-scrollbar-thumb {
+  @apply bg-muted-foreground/30 rounded-full;
+}
 
-  /* Duration utilities */
-  .duration-400 {
-    transition-duration: 400ms;
-  }
-
-  .duration-600 {
-    transition-duration: 600ms;
-  }
-
-  /* Custom easing */
-  .ease-editorial {
-    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
-  }
-
-  /* Backdrop blur variations */
-  .backdrop-editorial {
-    @apply backdrop-blur-xl bg-background/95;
-  }
-
-  /* Hide scrollbar */
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-
-  /* Grid line pattern */
-  .grid-editorial {
-    background-image: 
-      linear-gradient(hsl(var(--grid-line)) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(var(--grid-line)) 1px, transparent 1px);
-    background-size: 40px 40px;
-  }
-
-  /* Vertical text */
-  .text-vertical {
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-  }
-
-  /* Blend modes for overlays */
-  .mix-blend-overlay {
-    mix-blend-mode: overlay;
-  }
-
-  /* Line clamp */
-  .line-clamp-2 {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .line-clamp-3 {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-muted-foreground/50;
 }

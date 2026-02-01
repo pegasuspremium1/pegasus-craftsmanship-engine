@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { TopBanner } from "./TopBanner";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 
@@ -17,6 +18,7 @@ export function Layout({ children }: LayoutProps) {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <TopBanner />
       <Navbar />
       <main className="flex-1">{children}</main>
       <Footer />

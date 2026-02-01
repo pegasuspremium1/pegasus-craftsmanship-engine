@@ -62,23 +62,23 @@ const solutionsData: Record<string, {
       { title: "Request a Quote", description: "Submit your requirements and receive a detailed quotation within 24 hours." },
       { title: "Place Your Order", description: "Order via phone, email, or your dedicated account portal." },
       { title: "Order Confirmation", description: "Receive confirmation with expected delivery date and tracking information." },
-      { title: "Fast Delivery", description: "UK next-day delivery on stock items ordered before 2pm." },
+      { title: "Fast Delivery", description: "Nationwide delivery across South Africa on orders placed before 2pm." },
     ],
   },
   "delivery": {
     title: "Delivery Services",
-    description: "Reliable logistics with next-day UK delivery and efficient international shipping solutions. We ensure your fasteners arrive when you need them.",
+    description: "Reliable logistics with nationwide South African delivery and efficient service. We ensure your fasteners arrive when you need them.",
     heroImage: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=1200&q=80",
     benefits: [
-      "Next-day UK delivery on stock items",
+      "Fast delivery across Gauteng",
       "Same-day dispatch on orders before 2pm",
-      "International shipping to 50+ countries",
+      "Nationwide delivery across South Africa",
       "Live tracking on all shipments",
       "Flexible delivery scheduling options",
     ],
     features: [
-      { title: "UK Next-Day", description: "Orders placed before 2pm dispatched same day for next-day delivery." },
-      { title: "International", description: "Competitive international shipping with customs documentation handled." },
+      { title: "Gauteng Express", description: "Orders placed before 2pm dispatched same day for next-day Gauteng delivery." },
+      { title: "National Coverage", description: "Reliable delivery to all major centers across South Africa." },
       { title: "Scheduled Delivery", description: "Choose your preferred delivery date and time window." },
       { title: "Track & Trace", description: "Real-time tracking information sent directly to your inbox." },
     ],
@@ -94,28 +94,24 @@ const Solutions = () => {
     
     return (
       <Layout>
-        {/* Hero */}
-        <section className="pt-32 pb-16 lg:pb-24 bg-gradient-hero relative overflow-hidden">
+        {/* Hero - White text on dark bg */}
+        <section className="page-hero relative overflow-hidden">
           <div className="absolute inset-0 opacity-20">
             <img
               src={solution.heroImage}
               alt={solution.title}
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-hero" />
           </div>
           <div className="container-wide relative z-10">
             <ScrollReveal>
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-px bg-copper" />
-                <span className="text-copper text-sm font-semibold uppercase tracking-[0.2em]">
-                  Solutions
-                </span>
-              </div>
-              <h1 className="font-display text-4xl lg:text-6xl font-bold text-white mb-6">
+              <span className="text-accent text-sm font-semibold uppercase tracking-wider mb-4 block">
+                Solutions
+              </span>
+              <h1 className="display-lg mb-4">
                 {solution.title}
               </h1>
-              <p className="text-xl text-white/60 max-w-2xl">
+              <p className="text-lg text-white/80 max-w-2xl">
                 {solution.description}
               </p>
             </ScrollReveal>
@@ -127,7 +123,8 @@ const Solutions = () => {
           <div className="container-wide">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <ScrollReveal>
-                <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-8">
+                <span className="label-sm text-accent mb-4 block">Benefits</span>
+                <h2 className="display-lg text-foreground mb-8">
                   Key Benefits
                 </h2>
                 <ul className="space-y-4">
@@ -153,7 +150,7 @@ const Solutions = () => {
                 <img
                   src={solution.heroImage}
                   alt={solution.title}
-                  className="rounded-2xl shadow-elevated"
+                  className="rounded-2xl shadow-card"
                 />
               </ScrollReveal>
             </div>
@@ -163,8 +160,8 @@ const Solutions = () => {
         {/* Features */}
         <section className="section-padding bg-secondary">
           <div className="container-wide">
-            <ScrollReveal className="text-center mb-16">
-              <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground">
+            <ScrollReveal className="text-center mb-12">
+              <h2 className="display-lg text-foreground">
                 How It Works
               </h2>
             </ScrollReveal>
@@ -174,12 +171,12 @@ const Solutions = () => {
                 <ScrollReveal key={feature.title} delay={index * 0.1}>
                   <motion.div
                     whileHover={{ y: -8 }}
-                    className="bg-background rounded-2xl p-8 h-full shadow-premium-sm hover:shadow-premium-lg transition-all"
+                    className="bg-background rounded-xl p-8 h-full shadow-subtle hover:shadow-card transition-all"
                   >
                     <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center mb-6">
-                      <span className="font-display font-bold text-accent">{index + 1}</span>
+                      <span className="font-bold text-accent">{index + 1}</span>
                     </div>
-                    <h3 className="font-display text-xl font-bold text-foreground mb-3">
+                    <h3 className="text-xl font-bold text-foreground mb-3">
                       {feature.title}
                     </h3>
                     <p className="text-muted-foreground">
@@ -193,18 +190,18 @@ const Solutions = () => {
         </section>
 
         {/* CTA */}
-        <section className="section-padding bg-gradient-charcoal">
+        <section className="section-padding bg-primary">
           <div className="container-wide text-center">
             <ScrollReveal>
-              <h2 className="font-display text-3xl lg:text-4xl font-bold text-white mb-4">
+              <h2 className="display-lg text-white mb-4">
                 Ready to Get Started?
               </h2>
-              <p className="text-white/60 text-lg max-w-2xl mx-auto mb-8">
+              <p className="text-white/80 text-lg max-w-2xl mx-auto mb-8">
                 Contact our team to discuss how we can tailor our solutions to your needs.
               </p>
-              <Link to="/contact" className="btn-premium-copper">
+              <Link to="/contact" className="btn-accent">
                 <span>Contact Us</span>
-                <ArrowRight className="w-4 h-4 ml-2" />
+                <ArrowRight className="w-4 h-4" />
               </Link>
             </ScrollReveal>
           </div>
@@ -221,23 +218,17 @@ const Solutions = () => {
 
   return (
     <Layout>
-      {/* Hero */}
-      <section className="pt-32 pb-16 lg:pb-24 bg-gradient-hero">
+      {/* Hero - White text */}
+      <section className="page-hero">
         <div className="container-wide">
           <ScrollReveal>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-px bg-copper" />
-              <span className="text-copper text-sm font-semibold uppercase tracking-[0.2em]">
-                Solutions
-              </span>
-            </div>
-            <h1 className="font-display text-4xl lg:text-6xl font-bold text-white mb-6">
-              Tailored to Your<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-copper to-copper-light">
-                Business Needs
-              </span>
+            <span className="text-accent text-sm font-semibold uppercase tracking-wider mb-4 block">
+              Solutions
+            </span>
+            <h1 className="display-lg mb-4">
+              Tailored to Your Business
             </h1>
-            <p className="text-xl text-white/60 max-w-2xl">
+            <p className="text-lg text-white/80 max-w-2xl">
               End-to-end fastener solutions designed to streamline your operations 
               and maximize efficiency.
             </p>
@@ -254,7 +245,7 @@ const Solutions = () => {
                 <Link to={`/solutions/${solution.slug}`}>
                   <motion.div
                     whileHover={{ y: -8 }}
-                    className="group relative bg-card rounded-2xl overflow-hidden shadow-premium-md hover:shadow-elevated transition-all h-full"
+                    className="group relative bg-card rounded-xl overflow-hidden shadow-card hover:shadow-elevated transition-all h-full"
                   >
                     <div className="aspect-[16/9] overflow-hidden">
                       <img
@@ -262,16 +253,16 @@ const Solutions = () => {
                         alt={solution.title}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/50 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
                     </div>
                     <div className="absolute bottom-0 left-0 right-0 p-8">
-                      <h3 className="font-display text-2xl font-bold text-white mb-3 group-hover:text-copper transition-colors">
+                      <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-accent transition-colors">
                         {solution.title}
                       </h3>
-                      <p className="text-white/70 mb-4">
-                        {solution.description.slice(0, 120)}...
+                      <p className="text-white/70 mb-4 line-clamp-2">
+                        {solution.description}
                       </p>
-                      <div className="inline-flex items-center gap-2 text-copper font-semibold text-sm">
+                      <div className="inline-flex items-center gap-2 text-accent font-semibold text-sm">
                         Learn More
                         <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
                       </div>
