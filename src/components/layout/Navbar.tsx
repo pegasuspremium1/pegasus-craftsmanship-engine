@@ -64,8 +64,8 @@ export function Navbar() {
     <header
       className={`fixed left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "top-0 bg-white/95 backdrop-blur-md shadow-md py-3"
-          : "top-[40px] bg-transparent py-4"
+          ? "top-0 bg-white/95 backdrop-blur-md shadow-md py-2 md:py-3"
+          : "top-[36px] md:top-[40px] bg-white/95 md:bg-transparent py-2 md:py-4"
       }`}
     >
       <div className="container-wide">
@@ -75,7 +75,7 @@ export function Navbar() {
             <img 
               src={logo} 
               alt="Pegasus Premium" 
-              className="h-12 w-auto"
+              className="h-10 md:h-12 w-auto"
             />
           </Link>
 

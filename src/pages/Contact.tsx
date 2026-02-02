@@ -30,16 +30,16 @@ const Contact = () => {
   return (
     <Layout>
       {/* Hero Section - Readable white text on dark bg */}
-      <section className="page-hero">
+      <section className="pt-28 md:pt-32 pb-12 md:pb-16 lg:pb-20 hero-gradient">
         <div className="container-wide">
           <ScrollReveal>
-            <span className="text-accent text-sm font-semibold uppercase tracking-wider mb-4 block">
+            <span className="text-accent text-xs md:text-sm font-semibold uppercase tracking-wider mb-3 md:mb-4 block">
               Contact Us
             </span>
-            <h1 className="display-lg mb-4">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-white mb-3 md:mb-4">
               Get in Touch
             </h1>
-            <p className="text-lg text-white/80 max-w-2xl">
+            <p className="text-base md:text-lg text-white/80 max-w-2xl">
               Have a question about our products or need a custom solution? 
               Our team of experts is ready to help.
             </p>
@@ -48,28 +48,28 @@ const Contact = () => {
       </section>
 
       {/* Contact Content */}
-      <section className="section-padding bg-background">
+      <section className="py-8 md:py-12 lg:py-24 bg-background">
         <div className="container-wide">
-          <div className="grid lg:grid-cols-5 gap-12 lg:gap-16">
+          <div className="grid lg:grid-cols-5 gap-8 md:gap-12 lg:gap-16">
             {/* Contact Info */}
             <div className="lg:col-span-2">
               <ScrollReveal>
-                <h2 className="heading-xl text-foreground mb-8">
+                <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-6 md:mb-8">
                   Contact Details
                 </h2>
               </ScrollReveal>
 
-              <div className="space-y-6">
+              <div className="grid grid-cols-2 md:grid-cols-1 gap-3 md:gap-6">
                 {contactInfo.map((item, index) => (
                   <ScrollReveal key={item.title} delay={index * 0.1}>
-                    <div className="flex gap-4 p-4 bg-secondary rounded-xl">
-                      <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
-                        <item.icon className="w-5 h-5 text-accent" />
+                    <div className="flex flex-col md:flex-row gap-3 md:gap-4 p-3 md:p-4 bg-secondary rounded-lg md:rounded-xl">
+                      <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
+                        <item.icon className="w-4 h-4 md:w-5 md:h-5 text-accent" />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-foreground mb-1">{item.title}</h3>
+                        <h3 className="font-semibold text-foreground mb-0.5 md:mb-1 text-sm md:text-base">{item.title}</h3>
                         {item.details.map((detail, i) => (
-                          <p key={i} className="text-muted-foreground text-sm">
+                          <p key={i} className="text-muted-foreground text-xs md:text-sm">
                             {detail}
                           </p>
                         ))}
@@ -98,11 +98,11 @@ const Contact = () => {
             {/* Contact Form */}
             <div className="lg:col-span-3">
               <ScrollReveal delay={0.2}>
-                <div className="bg-card rounded-2xl p-8 lg:p-10 shadow-card">
-                  <h2 className="heading-xl text-foreground mb-2">
+                <div className="bg-card rounded-xl md:rounded-2xl p-5 md:p-8 lg:p-10 shadow-card">
+                  <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-2">
                     Send Us a Message
                   </h2>
-                  <p className="text-muted-foreground mb-8">
+                  <p className="text-muted-foreground mb-6 md:mb-8 text-sm md:text-base">
                     Fill out the form below and we'll get back to you within 24 hours.
                   </p>
                   <ContactForm />
