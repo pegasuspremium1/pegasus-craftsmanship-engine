@@ -28,28 +28,28 @@ const categories = [
 
 export function ProductShowcase() {
   return (
-    <section className="section-padding bg-background">
+    <section className="py-12 md:py-16 lg:py-24 bg-background">
       <div className="container-wide">
         {/* Header */}
-        <ScrollReveal className="text-center mb-12">
-          <span className="label-sm text-accent mb-4 block">Our Products</span>
-          <h2 className="display-lg text-foreground mb-4">
+        <ScrollReveal className="text-center mb-8 md:mb-12">
+          <span className="label-sm text-accent mb-3 md:mb-4 block">Our Products</span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-foreground mb-3 md:mb-4">
             Browse Our Range
           </h2>
-          <p className="body-lg max-w-2xl mx-auto">
+          <p className="text-base md:text-lg leading-relaxed text-muted-foreground max-w-2xl mx-auto px-4 md:px-0">
             Comprehensive selection of fasteners and fixings for industrial, construction, 
             and manufacturing applications.
           </p>
         </ScrollReveal>
 
         {/* Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
           {categories.map((category, index) => (
             <ScrollReveal key={category.name} delay={index * 0.1}>
               <Link to={category.href}>
                 <motion.div
-                  whileHover={{ y: -8 }}
-                  className="group relative bg-card rounded-xl overflow-hidden shadow-card hover:shadow-elevated transition-all duration-300"
+                  whileHover={{ y: -4 }}
+                  className="group relative bg-card rounded-lg md:rounded-xl overflow-hidden shadow-card hover:shadow-elevated transition-all duration-300"
                 >
                   <div className="aspect-[4/3] overflow-hidden">
                     <motion.img
@@ -58,11 +58,11 @@ export function ProductShowcase() {
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   </div>
-                  <div className="p-5 flex items-center justify-between">
-                    <h3 className="font-semibold text-foreground group-hover:text-accent transition-colors">
+                  <div className="p-3 md:p-5 flex items-center justify-between">
+                    <h3 className="font-semibold text-foreground group-hover:text-accent transition-colors text-sm md:text-base">
                       {category.name}
                     </h3>
-                    <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-accent transition-colors" />
+                    <ArrowUpRight className="w-4 h-4 md:w-5 md:h-5 text-muted-foreground group-hover:text-accent transition-colors" />
                   </div>
                 </motion.div>
               </Link>

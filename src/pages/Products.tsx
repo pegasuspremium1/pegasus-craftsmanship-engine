@@ -38,16 +38,16 @@ const Products = () => {
   return (
     <Layout>
       {/* Hero Section - Readable */}
-      <section className="page-hero">
+      <section className="pt-28 md:pt-32 pb-12 md:pb-16 lg:pb-20 hero-gradient">
         <div className="container-wide">
           <ScrollReveal>
-            <span className="text-accent text-sm font-semibold uppercase tracking-wider mb-4 block">
+            <span className="text-accent text-xs md:text-sm font-semibold uppercase tracking-wider mb-3 md:mb-4 block">
               Product Range
             </span>
-            <h1 className="display-lg mb-4">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-white mb-3 md:mb-4">
               Industrial Fasteners & Components
             </h1>
-            <p className="text-lg text-white/80 max-w-2xl">
+            <p className="text-base md:text-lg text-white/80 max-w-2xl">
               Premium quality fasteners for every application. All prices shown in South African Rand (ZAR).
             </p>
           </ScrollReveal>
@@ -55,14 +55,14 @@ const Products = () => {
       </section>
 
       {/* Products Grid */}
-      <section className="section-padding bg-background">
+      <section className="py-8 md:py-12 lg:py-24 bg-background">
         <div className="container-wide">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-6">
             {products.map((product, index) => (
-              <ScrollReveal key={product.id} delay={index * 0.05}>
+              <ScrollReveal key={product.id} delay={index * 0.02}>
                 <motion.div
                   whileHover={{ y: -4 }}
-                  className="bg-card rounded-xl overflow-hidden shadow-card hover:shadow-elevated transition-all duration-300"
+                  className="bg-card rounded-lg md:rounded-xl overflow-hidden shadow-card hover:shadow-elevated transition-all duration-300"
                 >
                   <div className="aspect-square overflow-hidden">
                     <img
@@ -71,23 +71,23 @@ const Products = () => {
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <div className="p-4">
-                    <span className="text-xs text-accent font-medium uppercase tracking-wide">
+                  <div className="p-3 md:p-4">
+                    <span className="text-[10px] md:text-xs text-accent font-medium uppercase tracking-wide">
                       {product.category}
                     </span>
-                    <h3 className="font-semibold text-foreground mt-1 mb-2">
+                    <h3 className="font-semibold text-foreground mt-0.5 md:mt-1 mb-2 text-sm md:text-base line-clamp-1">
                       {product.name}
                     </h3>
-                    <div className="flex items-center justify-between">
-                      <span className="text-lg font-bold text-foreground">
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="text-base md:text-lg font-bold text-foreground">
                         R{product.price.toFixed(2)}
                       </span>
                       <button
                         onClick={() => handleAddToCart(product)}
-                        className="flex items-center gap-2 px-4 py-2 bg-accent text-white rounded-lg text-sm font-medium hover:bg-accent/90 transition-colors"
+                        className="flex items-center gap-1 md:gap-2 px-2 md:px-4 py-1.5 md:py-2 bg-accent text-white rounded-lg text-xs md:text-sm font-medium hover:bg-accent/90 transition-colors"
                       >
-                        <Plus className="w-4 h-4" />
-                        Add
+                        <Plus className="w-3 h-3 md:w-4 md:h-4" />
+                        <span className="hidden sm:inline">Add</span>
                       </button>
                     </div>
                   </div>
@@ -101,13 +101,13 @@ const Products = () => {
       {/* Floating Cart Button */}
       <button
         onClick={() => setIsCartOpen(true)}
-        className="fixed bottom-6 right-6 z-40 flex items-center gap-3 px-6 py-4 bg-accent text-white rounded-full shadow-elevated hover:shadow-dramatic transition-all"
+        className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-40 flex items-center gap-2 md:gap-3 px-4 md:px-6 py-3 md:py-4 bg-accent text-white rounded-full shadow-elevated hover:shadow-dramatic transition-all"
       >
-        <ShoppingCart className="w-5 h-5" />
-        <span className="font-semibold">
-          Cart ({items.reduce((sum, i) => sum + i.quantity, 0)})
+        <ShoppingCart className="w-4 h-4 md:w-5 md:h-5" />
+        <span className="font-semibold text-sm md:text-base">
+          ({items.reduce((sum, i) => sum + i.quantity, 0)})
         </span>
-        <span className="font-bold">R{total.toFixed(2)}</span>
+        <span className="font-bold text-sm md:text-base">R{total.toFixed(2)}</span>
       </button>
 
       {/* Cart Sidebar */}
