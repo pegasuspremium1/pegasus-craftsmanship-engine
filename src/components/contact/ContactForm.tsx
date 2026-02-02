@@ -11,11 +11,15 @@ const contactSchema = z.object({
 
 type ContactFormData = z.infer<typeof contactSchema>;
 
-export function ContactForm() {
+interface ContactFormProps {
+  initialMessage?: string;
+}
+
+export function ContactForm({ initialMessage }: ContactFormProps) {
   const [formData, setFormData] = useState<ContactFormData>({
     name: "",
     email: "",
-    message: "",
+    message: initialMessage || "",
   });
   const [errors, setErrors] = useState<Partial<Record<keyof ContactFormData, string>>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);

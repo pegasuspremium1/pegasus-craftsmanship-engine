@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ShoppingCart, Plus, Minus, X, ArrowRight } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
@@ -22,8 +23,34 @@ const products = [
 ];
 
 const Products = () => {
+  const navigate = useNavigate();
   const { items, addItem, removeItem, updateQuantity, total, clearCart } = useCart();
   const [isCartOpen, setIsCartOpen] = useState(false);
+
+  const handleRequestQuote = () => {
+    if (items.length === 0) {
+      toast.error("Your cart is empty");
+      return;
+    }
+    
+    // Build message with cart items
+    const cartMessage = items.map(item => 
+      `- ${item.name} x${item.quantity} @ R${item.price.toFixed(2)} = R${(item.price * item.quantity).toFixed(2)}`
+    ).join('\n');
+    
+    const fullMessage = `Quote Request:\n\n${cartMessage}\n\nTotal: R${total.toFixed(2)}\n\nPlease provide pricing and availability for these items.`;
+    
+    // Navigate to contact with cart data
+    navigate('/contact', { 
+      state: { 
+        quoteMessage: fullMessage,
+        cartItems: items,
+        cartTotal: total
+      } 
+    });
+    
+    setIsCartOpen(false);
+  };
 
   const handleAddToCart = (product: typeof products[0]) => {
     addItem({
@@ -194,7 +221,10 @@ const Products = () => {
                     <span className="text-lg font-medium text-foreground">Total:</span>
                     <span className="text-2xl font-bold text-foreground">R{total.toFixed(2)}</span>
                   </div>
-                  <button className="btn-accent w-full mb-3">
+                  <button 
+                    onClick={handleRequestQuote}
+                    className="btn-accent w-full mb-3"
+                  >
                     <span>Request Quote</span>
                     <ArrowRight className="w-4 h-4" />
                   </button>

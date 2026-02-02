@@ -42,9 +42,9 @@ const About = () => {
                 Your Trusted Fastener Partner
               </h1>
               <p className="text-lg text-white/80">
-                For over 25 years, Pegasus Premium has been at the forefront of industrial 
-                fastener supply, serving manufacturers across South Africa with precision, 
-                reliability, and expertise.
+                Pegasus Premium is at the forefront of industrial fastener supply, 
+                serving manufacturers across South Africa with precision, reliability, 
+                and expertise.
               </p>
             </ScrollReveal>
 
@@ -76,20 +76,20 @@ const About = () => {
             <ScrollReveal delay={0.2}>
               <span className="label-sm text-accent mb-4 block">Our Story</span>
               <h2 className="display-lg text-foreground mb-6">
-                Building Trust Since 1998
+                Built on Quality & Trust
               </h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  Founded in Johannesburg, Pegasus Premium began with a simple mission: to provide 
+                  Based in Johannesburg, Pegasus Premium was founded with a simple mission: to provide 
                   South African manufacturers with fastening solutions they could rely on absolutely.
                 </p>
                 <p>
-                  What started as a small operation has grown into one of South Africa's leading 
-                  industrial fastener suppliers. Our success is built on understanding that in 
-                  manufacturing, quality and reliability matter above all else.
+                  We are committed to becoming one of South Africa's leading industrial fastener 
+                  suppliers. Our focus is built on understanding that in manufacturing, quality 
+                  and reliability matter above all else.
                 </p>
                 <p>
-                  Today, we serve clients across construction, automotive, and general engineering 
+                  We serve clients across construction, automotive, and general engineering 
                   sectors throughout South Africa and beyond.
                 </p>
               </div>
