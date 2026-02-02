@@ -120,7 +120,8 @@ export function Hero() {
                 </div>
                 <div>
                   <p className="font-semibold text-foreground text-sm md:text-base">Trusted Supplier</p>
-                  <p className="text-xs md:text-sm text-muted-foreground">25+ Years Experience</p>
+                  <p className="text-xs md:text-sm text-muted-foreground">We've got everything 
+you need</p>
                 </div>
               </div>
             </motion.div>
