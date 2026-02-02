@@ -28,13 +28,8 @@ const navigation = [
     ]
   },
   { 
-    name: "Company", 
+    name: "About", 
     href: "/company/about",
-    children: [
-      { name: "About Us", href: "/company/about" },
-      { name: "Our Team", href: "/company/team" },
-      { name: "Blog", href: "/blog" },
-    ]
   },
   { name: "Contact", href: "/contact" },
 ];

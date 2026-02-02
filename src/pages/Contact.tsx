@@ -1,3 +1,4 @@
+import { useLocation } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { ContactForm } from "@/components/contact/ContactForm";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
@@ -27,6 +28,9 @@ const contactInfo = [
 ];
 
 const Contact = () => {
+  const location = useLocation();
+  const quoteData = location.state as { quoteMessage?: string; cartItems?: any[]; cartTotal?: number } | null;
+
   return (
     <Layout>
       {/* Hero Section - Readable white text on dark bg */}
@@ -103,9 +107,11 @@ const Contact = () => {
                     Send Us a Message
                   </h2>
                   <p className="text-muted-foreground mb-6 md:mb-8 text-sm md:text-base">
-                    Fill out the form below and we'll get back to you within 24 hours.
+                    {quoteData?.quoteMessage 
+                      ? "Review your quote request below and add any additional details."
+                      : "Fill out the form below and we'll get back to you within 24 hours."}
                   </p>
-                  <ContactForm />
+                  <ContactForm initialMessage={quoteData?.quoteMessage} />
                 </div>
               </ScrollReveal>
             </div>
