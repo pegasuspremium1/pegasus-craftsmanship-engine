@@ -33,7 +33,7 @@ export function Footer() {
               <img 
                 src={logo} 
                 alt="Pegasus Premium" 
-                className="h-12 md:h-14 w-auto brightness-0 invert"
+                className="h-12 md:h-14 w-auto"
               />
             </Link>
             <p className="text-white/70 mb-4 md:mb-6 max-w-sm text-sm md:text-base">
