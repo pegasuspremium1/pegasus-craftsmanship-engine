@@ -49,7 +49,18 @@ export function ContactForm({ initialMessage }: ContactFormProps) {
     }
 
     setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    
+    // Open email client with pre-filled details
+    const subject = encodeURIComponent(`Quote Request from ${formData.name}`);
+    const body = encodeURIComponent(
+      `From: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`
+    );
+    const mailtoLink = `mailto:info@pegasuspremium.co.za?subject=${subject}&body=${body}`;
+    
+    window.location.href = mailtoLink;
+    
+    // Short delay to allow mailto to open, then show success
+    await new Promise((resolve) => setTimeout(resolve, 500));
     setIsSubmitting(false);
     setIsSubmitted(true);
   };

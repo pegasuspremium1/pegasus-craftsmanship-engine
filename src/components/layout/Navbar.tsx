@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, ShoppingCart } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { useCart } from "@/hooks/useCart";
+import { CartSidebar } from "@/components/cart/CartSidebar";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -38,6 +39,7 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [isCartOpen, setIsCartOpen] = useState(false);
   const location = useLocation();
   const { items } = useCart();
   const cartCount = items.reduce((sum, item) => sum + item.quantity, 0);
@@ -125,14 +127,17 @@ export function Navbar() {
 
           {/* Right side - CTA & Cart */}
           <div className="hidden lg:flex items-center gap-4">
-            <Link to="/products" className="relative p-2 text-foreground hover:text-accent transition-colors">
+            <button 
+              onClick={() => setIsCartOpen(true)}
+              className="relative p-2 text-foreground hover:text-accent transition-colors"
+            >
               <ShoppingCart className="w-5 h-5" />
               {cartCount > 0 && (
                 <span className="absolute -top-1 -right-1 w-5 h-5 bg-accent text-white text-xs rounded-full flex items-center justify-center font-medium">
                   {cartCount}
                 </span>
               )}
-            </Link>
+            </button>
             <Link to="/contact" className="btn-accent text-sm">
               Get a Quote
             </Link>
@@ -140,14 +145,17 @@ export function Navbar() {
 
           {/* Mobile menu button */}
           <div className="flex items-center gap-3 lg:hidden">
-            <Link to="/products" className="relative p-2 text-foreground">
+            <button 
+              onClick={() => setIsCartOpen(true)}
+              className="relative p-2 text-foreground"
+            >
               <ShoppingCart className="w-5 h-5" />
               {cartCount > 0 && (
                 <span className="absolute -top-1 -right-1 w-5 h-5 bg-accent text-white text-xs rounded-full flex items-center justify-center font-medium">
                   {cartCount}
                 </span>
               )}
-            </Link>
+            </button>
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="p-2 text-foreground"
@@ -200,6 +208,9 @@ export function Navbar() {
           )}
         </AnimatePresence>
       </div>
+
+      {/* Cart Sidebar */}
+      <CartSidebar isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
     </header>
   );
 }
