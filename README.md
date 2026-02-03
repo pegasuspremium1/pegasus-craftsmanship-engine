@@ -1,73 +1,48 @@
-# Welcome to your Lovable project
+# Pegasus Craftsmanship Engine
 
-## Project info
+Vite + React + TypeScript + Tailwind (shadcn-ui).
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
-
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+## Local development
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+npm install
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## Build
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```sh
+npm run build
+```
 
-**Use GitHub Codespaces**
+The static build output is generated in `dist/`.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Deploy to Cloudflare Pages (recommended)
 
-## What technologies are used for this project?
+This is a static Vite site, so Cloudflare Pages can build and host it directly.
 
-This project is built with:
+### Option A: Connect GitHub repo (CI/CD)
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+1. In the Cloudflare dashboard, go to **Workers & Pages** → **Create application** → **Pages** → **Connect to Git**.
+2. Select this GitHub repository.
+3. Configure the build:
+   - **Build command**: `npm run build`
+   - **Build output directory**: `dist`
+4. Save and deploy.
 
-## How can I deploy this project?
+On each push to your production branch, Cloudflare Pages will rebuild and redeploy automatically.
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+Cloudflare’s build configuration docs for Pages include these Vite settings (build command and `dist` output).  
+See: [Build configuration](https://developers.cloudflare.com/pages/configuration/build-configuration) and the Vite guide: https://developers.cloudflare.com/pages/framework-guides/deploy-a-vite3-project/
 
-## Can I connect a custom domain to my Lovable project?
+### Option B: Direct upload with Wrangler (no Git required)
 
-Yes, you can!
+Use this when you already built locally (or want to upload artifacts from another CI).
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+```sh
+npm install
+npm run build
+npx wrangler pages deploy dist
+```
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Direct upload is documented here: https://developers.cloudflare.com/pages/get-started/direct-upload
