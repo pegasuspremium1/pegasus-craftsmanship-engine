@@ -6,20 +6,27 @@ import { Layout } from "@/components/layout/Layout";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { useCart } from "@/hooks/useCart";
 import { toast } from "sonner";
+import prodHexBolts from "@/assets/prod-hex-bolts.jpg";
+import prodNuts from "@/assets/prod-nuts.jpg";
+import prodWashers from "@/assets/prod-washers.jpg";
+import prodScrews from "@/assets/prod-screws.jpg";
+import prodAnchors from "@/assets/prod-anchors.jpg";
+import prodRods from "@/assets/prod-rods.jpg";
+import catToolsHardware from "@/assets/cat-tools-hardware.jpg";
 
 const products = [
-  { id: "1", name: "Hex Bolts M8x50", price: 45.00, image: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=400&q=80", category: "Bolts" },
-  { id: "2", name: "Stainless Steel Nuts M10", price: 32.00, image: "https://images.unsplash.com/photo-1603792907191-89e55f70099a?w=400&q=80", category: "Nuts" },
-  { id: "3", name: "Flat Washers 12mm", price: 18.50, image: "https://images.unsplash.com/photo-1603792907191-89e55f70099a?w=400&q=80", category: "Washers" },
-  { id: "4", name: "Self-Tapping Screws 4x25", price: 28.00, image: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=400&q=80", category: "Screws" },
-  { id: "5", name: "Anchor Bolts M12x100", price: 85.00, image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=400&q=80", category: "Anchors" },
-  { id: "6", name: "Socket Cap Screws M6x30", price: 52.00, image: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=400&q=80", category: "Screws" },
-  { id: "7", name: "Spring Washers M8", price: 22.00, image: "https://images.unsplash.com/photo-1603792907191-89e55f70099a?w=400&q=80", category: "Washers" },
-  { id: "8", name: "Hex Nuts M12", price: 38.00, image: "https://images.unsplash.com/photo-1603792907191-89e55f70099a?w=400&q=80", category: "Nuts" },
-  { id: "9", name: "Carriage Bolts M10x80", price: 65.00, image: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=400&q=80", category: "Bolts" },
-  { id: "10", name: "Pop Rivets 4.8mm", price: 42.00, image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=400&q=80", category: "Rivets" },
-  { id: "11", name: "Threaded Rod M16x1000", price: 125.00, image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=400&q=80", category: "Rods" },
-  { id: "12", name: "Combination Wrench Set", price: 285.00, image: "https://images.unsplash.com/photo-1581783898377-1c85bf937427?w=400&q=80", category: "Tools" },
+  { id: "1", name: "Hex Bolts M8x50", price: 45.00, image: prodHexBolts, category: "Bolts" },
+  { id: "2", name: "Stainless Steel Nuts M10", price: 32.00, image: prodNuts, category: "Nuts" },
+  { id: "3", name: "Flat Washers 12mm", price: 18.50, image: prodWashers, category: "Washers" },
+  { id: "4", name: "Self-Tapping Screws 4x25", price: 28.00, image: prodScrews, category: "Screws" },
+  { id: "5", name: "Anchor Bolts M12x100", price: 85.00, image: prodAnchors, category: "Anchors" },
+  { id: "6", name: "Socket Cap Screws M6x30", price: 52.00, image: prodScrews, category: "Screws" },
+  { id: "7", name: "Spring Washers M8", price: 22.00, image: prodWashers, category: "Washers" },
+  { id: "8", name: "Hex Nuts M12", price: 38.00, image: prodNuts, category: "Nuts" },
+  { id: "9", name: "Carriage Bolts M10x80", price: 65.00, image: prodHexBolts, category: "Bolts" },
+  { id: "10", name: "Pop Rivets 4.8mm", price: 42.00, image: prodAnchors, category: "Rivets" },
+  { id: "11", name: "Threaded Rod M16x1000", price: 125.00, image: prodRods, category: "Rods" },
+  { id: "12", name: "Combination Wrench Set", price: 285.00, image: catToolsHardware, category: "Tools" },
 ];
 
 const Products = () => {
@@ -33,14 +40,12 @@ const Products = () => {
       return;
     }
     
-    // Build message with cart items
     const cartMessage = items.map(item => 
       `- ${item.name} x${item.quantity} @ R${item.price.toFixed(2)} = R${(item.price * item.quantity).toFixed(2)}`
     ).join('\n');
     
     const fullMessage = `Quote Request:\n\n${cartMessage}\n\nTotal: R${total.toFixed(2)}\n\nPlease provide pricing and availability for these items.`;
     
-    // Navigate to contact with cart data
     navigate('/contact', { 
       state: { 
         quoteMessage: fullMessage,
@@ -64,7 +69,7 @@ const Products = () => {
 
   return (
     <Layout>
-      {/* Hero Section - Readable */}
+      {/* Hero Section */}
       <section className="pt-28 md:pt-32 pb-12 md:pb-16 lg:pb-20 hero-gradient">
         <div className="container-wide">
           <ScrollReveal>
@@ -151,18 +156,13 @@ const Products = () => {
             className="absolute right-0 top-0 bottom-0 w-full max-w-md bg-background shadow-dramatic"
           >
             <div className="flex flex-col h-full">
-              {/* Header */}
               <div className="flex items-center justify-between p-6 border-b border-border">
                 <h2 className="text-xl font-bold text-foreground">Your Cart</h2>
-                <button
-                  onClick={() => setIsCartOpen(false)}
-                  className="p-2 text-muted-foreground hover:text-foreground"
-                >
+                <button onClick={() => setIsCartOpen(false)} className="p-2 text-muted-foreground hover:text-foreground">
                   <X className="w-5 h-5" />
                 </button>
               </div>
 
-              {/* Cart Items */}
               <div className="flex-1 overflow-y-auto p-6">
                 {items.length === 0 ? (
                   <div className="text-center py-12">
@@ -173,40 +173,23 @@ const Products = () => {
                   <div className="space-y-4">
                     {items.map((item) => (
                       <div key={item.id} className="flex gap-4 p-4 bg-secondary rounded-lg">
-                        <img
-                          src={item.image}
-                          alt={item.name}
-                          className="w-16 h-16 object-cover rounded-lg"
-                        />
+                        <img src={item.image} alt={item.name} className="w-16 h-16 object-cover rounded-lg" />
                         <div className="flex-1">
                           <h4 className="font-medium text-foreground">{item.name}</h4>
                           <p className="text-sm text-muted-foreground">R{item.price.toFixed(2)}</p>
                           <div className="flex items-center gap-2 mt-2">
-                            <button
-                              onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                              className="p-1 rounded bg-background hover:bg-accent/10"
-                            >
+                            <button onClick={() => updateQuantity(item.id, item.quantity - 1)} className="p-1 rounded bg-background hover:bg-accent/10">
                               <Minus className="w-4 h-4" />
                             </button>
                             <span className="w-8 text-center font-medium">{item.quantity}</span>
-                            <button
-                              onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                              className="p-1 rounded bg-background hover:bg-accent/10"
-                            >
+                            <button onClick={() => updateQuantity(item.id, item.quantity + 1)} className="p-1 rounded bg-background hover:bg-accent/10">
                               <Plus className="w-4 h-4" />
                             </button>
                           </div>
                         </div>
                         <div className="text-right">
-                          <p className="font-bold text-foreground">
-                            R{(item.price * item.quantity).toFixed(2)}
-                          </p>
-                          <button
-                            onClick={() => removeItem(item.id)}
-                            className="text-xs text-destructive mt-2"
-                          >
-                            Remove
-                          </button>
+                          <p className="font-bold text-foreground">R{(item.price * item.quantity).toFixed(2)}</p>
+                          <button onClick={() => removeItem(item.id)} className="text-xs text-destructive mt-2">Remove</button>
                         </div>
                       </div>
                     ))}
@@ -214,24 +197,17 @@ const Products = () => {
                 )}
               </div>
 
-              {/* Footer */}
               {items.length > 0 && (
                 <div className="p-6 border-t border-border">
                   <div className="flex items-center justify-between mb-4">
                     <span className="text-lg font-medium text-foreground">Total:</span>
                     <span className="text-2xl font-bold text-foreground">R{total.toFixed(2)}</span>
                   </div>
-                  <button 
-                    onClick={handleRequestQuote}
-                    className="btn-accent w-full mb-3"
-                  >
+                  <button onClick={handleRequestQuote} className="btn-accent w-full mb-3">
                     <span>Request Quote</span>
                     <ArrowRight className="w-4 h-4" />
                   </button>
-                  <button
-                    onClick={clearCart}
-                    className="w-full text-sm text-muted-foreground hover:text-destructive"
-                  >
+                  <button onClick={clearCart} className="w-full text-sm text-muted-foreground hover:text-destructive">
                     Clear Cart
                   </button>
                 </div>

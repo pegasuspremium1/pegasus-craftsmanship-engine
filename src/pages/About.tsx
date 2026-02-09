@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Users, Target, Award, Lightbulb } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import heroImage from "@/assets/hero-fasteners.jpg";
+import catNutsWashers from "@/assets/cat-nuts-washers.jpg";
 
 const values = [
   {
@@ -30,7 +32,7 @@ const values = [
 const About = () => {
   return (
     <Layout>
-      {/* Hero Section - Readable white text */}
+      {/* Hero Section */}
       <section className="page-hero">
         <div className="container-wide">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -51,8 +53,8 @@ const About = () => {
             <ScrollReveal delay={0.2} direction="right">
               <div className="relative rounded-2xl overflow-hidden shadow-elevated">
                 <img
-                  src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=800&q=80"
-                  alt="Close-up of industrial fasteners and bolts"
+                  src={heroImage}
+                  alt="Assorted industrial fasteners"
                   className="w-full aspect-[4/3] object-cover"
                 />
               </div>
@@ -67,8 +69,8 @@ const About = () => {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <ScrollReveal>
               <img
-                src="https://images.unsplash.com/photo-1603792907191-89e55f70099a?w=800&q=80"
-                alt="Assorted nuts and fastener components"
+                src={catNutsWashers}
+                alt="Assorted nuts and washers"
                 className="rounded-2xl shadow-card"
               />
             </ScrollReveal>
