@@ -8,18 +8,18 @@ import { useCart } from "@/hooks/useCart";
 import { toast } from "sonner";
 
 const products = [
-  { id: "1", name: "Hex Bolts M8x50", price: 45.00, image: "https://images.unsplash.com/photo-1572981779307-38b8cabb2407?w=400&q=80", category: "Bolts" },
-  { id: "2", name: "Stainless Steel Nuts M10", price: 32.00, image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80", category: "Nuts" },
-  { id: "3", name: "Flat Washers 12mm", price: 18.50, image: "https://images.unsplash.com/photo-1513467535987-fd81bc7d62f8?w=400&q=80", category: "Washers" },
-  { id: "4", name: "Self-Tapping Screws 4x25", price: 28.00, image: "https://images.unsplash.com/photo-1586864387789-628af9feed72?w=400&q=80", category: "Screws" },
+  { id: "1", name: "Hex Bolts M8x50", price: 45.00, image: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=400&q=80", category: "Bolts" },
+  { id: "2", name: "Stainless Steel Nuts M10", price: 32.00, image: "https://images.unsplash.com/photo-1603792907191-89e55f70099a?w=400&q=80", category: "Nuts" },
+  { id: "3", name: "Flat Washers 12mm", price: 18.50, image: "https://images.unsplash.com/photo-1603792907191-89e55f70099a?w=400&q=80", category: "Washers" },
+  { id: "4", name: "Self-Tapping Screws 4x25", price: 28.00, image: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=400&q=80", category: "Screws" },
   { id: "5", name: "Anchor Bolts M12x100", price: 85.00, image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=400&q=80", category: "Anchors" },
-  { id: "6", name: "Socket Cap Screws M6x30", price: 52.00, image: "https://images.unsplash.com/photo-1530124566582-a618bc2615dc?w=400&q=80", category: "Screws" },
-  { id: "7", name: "Spring Washers M8", price: 22.00, image: "https://images.unsplash.com/photo-1513467535987-fd81bc7d62f8?w=400&q=80", category: "Washers" },
-  { id: "8", name: "Hex Nuts M12", price: 38.00, image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80", category: "Nuts" },
-  { id: "9", name: "Carriage Bolts M10x80", price: 65.00, image: "https://images.unsplash.com/photo-1572981779307-38b8cabb2407?w=400&q=80", category: "Bolts" },
+  { id: "6", name: "Socket Cap Screws M6x30", price: 52.00, image: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=400&q=80", category: "Screws" },
+  { id: "7", name: "Spring Washers M8", price: 22.00, image: "https://images.unsplash.com/photo-1603792907191-89e55f70099a?w=400&q=80", category: "Washers" },
+  { id: "8", name: "Hex Nuts M12", price: 38.00, image: "https://images.unsplash.com/photo-1603792907191-89e55f70099a?w=400&q=80", category: "Nuts" },
+  { id: "9", name: "Carriage Bolts M10x80", price: 65.00, image: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=400&q=80", category: "Bolts" },
   { id: "10", name: "Pop Rivets 4.8mm", price: 42.00, image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=400&q=80", category: "Rivets" },
-  { id: "11", name: "Threaded Rod M16x1000", price: 125.00, image: "https://images.unsplash.com/photo-1565043666747-69f6646db940?w=400&q=80", category: "Rods" },
-  { id: "12", name: "Combination Wrench Set", price: 285.00, image: "https://images.unsplash.com/photo-1426927308491-6380b6a9936f?w=400&q=80", category: "Tools" },
+  { id: "11", name: "Threaded Rod M16x1000", price: 125.00, image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=400&q=80", category: "Rods" },
+  { id: "12", name: "Combination Wrench Set", price: 285.00, image: "https://images.unsplash.com/photo-1581783898377-1c85bf937427?w=400&q=80", category: "Tools" },
 ];
 
 const Products = () => {

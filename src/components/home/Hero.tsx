@@ -98,7 +98,7 @@ export function Hero() {
           delay: 0.3
         }} className="relative">
             <div className="relative rounded-xl md:rounded-2xl overflow-hidden shadow-elevated">
-              <img src="https://images.unsplash.com/photo-1572981779307-38b8cabb2407?w=800&q=80" alt="Industrial fasteners" className="w-full aspect-[4/3] object-cover" />
+              <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=800&q=80" alt="Assorted industrial bolts and fasteners" className="w-full aspect-[4/3] object-cover" />
               {/* Overlay gradient */}
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-transparent to-transparent" />
             </div>

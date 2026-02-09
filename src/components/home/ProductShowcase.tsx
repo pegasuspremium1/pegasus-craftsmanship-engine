@@ -6,12 +6,12 @@ import { ScrollReveal } from "@/components/ui/ScrollReveal";
 const categories = [
   {
     name: "Bolts & Screws",
-    image: "https://images.unsplash.com/photo-1572981779307-38b8cabb2407?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=600&q=80",
     href: "/products/bolts-screws",
   },
   {
     name: "Nuts & Washers",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1603792907191-89e55f70099a?w=600&q=80",
     href: "/products/nuts-washers",
   },
   {
@@ -21,7 +21,7 @@ const categories = [
   },
   {
     name: "Tools & Hardware",
-    image: "https://images.unsplash.com/photo-1426927308491-6380b6a9936f?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1581783898377-1c85bf937427?w=600&q=80",
     href: "/products/tools-hardware",
   },
 ];

@@ -51,8 +51,8 @@ const About = () => {
             <ScrollReveal delay={0.2} direction="right">
               <div className="relative rounded-2xl overflow-hidden shadow-elevated">
                 <img
-                  src="https://images.unsplash.com/photo-1565043666747-69f6646db940?w=800&q=80"
-                  alt="Industrial manufacturing"
+                  src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=800&q=80"
+                  alt="Close-up of industrial fasteners and bolts"
                   className="w-full aspect-[4/3] object-cover"
                 />
               </div>
@@ -67,8 +67,8 @@ const About = () => {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <ScrollReveal>
               <img
-                src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80"
-                alt="Team at work"
+                src="https://images.unsplash.com/photo-1603792907191-89e55f70099a?w=800&q=80"
+                alt="Assorted nuts and fastener components"
                 className="rounded-2xl shadow-card"
               />
             </ScrollReveal>
