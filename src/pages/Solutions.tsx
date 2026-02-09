@@ -14,7 +14,7 @@ const solutionsData: Record<string, {
   "pre-packing": {
     title: "Pre-Packing Solutions",
     description: "Custom packing solutions tailored to your production line requirements. Reduce handling time, minimize errors, and increase efficiency with our bespoke packaging services.",
-    heroImage: "https://images.unsplash.com/photo-1586864387789-628af9feed72?w=1200&q=80",
+    heroImage: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=1200&q=80",
     benefits: [
       "Reduce assembly line handling time by up to 40%",
       "Eliminate counting and sorting at point of use",
@@ -32,7 +32,7 @@ const solutionsData: Record<string, {
   "retail-sales": {
     title: "Retail Sales Solutions",
     description: "Point-of-sale ready packaging and display solutions for retail environments, trade counters, and hardware stores. Professional presentation that drives sales.",
-    heroImage: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80",
+    heroImage: "https://images.unsplash.com/photo-1603792907191-89e55f70099a?w=1200&q=80",
     benefits: [
       "Attractive, professional retail packaging",
       "Ready-to-shelf display solutions",
