@@ -2,26 +2,30 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import catBoltsScrews from "@/assets/cat-bolts-screws.jpg";
+import catNutsWashers from "@/assets/cat-nuts-washers.jpg";
+import catAnchorsFixings from "@/assets/cat-anchors-fixings.jpg";
+import catToolsHardware from "@/assets/cat-tools-hardware.jpg";
 
 const categories = [
   {
     name: "Bolts & Screws",
-    image: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=600&q=80",
+    image: catBoltsScrews,
     href: "/products/bolts-screws",
   },
   {
     name: "Nuts & Washers",
-    image: "https://images.unsplash.com/photo-1603792907191-89e55f70099a?w=600&q=80",
+    image: catNutsWashers,
     href: "/products/nuts-washers",
   },
   {
     name: "Anchors & Fixings",
-    image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&q=80",
+    image: catAnchorsFixings,
     href: "/products/anchors-fixings",
   },
   {
     name: "Tools & Hardware",
-    image: "https://images.unsplash.com/photo-1581783898377-1c85bf937427?w=600&q=80",
+    image: catToolsHardware,
     href: "/products/tools-hardware",
   },
 ];

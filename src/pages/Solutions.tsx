@@ -3,6 +3,10 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { motion } from "framer-motion";
+import catBoltsScrews from "@/assets/cat-bolts-screws.jpg";
+import catNutsWashers from "@/assets/cat-nuts-washers.jpg";
+import catAnchorsFixings from "@/assets/cat-anchors-fixings.jpg";
+import catToolsHardware from "@/assets/cat-tools-hardware.jpg";
 
 const solutionsData: Record<string, {
   title: string;
@@ -14,7 +18,7 @@ const solutionsData: Record<string, {
   "pre-packing": {
     title: "Pre-Packing Solutions",
     description: "Custom packing solutions tailored to your production line requirements. Reduce handling time, minimize errors, and increase efficiency with our bespoke packaging services.",
-    heroImage: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=1200&q=80",
+    heroImage: catBoltsScrews,
     benefits: [
       "Reduce assembly line handling time by up to 40%",
       "Eliminate counting and sorting at point of use",
@@ -32,7 +36,7 @@ const solutionsData: Record<string, {
   "retail-sales": {
     title: "Retail Sales Solutions",
     description: "Point-of-sale ready packaging and display solutions for retail environments, trade counters, and hardware stores. Professional presentation that drives sales.",
-    heroImage: "https://images.unsplash.com/photo-1603792907191-89e55f70099a?w=1200&q=80",
+    heroImage: catNutsWashers,
     benefits: [
       "Attractive, professional retail packaging",
       "Ready-to-shelf display solutions",
@@ -50,7 +54,7 @@ const solutionsData: Record<string, {
   "how-to-order": {
     title: "How to Order",
     description: "Our streamlined ordering process is designed to make procurement simple and efficient. From quote request to delivery, we handle every detail with precision.",
-    heroImage: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&q=80",
+    heroImage: catAnchorsFixings,
     benefits: [
       "Simple online or phone ordering",
       "Dedicated account management",
@@ -68,7 +72,7 @@ const solutionsData: Record<string, {
   "delivery": {
     title: "Delivery Services",
     description: "Reliable logistics with nationwide South African delivery and efficient service. We ensure your fasteners arrive when you need them.",
-    heroImage: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=1200&q=80",
+    heroImage: catToolsHardware,
     benefits: [
       "Fast delivery across Gauteng",
       "Same-day dispatch on orders before 2pm",
