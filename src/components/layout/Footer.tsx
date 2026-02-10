@@ -112,7 +112,7 @@ export function Footer() {
             <p className="text-white/60 text-xs md:text-sm">
               Website by{" "}
               <a 
-                href="https://architeq.co.za" 
+                href="https://architeqwebagency.pages.dev/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-accent hover:text-white transition-colors"
