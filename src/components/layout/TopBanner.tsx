@@ -8,16 +8,16 @@ export function TopBanner() {
         <div className="md:hidden overflow-hidden">
           <div className="flex items-center justify-center gap-4 text-[11px] animate-pulse">
             <a 
-              href="tel:+27117941234" 
+              href="tel:+27731129511" 
               className="flex items-center gap-1.5 text-white/90 hover:text-white transition-colors"
             >
               <Phone className="w-3 h-3" />
-              <span>+27 11 794 1234</span>
+              <span>+27 73 112 9511</span>
             </a>
             <span className="w-1 h-1 rounded-full bg-white/40" />
             <span className="flex items-center gap-1.5 text-white/90">
               <MapPin className="w-3 h-3" />
-              <span>Randburg, JHB</span>
+              <span>Honeydew, JHB</span>
             </span>
           </div>
         </div>
@@ -26,23 +26,23 @@ export function TopBanner() {
         <div className="hidden md:flex flex-row items-center justify-between gap-2">
           <div className="flex items-center gap-6">
             <a 
-              href="tel:+27117941234" 
+              href="tel:+27731129511" 
               className="flex items-center gap-2 text-sm hover:text-accent transition-colors"
             >
               <Phone className="w-4 h-4" />
-              <span>+27 (0) 11 794 1234</span>
+              <span>+27 73 112 9511</span>
             </a>
             <a 
-              href="mailto:info@pegasuspremium.co.za" 
+              href="mailto:info@pegasuspremium.online" 
               className="flex items-center gap-2 text-sm hover:text-accent transition-colors"
             >
               <Mail className="w-4 h-4" />
-              <span>info@pegasuspremium.co.za</span>
+              <span>info@pegasuspremium.online</span>
             </a>
           </div>
           <div className="flex items-center gap-2 text-sm">
             <MapPin className="w-4 h-4" />
-            <span>Randburg, Johannesburg, South Africa</span>
+            <span>Honeydew, Johannesburg, South Africa</span>
           </div>
         </div>
       </div>

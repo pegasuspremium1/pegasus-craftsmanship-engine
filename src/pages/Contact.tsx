@@ -8,17 +8,17 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Phone",
-    details: ["+27 (0) 11 794 1234", "+27 (0) 11 794 1235"],
+    details: ["Kenneth Cook: +27 73 112 9511", "Les Bridges: +27 82 571 3932"],
   },
   {
     icon: Mail,
     title: "Email",
-    details: ["info@pegasuspremium.co.za", "sales@pegasuspremium.co.za"],
+    details: ["info@pegasuspremium.online"],
   },
   {
     icon: MapPin,
     title: "Address",
-    details: ["123 Industrial Road", "Randburg, Johannesburg", "South Africa"],
+    details: ["47 Kasbah Ridge, Blueberry Road", "Honeydew, Gauteng, 2170"],
   },
   {
     icon: Clock,
@@ -87,7 +87,7 @@ const Contact = () => {
               <ScrollReveal delay={0.4} className="mt-8">
                 <div className="aspect-video rounded-xl overflow-hidden">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d57371.47775689776!2d27.9833!3d-26.0936!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e950c68f0406a51%3A0x238ac9d9b1d34041!2sRandburg%2C%20South%20Africa!5e0!3m2!1sen!2s!4v1635959481000!5m2!1sen!2s"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3584.5!2d27.8833!3d-26.0636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e957234a0d1c0b1%3A0x1234567890abcdef!2sHoneydew%2C%20Johannesburg!5e0!3m2!1sen!2sza!4v1635959481000!5m2!1sen!2sza"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
