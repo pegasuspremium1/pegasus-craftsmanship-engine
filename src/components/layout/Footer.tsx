@@ -43,17 +43,17 @@ export function Footer() {
             
             {/* Contact info */}
             <div className="space-y-2 md:space-y-3">
-              <a href="tel:+27117941234" className="flex items-center gap-2 md:gap-3 text-white/70 hover:text-accent transition-colors text-sm md:text-base">
+              <a href="tel:+27731129511" className="flex items-center gap-2 md:gap-3 text-white/70 hover:text-accent transition-colors text-sm md:text-base">
                 <Phone className="w-4 h-4" />
-                <span>+27 (0) 11 794 1234</span>
+                <span>+27 73 112 9511</span>
               </a>
-              <a href="mailto:info@pegasuspremium.co.za" className="flex items-center gap-2 md:gap-3 text-white/70 hover:text-accent transition-colors text-sm md:text-base">
+              <a href="mailto:info@pegasuspremium.online" className="flex items-center gap-2 md:gap-3 text-white/70 hover:text-accent transition-colors text-sm md:text-base">
                 <Mail className="w-4 h-4" />
-                <span className="truncate">info@pegasuspremium.co.za</span>
+                <span className="truncate">info@pegasuspremium.online</span>
               </a>
               <div className="flex items-start gap-2 md:gap-3 text-white/70 text-sm md:text-base">
                 <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <span>Randburg, Johannesburg<br />South Africa</span>
+                <span>47 Kasbah Ridge, Blueberry Road<br />Honeydew, Gauteng, 2170</span>
               </div>
             </div>
           </div>
