@@ -8,7 +8,7 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Phone",
-    details: ["Kenneth Cook: +27 73 112 9511", "Lee Quinn: +27 82 571 3932"],
+    details: ["Kenneth Cook: +27 73 112 9511", "Lee Quinn: +27 66 416 6743"],
   },
   {
     icon: Mail,
@@ -18,7 +18,7 @@ const contactInfo = [
   {
     icon: MapPin,
     title: "Address",
-    details: ["47 Kasbah Ridge, Blueberry Road", "Honeydew, Gauteng, 2170"],
+    details: ["47 Kasbah Ridge, Blueberry Road", "Honeydew, Gauteng, 2170", "PO Box 68720, Bryanston, 2021"],
   },
   {
     icon: Clock,
