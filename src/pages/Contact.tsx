@@ -17,8 +17,13 @@ const contactInfo = [
   },
   {
     icon: MapPin,
-    title: "Address",
-    details: ["47 Kasbah Ridge, Blueberry Road", "Honeydew, Gauteng, 2170", "PO Box 68720, Bryanston, 2021"],
+    title: "Physical Address",
+    details: ["47 Kasbah Ridge, Blueberry Road", "Honeydew, Gauteng, 2170"],
+  },
+  {
+    icon: MapPin,
+    title: "Postal Address",
+    details: ["PO Box 68720, Bryanston, 2021"],
   },
   {
     icon: Clock,
