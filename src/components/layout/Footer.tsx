@@ -55,6 +55,10 @@ export function Footer() {
                 <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
                 <span>47 Kasbah Ridge, Blueberry Road<br />Honeydew, Gauteng, 2170</span>
               </div>
+              <div className="flex items-start gap-2 md:gap-3 text-white/70 text-sm md:text-base">
+                <Mail className="w-4 h-4 mt-0.5 flex-shrink-0" />
+                <span>Postal: PO Box 68720<br />Bryanston, 2021</span>
+              </div>
             </div>
           </div>
 
