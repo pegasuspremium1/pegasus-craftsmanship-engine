@@ -43,7 +43,7 @@ export function Hero() {
                 <span>View Products</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </Link>
-              <a href="tel:+27117941234" className="btn-outline text-sm md:text-base px-4 md:px-6 py-2.5 md:py-3">
+              <a href="tel:+27664166743" className="btn-outline text-sm md:text-base px-4 md:px-6 py-2.5 md:py-3">
                 <Phone className="w-4 h-4" />
                 <span>Call Us Now</span>
               </a>

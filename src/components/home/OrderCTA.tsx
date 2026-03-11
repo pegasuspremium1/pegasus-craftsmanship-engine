@@ -18,9 +18,9 @@ export function OrderCTA() {
               <span>Get a Quote</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
-            <a href="tel:+27117941234" className="btn-outline-white">
+            <a href="tel:+27664166743" className="btn-outline-white">
               <Phone className="w-4 h-4" />
-              <span>+27 (0) 11 794 1234</span>
+              <span>066 416 6743</span>
             </a>
           </div>
         </ScrollReveal>
