@@ -26,11 +26,11 @@ export function TopBanner() {
         <div className="hidden md:flex flex-row items-center justify-between gap-2">
           <div className="flex items-center gap-6">
             <a 
-              href="tel:+27731129511" 
+              href="tel:+27664166743" 
               className="flex items-center gap-2 text-sm hover:text-accent transition-colors"
             >
               <Phone className="w-4 h-4" />
-              <span>+27 73 112 9511</span>
+              <span>066 416 6743</span>
             </a>
             <a 
               href="mailto:info@pegasuspremium.online" 
