@@ -8,7 +8,7 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Phone",
-    details: ["Kenneth Cook: +27 73 112 9511", "Lee Quinn: +27 66 416 6743"],
+    details: ["Lee Quinn: 066 416 6743"],
   },
   {
     icon: Mail,

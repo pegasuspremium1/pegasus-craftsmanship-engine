@@ -43,9 +43,9 @@ export function Footer() {
             
             {/* Contact info */}
             <div className="space-y-2 md:space-y-3">
-              <a href="tel:+27731129511" className="flex items-center gap-2 md:gap-3 text-white/70 hover:text-accent transition-colors text-sm md:text-base">
+              <a href="tel:+27664166743" className="flex items-center gap-2 md:gap-3 text-white/70 hover:text-accent transition-colors text-sm md:text-base">
                 <Phone className="w-4 h-4" />
-                <span>+27 73 112 9511</span>
+                <span>Lee Quinn: 066 416 6743</span>
               </a>
               <a href="mailto:info@pegasuspremium.online" className="flex items-center gap-2 md:gap-3 text-white/70 hover:text-accent transition-colors text-sm md:text-base">
                 <Mail className="w-4 h-4" />

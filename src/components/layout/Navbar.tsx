@@ -72,7 +72,7 @@ export function Navbar() {
             <img 
               src={logo} 
               alt="Pegasus Premium" 
-              className="h-12 md:h-16 w-auto"
+              className="h-16 md:h-20 lg:h-24 w-auto"
             />
           </Link>
 
