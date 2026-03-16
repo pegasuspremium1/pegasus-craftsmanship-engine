@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ShoppingCart, Plus, Minus, X, ArrowRight } from "lucide-react";
@@ -6,33 +6,69 @@ import { Layout } from "@/components/layout/Layout";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { useCart } from "@/hooks/useCart";
 import { toast } from "sonner";
-import prodHexBolts from "@/assets/prod-hex-bolts.jpg";
-import prodNuts from "@/assets/prod-nuts.jpg";
-import prodWashers from "@/assets/prod-washers.jpg";
-import prodScrews from "@/assets/prod-screws.jpg";
-import prodAnchors from "@/assets/prod-anchors.jpg";
-import prodRods from "@/assets/prod-rods.jpg";
-import catToolsHardware from "@/assets/cat-tools-hardware.jpg";
+import { pdfProducts } from "@/data/productspp";
 
-const products = [
-  { id: "1", name: "Hex Bolts M8x50", price: 45.00, image: prodHexBolts, category: "Bolts" },
-  { id: "2", name: "Stainless Steel Nuts M10", price: 32.00, image: prodNuts, category: "Nuts" },
-  { id: "3", name: "Flat Washers 12mm", price: 18.50, image: prodWashers, category: "Washers" },
-  { id: "4", name: "Self-Tapping Screws 4x25", price: 28.00, image: prodScrews, category: "Screws" },
-  { id: "5", name: "Anchor Bolts M12x100", price: 85.00, image: prodAnchors, category: "Anchors" },
-  { id: "6", name: "Socket Cap Screws M6x30", price: 52.00, image: prodScrews, category: "Screws" },
-  { id: "7", name: "Spring Washers M8", price: 22.00, image: prodWashers, category: "Washers" },
-  { id: "8", name: "Hex Nuts M12", price: 38.00, image: prodNuts, category: "Nuts" },
-  { id: "9", name: "Carriage Bolts M10x80", price: 65.00, image: prodHexBolts, category: "Bolts" },
-  { id: "10", name: "Pop Rivets 4.8mm", price: 42.00, image: prodAnchors, category: "Rivets" },
-  { id: "11", name: "Threaded Rod M16x1000", price: 125.00, image: prodRods, category: "Rods" },
-  { id: "12", name: "Combination Wrench Set", price: 285.00, image: catToolsHardware, category: "Tools" },
-];
+const products = pdfProducts.map((p) => ({
+  id: p.id,
+  name: p.name,
+  category: p.category ?? "Products",
+  image: p.image,
+  price: 0,
+}));
+
+const toAnchorId = (s: string) =>
+  s
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
 
 const Products = () => {
   const navigate = useNavigate();
   const { items, addItem, removeItem, updateQuantity, total, clearCart } = useCart();
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const totalItems = items.reduce((sum, i) => sum + i.quantity, 0);
+  const [query, setQuery] = useState("");
+  const [categoryFilter, setCategoryFilter] = useState<"All" | string>("All");
+
+  const categories = useMemo(
+    () =>
+      Array.from(new Set(products.map((p) => p.category))).sort((a, b) => a.localeCompare(b)),
+    []
+  );
+
+  const normalizedQuery = query.trim().toLowerCase();
+  const filteredProducts = useMemo(() => {
+    return products.filter((p) => {
+      const matchesCategory = categoryFilter === "All" || p.category === categoryFilter;
+      const matchesQuery = !normalizedQuery || p.name.toLowerCase().includes(normalizedQuery);
+      return matchesCategory && matchesQuery;
+    });
+  }, [categoryFilter, normalizedQuery]);
+
+  const groupedProducts = useMemo(() => {
+    return filteredProducts.reduce<Record<string, typeof products>>((acc, p) => {
+      (acc[p.category] ??= []).push(p);
+      return acc;
+    }, {});
+  }, [filteredProducts]);
+
+  const visibleCategories = useMemo(() => {
+    return categoryFilter === "All"
+      ? Object.keys(groupedProducts).sort((a, b) => a.localeCompare(b))
+      : [categoryFilter];
+  }, [categoryFilter, groupedProducts]);
+
+  const jumpCategories = useMemo(() => {
+    if (categoryFilter !== "All") return [];
+    if (normalizedQuery) return [];
+    return categories;
+  }, [categories, categoryFilter, normalizedQuery]);
+
+  const scrollToCategory = (category: string) => {
+    const el = document.getElementById(toAnchorId(category));
+    el?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
 
   const handleRequestQuote = () => {
     if (items.length === 0) {
@@ -41,10 +77,10 @@ const Products = () => {
     }
     
     const cartMessage = items.map(item => 
-      `- ${item.name} x${item.quantity} @ R${item.price.toFixed(2)} = R${(item.price * item.quantity).toFixed(2)}`
+      `- ${item.name} x${item.quantity}`
     ).join('\n');
     
-    const fullMessage = `Quote Request:\n\n${cartMessage}\n\nTotal: R${total.toFixed(2)}\n\nPlease provide pricing and availability for these items.`;
+    const fullMessage = `Quote Request:\n\n${cartMessage}\n\nPlease provide pricing and availability for these items.`;
     
     navigate('/contact', { 
       state: { 
@@ -89,44 +125,146 @@ const Products = () => {
       {/* Products Grid */}
       <section className="py-8 md:py-12 lg:py-24 bg-background">
         <div className="container-wide">
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-6">
-            {products.map((product, index) => (
-              <ScrollReveal key={product.id} delay={index * 0.02}>
-                <motion.div
-                  whileHover={{ y: -4 }}
-                  className="bg-card rounded-lg md:rounded-xl overflow-hidden shadow-card hover:shadow-elevated transition-all duration-300"
+          {/* Filters */}
+          <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between mb-6 md:mb-10">
+            <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+              <div className="w-full sm:w-80">
+                <label className="sr-only" htmlFor="product-search">
+                  Search products
+                </label>
+                <input
+                  id="product-search"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  placeholder="Search products…"
+                  className="w-full h-11 px-4 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/30"
+                />
+              </div>
+
+              <div className="w-full sm:w-64">
+                <label className="sr-only" htmlFor="category-filter">
+                  Filter by category
+                </label>
+                <select
+                  id="category-filter"
+                  value={categoryFilter}
+                  onChange={(e) => setCategoryFilter(e.target.value)}
+                  className="w-full h-11 px-4 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-accent/30"
                 >
-                  <div className="aspect-square overflow-hidden">
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="p-3 md:p-4">
-                    <span className="text-[10px] md:text-xs text-accent font-medium uppercase tracking-wide">
-                      {product.category}
-                    </span>
-                    <h3 className="font-semibold text-foreground mt-0.5 md:mt-1 mb-2 text-sm md:text-base line-clamp-1">
-                      {product.name}
-                    </h3>
-                    <div className="flex items-center justify-between gap-2">
-                      <span className="text-base md:text-lg font-bold text-foreground">
-                        R{product.price.toFixed(2)}
-                      </span>
-                      <button
-                        onClick={() => handleAddToCart(product)}
-                        className="flex items-center gap-1 md:gap-2 px-2 md:px-4 py-1.5 md:py-2 bg-accent text-white rounded-lg text-xs md:text-sm font-medium hover:bg-accent/90 transition-colors"
-                      >
-                        <Plus className="w-3 h-3 md:w-4 md:h-4" />
-                        <span className="hidden sm:inline">Add</span>
-                      </button>
+                  <option value="All">All categories</option>
+                  {categories.map((c) => (
+                    <option key={c} value={c}>
+                      {c}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            <div className="text-sm text-muted-foreground">
+              Showing <span className="font-medium text-foreground">{filteredProducts.length}</span>{" "}
+              items
+            </div>
+          </div>
+
+          {/* Category jump links */}
+          {jumpCategories.length > 0 && (
+            <div className="mb-8 md:mb-10">
+              <div className="flex items-center justify-between gap-4 mb-3">
+                <h2 className="text-sm font-semibold text-foreground">Jump to category</h2>
+                <button
+                  type="button"
+                  onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                  className="text-sm text-accent hover:underline"
+                >
+                  Back to top
+                </button>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {jumpCategories.map((c) => (
+                  <button
+                    key={c}
+                    type="button"
+                    onClick={() => scrollToCategory(c)}
+                    className="px-3 py-1.5 rounded-full border border-border bg-background text-sm text-foreground hover:bg-accent/10 transition-colors"
+                  >
+                    {c}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Grouped Products */}
+          {filteredProducts.length === 0 ? (
+            <div className="py-16 text-center">
+              <p className="text-muted-foreground">No products match your search.</p>
+            </div>
+          ) : (
+            <div className="space-y-10 md:space-y-14">
+              {visibleCategories.map((category) => {
+                const categoryProducts = groupedProducts[category] ?? [];
+                if (categoryProducts.length === 0) return null;
+
+                return (
+                  <div key={category} id={toAnchorId(category)} className="scroll-mt-28 md:scroll-mt-32">
+                    {categoryFilter === "All" && (
+                      <div className="flex items-end justify-between gap-4 mb-4 md:mb-6">
+                        <div>
+                          <h2 className="text-lg md:text-2xl font-bold text-foreground">
+                            {category}
+                          </h2>
+                          <p className="text-sm text-muted-foreground">
+                            {categoryProducts.length} item{categoryProducts.length === 1 ? "" : "s"}
+                          </p>
+                        </div>
+                      </div>
+                    )}
+
+                    <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-6">
+                      {categoryProducts.map((product, index) => (
+                        <ScrollReveal key={product.id} delay={index * 0.02}>
+                          <motion.div
+                            whileHover={{ y: -4 }}
+                            className="bg-card rounded-lg md:rounded-xl overflow-hidden shadow-card hover:shadow-elevated transition-all duration-300"
+                          >
+                            <div className="aspect-square overflow-hidden">
+                              <img
+                                src={product.image}
+                                alt={product.name}
+                                className="w-full h-full object-cover"
+                                loading="lazy"
+                              />
+                            </div>
+                            <div className="p-3 md:p-4">
+                              <span className="text-[10px] md:text-xs text-accent font-medium uppercase tracking-wide">
+                                {product.category}
+                              </span>
+                              <h3 className="font-semibold text-foreground mt-0.5 md:mt-1 mb-2 text-sm md:text-base line-clamp-1">
+                                {product.name}
+                              </h3>
+                              <div className="flex items-center justify-between gap-2">
+                                <span className="text-xs md:text-sm font-medium text-muted-foreground">
+                                  Price: TBD (quote)
+                                </span>
+                                <button
+                                  onClick={() => handleAddToCart(product)}
+                                  className="flex items-center gap-1 md:gap-2 px-2 md:px-4 py-1.5 md:py-2 bg-accent text-white rounded-lg text-xs md:text-sm font-medium hover:bg-accent/90 transition-colors"
+                                >
+                                  <Plus className="w-3 h-3 md:w-4 md:h-4" />
+                                  <span className="hidden sm:inline">Add</span>
+                                </button>
+                              </div>
+                            </div>
+                          </motion.div>
+                        </ScrollReveal>
+                      ))}
                     </div>
                   </div>
-                </motion.div>
-              </ScrollReveal>
-            ))}
-          </div>
+                );
+              })}
+            </div>
+          )}
         </div>
       </section>
 
@@ -137,9 +275,9 @@ const Products = () => {
       >
         <ShoppingCart className="w-4 h-4 md:w-5 md:h-5" />
         <span className="font-semibold text-sm md:text-base">
-          ({items.reduce((sum, i) => sum + i.quantity, 0)})
+          ({totalItems})
         </span>
-        <span className="font-bold text-sm md:text-base">R{total.toFixed(2)}</span>
+        <span className="font-bold text-sm md:text-base">Quote</span>
       </button>
 
       {/* Cart Sidebar */}
@@ -176,7 +314,7 @@ const Products = () => {
                         <img src={item.image} alt={item.name} className="w-16 h-16 object-cover rounded-lg" />
                         <div className="flex-1">
                           <h4 className="font-medium text-foreground">{item.name}</h4>
-                          <p className="text-sm text-muted-foreground">R{item.price.toFixed(2)}</p>
+                          <p className="text-sm text-muted-foreground">Price: TBD (quote)</p>
                           <div className="flex items-center gap-2 mt-2">
                             <button onClick={() => updateQuantity(item.id, item.quantity - 1)} className="p-1 rounded bg-background hover:bg-accent/10">
                               <Minus className="w-4 h-4" />
@@ -188,8 +326,18 @@ const Products = () => {
                           </div>
                         </div>
                         <div className="text-right">
+<<<<<<< HEAD
                           <p className="font-bold text-foreground">R{(item.price * item.quantity).toFixed(2)}</p>
                           <button onClick={() => removeItem(item.id)} className="text-xs text-destructive mt-2">Remove</button>
+=======
+                          <p className="font-bold text-foreground">x{item.quantity}</p>
+                          <button
+                            onClick={() => removeItem(item.id)}
+                            className="text-xs text-destructive mt-2"
+                          >
+                            Remove
+                          </button>
+>>>>>>> 198fa03 (Add PDF product catalog, filtering, and sitemap)
                         </div>
                       </div>
                     ))}
@@ -200,8 +348,8 @@ const Products = () => {
               {items.length > 0 && (
                 <div className="p-6 border-t border-border">
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-lg font-medium text-foreground">Total:</span>
-                    <span className="text-2xl font-bold text-foreground">R{total.toFixed(2)}</span>
+                    <span className="text-lg font-medium text-foreground">Items:</span>
+                    <span className="text-2xl font-bold text-foreground">{totalItems}</span>
                   </div>
                   <button onClick={handleRequestQuote} className="btn-accent w-full mb-3">
                     <span>Request Quote</span>
