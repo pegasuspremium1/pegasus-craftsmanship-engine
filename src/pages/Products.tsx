@@ -1,76 +1,42 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ShoppingCart, Plus, Minus, X, ArrowRight } from "lucide-react";
+import { ShoppingCart, Plus, Check, Search } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { useCart } from "@/hooks/useCart";
 import { toast } from "sonner";
-import prodHexBolts from "@/assets/prod-hex-bolts.jpg";
-import prodNuts from "@/assets/prod-nuts.jpg";
-import prodWashers from "@/assets/prod-washers.jpg";
-import prodScrews from "@/assets/prod-screws.jpg";
-import prodAnchors from "@/assets/prod-anchors.jpg";
-import prodRods from "@/assets/prod-rods.jpg";
-import catToolsHardware from "@/assets/cat-tools-hardware.jpg";
-
-const products = [
-  { id: "1", name: "Hex Bolts M8x50", price: 45.00, image: prodHexBolts, category: "Bolts" },
-  { id: "2", name: "Stainless Steel Nuts M10", price: 32.00, image: prodNuts, category: "Nuts" },
-  { id: "3", name: "Flat Washers 12mm", price: 18.50, image: prodWashers, category: "Washers" },
-  { id: "4", name: "Self-Tapping Screws 4x25", price: 28.00, image: prodScrews, category: "Screws" },
-  { id: "5", name: "Anchor Bolts M12x100", price: 85.00, image: prodAnchors, category: "Anchors" },
-  { id: "6", name: "Socket Cap Screws M6x30", price: 52.00, image: prodScrews, category: "Screws" },
-  { id: "7", name: "Spring Washers M8", price: 22.00, image: prodWashers, category: "Washers" },
-  { id: "8", name: "Hex Nuts M12", price: 38.00, image: prodNuts, category: "Nuts" },
-  { id: "9", name: "Carriage Bolts M10x80", price: 65.00, image: prodHexBolts, category: "Bolts" },
-  { id: "10", name: "Pop Rivets 4.8mm", price: 42.00, image: prodAnchors, category: "Rivets" },
-  { id: "11", name: "Threaded Rod M16x1000", price: 125.00, image: prodRods, category: "Rods" },
-  { id: "12", name: "Combination Wrench Set", price: 285.00, image: catToolsHardware, category: "Tools" },
-];
+import { categories, type ProductCategory } from "@/data/products";
 
 const Products = () => {
-  const navigate = useNavigate();
-  const { items, addItem, removeItem, updateQuantity, total, clearCart } = useCart();
-  const [isCartOpen, setIsCartOpen] = useState(false);
+  const { items, addItem } = useCart();
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const handleRequestQuote = () => {
-    if (items.length === 0) {
-      toast.error("Your cart is empty");
+  const isInCart = (id: string) => items.some((i) => i.id === id);
+
+  const handleAddToCart = (product: { id: string; name: string; category: string; image: string }) => {
+    if (isInCart(product.id)) {
+      toast.info(`${product.name} is already in your quote list`);
       return;
     }
-    
-    const cartMessage = items.map(item => 
-      `- ${item.name} x${item.quantity} @ R${item.price.toFixed(2)} = R${(item.price * item.quantity).toFixed(2)}`
-    ).join('\n');
-    
-    const fullMessage = `Quote Request:\n\n${cartMessage}\n\nTotal: R${total.toFixed(2)}\n\nPlease provide pricing and availability for these items.`;
-    
-    navigate('/contact', { 
-      state: { 
-        quoteMessage: fullMessage,
-        cartItems: items,
-        cartTotal: total
-      } 
-    });
-    
-    setIsCartOpen(false);
+    addItem(product);
+    toast.success(`${product.name} added to quote list`);
   };
 
-  const handleAddToCart = (product: typeof products[0]) => {
-    addItem({
-      id: product.id,
-      name: product.name,
-      price: product.price,
-      image: product.image,
-    });
-    toast.success(`${product.name} added to cart`);
-  };
+  const filteredCategories = categories
+    .filter((cat) => !selectedCategory || cat.name === selectedCategory)
+    .map((cat) => ({
+      ...cat,
+      products: cat.products.filter((p) =>
+        p.name.toLowerCase().includes(searchQuery.toLowerCase())
+      ),
+    }))
+    .filter((cat) => cat.products.length > 0);
 
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="pt-28 md:pt-32 pb-12 md:pb-16 lg:pb-20 hero-gradient">
+      <section className="pt-32 md:pt-36 pb-12 md:pb-16 lg:pb-20 hero-gradient">
         <div className="container-wide">
           <ScrollReveal>
             <span className="text-accent text-xs md:text-sm font-semibold uppercase tracking-wider mb-3 md:mb-4 block">
@@ -80,140 +46,149 @@ const Products = () => {
               Industrial Fasteners & Components
             </h1>
             <p className="text-base md:text-lg text-white/80 max-w-2xl">
-              Premium quality fasteners for every application. All prices shown in South African Rand (ZAR).
+              Browse our full range below. Select the products you need and request a quote — tell us the quantities and we'll get back to you.
             </p>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* Products Grid */}
-      <section className="py-8 md:py-12 lg:py-24 bg-background">
+      {/* Filter & Search Bar */}
+      <section className="py-6 bg-card border-b border-border sticky top-0 z-30">
         <div className="container-wide">
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-6">
-            {products.map((product, index) => (
-              <ScrollReveal key={product.id} delay={index * 0.02}>
-                <motion.div
-                  whileHover={{ y: -4 }}
-                  className="bg-card rounded-lg md:rounded-xl overflow-hidden shadow-card hover:shadow-elevated transition-all duration-300"
+          <div className="flex flex-col md:flex-row gap-4 items-stretch md:items-center">
+            {/* Search */}
+            <div className="relative flex-1 max-w-md">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+              <input
+                type="text"
+                placeholder="Search products..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-10 pr-4 py-2.5 rounded-lg bg-background border border-border text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-accent/50"
+              />
+            </div>
+            {/* Category filter */}
+            <div className="flex gap-2 overflow-x-auto pb-1">
+              <button
+                onClick={() => setSelectedCategory(null)}
+                className={`whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
+                  !selectedCategory
+                    ? "bg-accent text-white"
+                    : "bg-secondary text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                All
+              </button>
+              {categories.map((cat) => (
+                <button
+                  key={cat.name}
+                  onClick={() => setSelectedCategory(selectedCategory === cat.name ? null : cat.name)}
+                  className={`whitespace-nowrap px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
+                    selectedCategory === cat.name
+                      ? "bg-accent text-white"
+                      : "bg-secondary text-muted-foreground hover:text-foreground"
+                  }`}
                 >
-                  <div className="aspect-square overflow-hidden">
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="p-3 md:p-4">
-                    <span className="text-[10px] md:text-xs text-accent font-medium uppercase tracking-wide">
-                      {product.category}
-                    </span>
-                    <h3 className="font-semibold text-foreground mt-0.5 md:mt-1 mb-2 text-sm md:text-base line-clamp-1">
-                      {product.name}
-                    </h3>
-                    <div className="flex items-center justify-between gap-2">
-                      <span className="text-base md:text-lg font-bold text-foreground">
-                        R{product.price.toFixed(2)}
-                      </span>
-                      <button
-                        onClick={() => handleAddToCart(product)}
-                        className="flex items-center gap-1 md:gap-2 px-2 md:px-4 py-1.5 md:py-2 bg-accent text-white rounded-lg text-xs md:text-sm font-medium hover:bg-accent/90 transition-colors"
-                      >
-                        <Plus className="w-3 h-3 md:w-4 md:h-4" />
-                        <span className="hidden sm:inline">Add</span>
-                      </button>
-                    </div>
-                  </div>
-                </motion.div>
-              </ScrollReveal>
-            ))}
+                  {cat.name}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Floating Cart Button */}
-      <button
-        onClick={() => setIsCartOpen(true)}
-        className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-40 flex items-center gap-2 md:gap-3 px-4 md:px-6 py-3 md:py-4 bg-accent text-white rounded-full shadow-elevated hover:shadow-dramatic transition-all"
-      >
-        <ShoppingCart className="w-4 h-4 md:w-5 md:h-5" />
-        <span className="font-semibold text-sm md:text-base">
-          ({items.reduce((sum, i) => sum + i.quantity, 0)})
-        </span>
-        <span className="font-bold text-sm md:text-base">R{total.toFixed(2)}</span>
-      </button>
-
-      {/* Cart Sidebar */}
-      {isCartOpen && (
-        <div className="fixed inset-0 z-50">
-          <div 
-            className="absolute inset-0 bg-black/50"
-            onClick={() => setIsCartOpen(false)}
-          />
-          <motion.div
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            className="absolute right-0 top-0 bottom-0 w-full max-w-md bg-background shadow-dramatic"
-          >
-            <div className="flex flex-col h-full">
-              <div className="flex items-center justify-between p-6 border-b border-border">
-                <h2 className="text-xl font-bold text-foreground">Your Cart</h2>
-                <button onClick={() => setIsCartOpen(false)} className="p-2 text-muted-foreground hover:text-foreground">
-                  <X className="w-5 h-5" />
-                </button>
-              </div>
-
-              <div className="flex-1 overflow-y-auto p-6">
-                {items.length === 0 ? (
-                  <div className="text-center py-12">
-                    <ShoppingCart className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
-                    <p className="text-muted-foreground">Your cart is empty</p>
+      {/* Products by Category */}
+      <section className="py-8 md:py-12 lg:py-16 bg-background">
+        <div className="container-wide space-y-12 md:space-y-16">
+          {filteredCategories.map((category) => (
+            <div key={category.name}>
+              {/* Category Header */}
+              <ScrollReveal>
+                <div className="flex items-center gap-4 mb-6">
+                  <img
+                    src={category.image}
+                    alt={category.name}
+                    className="w-12 h-12 md:w-16 md:h-16 rounded-lg object-cover"
+                  />
+                  <div>
+                    <h2 className="text-xl md:text-2xl font-bold text-foreground">
+                      {category.name}
+                    </h2>
+                    <p className="text-sm text-muted-foreground">
+                      {category.products.length} products
+                    </p>
                   </div>
-                ) : (
-                  <div className="space-y-4">
-                    {items.map((item) => (
-                      <div key={item.id} className="flex gap-4 p-4 bg-secondary rounded-lg">
-                        <img src={item.image} alt={item.name} className="w-16 h-16 object-cover rounded-lg" />
-                        <div className="flex-1">
-                          <h4 className="font-medium text-foreground">{item.name}</h4>
-                          <p className="text-sm text-muted-foreground">R{item.price.toFixed(2)}</p>
-                          <div className="flex items-center gap-2 mt-2">
-                            <button onClick={() => updateQuantity(item.id, item.quantity - 1)} className="p-1 rounded bg-background hover:bg-accent/10">
-                              <Minus className="w-4 h-4" />
-                            </button>
-                            <span className="w-8 text-center font-medium">{item.quantity}</span>
-                            <button onClick={() => updateQuantity(item.id, item.quantity + 1)} className="p-1 rounded bg-background hover:bg-accent/10">
-                              <Plus className="w-4 h-4" />
-                            </button>
-                          </div>
-                        </div>
-                        <div className="text-right">
-                          <p className="font-bold text-foreground">R{(item.price * item.quantity).toFixed(2)}</p>
-                          <button onClick={() => removeItem(item.id)} className="text-xs text-destructive mt-2">Remove</button>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              {items.length > 0 && (
-                <div className="p-6 border-t border-border">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-lg font-medium text-foreground">Total:</span>
-                    <span className="text-2xl font-bold text-foreground">R{total.toFixed(2)}</span>
-                  </div>
-                  <button onClick={handleRequestQuote} className="btn-accent w-full mb-3">
-                    <span>Request Quote</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
-                  <button onClick={clearCart} className="w-full text-sm text-muted-foreground hover:text-destructive">
-                    Clear Cart
-                  </button>
                 </div>
-              )}
+              </ScrollReveal>
+
+              {/* Product Grid */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 md:gap-4">
+                {category.products.map((product, index) => {
+                  const inCart = isInCart(product.id);
+                  return (
+                    <ScrollReveal key={product.id} delay={index * 0.015}>
+                      <motion.div
+                        whileHover={{ y: -3 }}
+                        className="bg-card rounded-lg overflow-hidden shadow-card hover:shadow-elevated transition-all duration-300"
+                      >
+                        <div className="aspect-square overflow-hidden">
+                          <img
+                            src={product.image}
+                            alt={product.name}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                        <div className="p-3">
+                          <h3 className="font-medium text-foreground text-xs md:text-sm leading-tight mb-2 line-clamp-2 min-h-[2.5rem]">
+                            {product.name}
+                          </h3>
+                          <button
+                            onClick={() => handleAddToCart(product)}
+                            className={`w-full flex items-center justify-center gap-1.5 px-2 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+                              inCart
+                                ? "bg-accent/10 text-accent"
+                                : "bg-accent text-white hover:bg-accent/90"
+                            }`}
+                          >
+                            {inCart ? (
+                              <>
+                                <Check className="w-3.5 h-3.5" />
+                                <span>Added</span>
+                              </>
+                            ) : (
+                              <>
+                                <Plus className="w-3.5 h-3.5" />
+                                <span>Add to Quote</span>
+                              </>
+                            )}
+                          </button>
+                        </div>
+                      </motion.div>
+                    </ScrollReveal>
+                  );
+                })}
+              </div>
             </div>
-          </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Floating Cart Button */}
+      {items.length > 0 && (
+        <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-40">
+          <button
+            onClick={() => {
+              const event = new CustomEvent("open-cart");
+              window.dispatchEvent(event);
+            }}
+            className="flex items-center gap-2 md:gap-3 px-4 md:px-6 py-3 md:py-4 bg-accent text-white rounded-full shadow-elevated hover:shadow-dramatic transition-all"
+          >
+            <ShoppingCart className="w-4 h-4 md:w-5 md:h-5" />
+            <span className="font-semibold text-sm md:text-base">
+              {items.length} item{items.length !== 1 ? "s" : ""}
+            </span>
+            <span className="font-bold text-sm md:text-base">Get Quote</span>
+          </button>
         </div>
       )}
     </Layout>
