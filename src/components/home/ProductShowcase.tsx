@@ -2,31 +2,31 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
-import catBoltsScrews from "@/assets/cat-bolts-screws.jpg";
-import catNutsWashers from "@/assets/cat-nuts-washers.jpg";
-import catAnchorsFixings from "@/assets/cat-anchors-fixings.jpg";
-import catToolsHardware from "@/assets/cat-tools-hardware.jpg";
+import catAnchorsLifting from "@/assets/cat-anchors-lifting.jpg";
+import catBoltsSocket from "@/assets/cat-bolts-socket.jpg";
+import catNuts from "@/assets/cat-nuts.jpg";
+import catWashers from "@/assets/cat-washers.jpg";
 
 const categories = [
   {
-    name: "Bolts & Screws",
-    image: catBoltsScrews,
-    href: "/products/bolts-screws",
+    name: "Bolts & Socket Screws",
+    image: catBoltsSocket,
+    href: "/products",
   },
   {
-    name: "Nuts & Washers",
-    image: catNutsWashers,
-    href: "/products/nuts-washers",
+    name: "Nuts",
+    image: catNuts,
+    href: "/products",
   },
   {
-    name: "Anchors & Fixings",
-    image: catAnchorsFixings,
-    href: "/products/anchors-fixings",
+    name: "Anchors & Lifting",
+    image: catAnchorsLifting,
+    href: "/products",
   },
   {
-    name: "Tools & Hardware",
-    image: catToolsHardware,
-    href: "/products/tools-hardware",
+    name: "Washers",
+    image: catWashers,
+    href: "/products",
   },
 ];
 
@@ -34,7 +34,6 @@ export function ProductShowcase() {
   return (
     <section className="py-12 md:py-16 lg:py-24 bg-background">
       <div className="container-wide">
-        {/* Header */}
         <ScrollReveal className="text-center mb-8 md:mb-12">
           <span className="label-sm text-accent mb-3 md:mb-4 block">Our Products</span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-foreground mb-3 md:mb-4">
@@ -46,7 +45,6 @@ export function ProductShowcase() {
           </p>
         </ScrollReveal>
 
-        {/* Grid */}
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
           {categories.map((category, index) => (
             <ScrollReveal key={category.name} delay={index * 0.1}>
@@ -74,7 +72,6 @@ export function ProductShowcase() {
           ))}
         </div>
 
-        {/* CTA */}
         <ScrollReveal delay={0.4} className="text-center mt-12">
           <Link to="/products" className="btn-primary">
             View All Products
