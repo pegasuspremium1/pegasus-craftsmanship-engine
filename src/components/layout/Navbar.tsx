@@ -42,7 +42,7 @@ export function Navbar() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const location = useLocation();
   const { items } = useCart();
-  const cartCount = items.length;
+  const cartCount = items.reduce((sum, item) => sum + item.quantity, 0);
 
   useEffect(() => {
     const handleScroll = () => {

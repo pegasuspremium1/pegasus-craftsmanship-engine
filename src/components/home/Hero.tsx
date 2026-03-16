@@ -13,7 +13,7 @@ export function Hero() {
       <div className="absolute bottom-20 left-10 w-64 md:w-96 h-64 md:h-96 bg-primary/5 rounded-full blur-3xl" />
 
       {/* Main content */}
-      <div className="container-wide relative z-10 py-12 md:py-20 pt-32 md:pt-36 lg:pt-40">
+      <div className="container-wide relative z-10 py-12 md:py-20 pt-20 md:pt-20">
         <div className="grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
           {/* Left column - Content */}
           <div>
