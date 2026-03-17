@@ -111,7 +111,7 @@ export function Navbar() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute top-full left-0 mt-1 w-56 bg-white rounded-xl shadow-elevated border border-border overflow-hidden"
+                      className="absolute top-full left-0 mt-1 w-64 max-h-[70vh] overflow-y-auto bg-white rounded-xl shadow-elevated border border-border"
                     >
                       <div className="py-2">
                         {item.children.map((child) => (
