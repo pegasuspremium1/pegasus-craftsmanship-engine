@@ -116,7 +116,7 @@ const Products = () => {
               Industrial Fasteners & Components
             </h1>
             <p className="text-base md:text-lg text-white/80 max-w-2xl">
-              Premium quality fasteners for every application. All prices shown in South African Rand (ZAR).
+              Premium quality fasteners for every application. Browse our full range below.
             </p>
           </ScrollReveal>
         </div>

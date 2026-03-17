@@ -12,10 +12,16 @@ const navigation = [
     name: "Products", 
     href: "/products",
     children: [
-      { name: "Bolts & Screws", href: "/products/bolts-screws" },
-      { name: "Nuts & Washers", href: "/products/nuts-washers" },
-      { name: "Anchors & Fixings", href: "/products/anchors-fixings" },
-      { name: "Tools & Hardware", href: "/products/tools-hardware" },
+      { name: "Anchors & Lifting", href: "/products#anchors--lifting" },
+      { name: "Sheet Metal & Clinching", href: "/products#sheet-metal-fasteners--clinching" },
+      { name: "Spring Steel", href: "/products#spring-steel" },
+      { name: "Thread Forming/Cutting", href: "/products#thread-formingcutting-fasteners" },
+      { name: "Machine Screws", href: "/products#machine-screws" },
+      { name: "Bolts", href: "/products#bolts" },
+      { name: "Nuts", href: "/products#nuts" },
+      { name: "Furniture Fasteners", href: "/products#furniture-fasteners" },
+      { name: "Washers", href: "/products#washers" },
+      { name: "Rivets & Specials", href: "/products#rivets--specials" },
     ]
   },
   { 
