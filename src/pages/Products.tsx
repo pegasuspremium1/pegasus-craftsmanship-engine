@@ -25,6 +25,7 @@ const toAnchorId = (s: string) =>
 
 const Products = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { items, addItem, removeItem, updateQuantity, total, clearCart } = useCart();
   const [isCartOpen, setIsCartOpen] = useState(false);
   const totalItems = items.reduce((sum, i) => sum + i.quantity, 0);
