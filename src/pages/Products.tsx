@@ -228,25 +228,19 @@ const Products = () => {
                             whileHover={{ y: -4 }}
                             className="bg-card rounded-lg md:rounded-xl overflow-hidden shadow-card hover:shadow-elevated transition-all duration-300"
                           >
-                            <div className="aspect-square overflow-hidden">
+                            <div className="aspect-square overflow-hidden bg-white">
                               <img
                                 src={product.image}
                                 alt={product.name}
-                                className="w-full h-full object-cover"
+                                className="w-full h-full object-contain p-2"
                                 loading="lazy"
                               />
                             </div>
                             <div className="p-3 md:p-4">
-                              <span className="text-[10px] md:text-xs text-accent font-medium uppercase tracking-wide">
-                                {product.category}
-                              </span>
-                              <h3 className="font-semibold text-foreground mt-0.5 md:mt-1 mb-2 text-sm md:text-base line-clamp-1">
+                              <h3 className="font-semibold text-foreground text-sm md:text-base line-clamp-2">
                                 {product.name}
                               </h3>
-                              <div className="flex items-center justify-between gap-2">
-                                <span className="text-xs md:text-sm font-medium text-muted-foreground">
-                                  Price: TBD (quote)
-                                </span>
+                              <div className="flex items-center justify-end mt-2">
                                 <button
                                   onClick={() => handleAddToCart(product)}
                                   className="flex items-center gap-1 md:gap-2 px-2 md:px-4 py-1.5 md:py-2 bg-accent text-white rounded-lg text-xs md:text-sm font-medium hover:bg-accent/90 transition-colors"
