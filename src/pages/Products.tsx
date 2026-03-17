@@ -1,5 +1,5 @@
-import { useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useMemo, useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ShoppingCart, Plus, Minus, X, ArrowRight } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
