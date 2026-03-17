@@ -66,6 +66,16 @@ const Products = () => {
     return categories;
   }, [categories, categoryFilter, normalizedQuery]);
 
+  // Scroll to hash on load/navigation
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace("#", "");
+      setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 300);
+    }
+  }, [location.hash]);
+
   const scrollToCategory = (category: string) => {
     const el = document.getElementById(toAnchorId(category));
     el?.scrollIntoView({ behavior: "smooth", block: "start" });
