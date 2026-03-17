@@ -1,13 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 
-const siteUrl = process.env.SITE_URL || process.env.VITE_SITE_URL;
-if (!siteUrl) {
-  console.error(
-    "Missing SITE_URL (or VITE_SITE_URL). Example: SITE_URL=https://yourdomain.com npm run generate:sitemap"
-  );
-  process.exit(1);
-}
+const siteUrl = process.env.SITE_URL || process.env.VITE_SITE_URL || process.env.CF_PAGES_URL || "https://pegasuspremium.co.za";
 
 const base = siteUrl.replace(/\/+$/, "");
 const now = new Date().toISOString();
