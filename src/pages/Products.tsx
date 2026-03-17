@@ -1,5 +1,5 @@
-import { useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useMemo, useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ShoppingCart, Plus, Minus, X, ArrowRight } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
@@ -25,6 +25,7 @@ const toAnchorId = (s: string) =>
 
 const Products = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { items, addItem, removeItem, updateQuantity, total, clearCart } = useCart();
   const [isCartOpen, setIsCartOpen] = useState(false);
   const totalItems = items.reduce((sum, i) => sum + i.quantity, 0);
@@ -64,6 +65,16 @@ const Products = () => {
     if (normalizedQuery) return [];
     return categories;
   }, [categories, categoryFilter, normalizedQuery]);
+
+  // Scroll to hash on load/navigation
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace("#", "");
+      setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 300);
+    }
+  }, [location.hash]);
 
   const scrollToCategory = (category: string) => {
     const el = document.getElementById(toAnchorId(category));
@@ -116,7 +127,7 @@ const Products = () => {
               Industrial Fasteners & Components
             </h1>
             <p className="text-base md:text-lg text-white/80 max-w-2xl">
-              Premium quality fasteners for every application. All prices shown in South African Rand (ZAR).
+              Premium quality fasteners for every application. Browse our full range below.
             </p>
           </ScrollReveal>
         </div>

@@ -12,10 +12,16 @@ const navigation = [
     name: "Products", 
     href: "/products",
     children: [
-      { name: "Bolts & Screws", href: "/products/bolts-screws" },
-      { name: "Nuts & Washers", href: "/products/nuts-washers" },
-      { name: "Anchors & Fixings", href: "/products/anchors-fixings" },
-      { name: "Tools & Hardware", href: "/products/tools-hardware" },
+      { name: "Anchors & Lifting", href: "/products#anchors-lifting" },
+      { name: "Sheet Metal & Clinching", href: "/products#sheet-metal-fasteners-clinching" },
+      { name: "Spring Steel", href: "/products#spring-steel" },
+      { name: "Thread Forming/Cutting", href: "/products#thread-forming-cutting-fasteners" },
+      { name: "Machine Screws", href: "/products#machine-screws" },
+      { name: "Bolts", href: "/products#bolts" },
+      { name: "Nuts", href: "/products#nuts" },
+      { name: "Furniture Fasteners", href: "/products#furniture-fasteners" },
+      { name: "Washers", href: "/products#washers" },
+      { name: "Rivets & Specials", href: "/products#rivets-specials" },
     ]
   },
   { 
@@ -105,7 +111,7 @@ export function Navbar() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute top-full left-0 mt-1 w-56 bg-white rounded-xl shadow-elevated border border-border overflow-hidden"
+                      className="absolute top-full left-0 mt-1 w-64 max-h-[70vh] overflow-y-auto bg-white rounded-xl shadow-elevated border border-border"
                     >
                       <div className="py-2">
                         {item.children.map((child) => (
