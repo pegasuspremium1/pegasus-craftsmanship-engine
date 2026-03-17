@@ -326,10 +326,6 @@ const Products = () => {
                           </div>
                         </div>
                         <div className="text-right">
-<<<<<<< HEAD
-                          <p className="font-bold text-foreground">R{(item.price * item.quantity).toFixed(2)}</p>
-                          <button onClick={() => removeItem(item.id)} className="text-xs text-destructive mt-2">Remove</button>
-=======
                           <p className="font-bold text-foreground">x{item.quantity}</p>
                           <button
                             onClick={() => removeItem(item.id)}
@@ -337,7 +333,6 @@ const Products = () => {
                           >
                             Remove
                           </button>
->>>>>>> 198fa03 (Add PDF product catalog, filtering, and sitemap)
                         </div>
                       </div>
                     ))}
