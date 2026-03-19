@@ -40,8 +40,7 @@ export const pdfProducts: PdfProduct[] = [
   { id: "pp-10-02", name: "Split Pin", category: "Spring Steel", image: "/new_products/ProductsPP_images-img029-page010.png" },
   { id: "pp-10-03", name: "Selloc Pin", category: "Spring Steel", image: "/new_products/ProductsPP_images-img030-page010.png" },
   { id: "pp-10-04", name: "Push On Fix Washer", category: "Spring Steel", image: "/new_products/ProductsPP_images-img031-page010.png" },
-  { id: "pp-11-02", name: "R-Clip", category: "Spring Steel", image: "/new_products/ProductsPP_images-img033-page011.png" },
-  { id: "pp-11-04", name: "Captive Nut", category: "Spring Steel", image: "/new_products/ProductsPP_images-img035-page011.png" },
+  { id: "pp-11-02", name: "R-Clip", category: "Spring Steel", image: "/new_products/ProductsPP_images-img035-page011.png" },
 
   // Thread Forming/Cutting Fasteners (pages 12-14)
   { id: "pp-12-01", name: "Hex Flange Lag Screw", category: "Thread Forming/Cutting Fasteners", image: "/new_products/ProductsPP_images-img036-page012.png" },
