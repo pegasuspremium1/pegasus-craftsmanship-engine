@@ -35,7 +35,7 @@ export const pdfProducts: PdfProduct[] = [
   { id: "pp-09-01", name: "E-Clip", category: "Spring Steel", image: "/new_products/ProductsPP_images-img024-page009.png" },
   { id: "pp-09-02", name: "External Circlip", category: "Spring Steel", image: "/new_products/ProductsPP_images-img025-page009.png" },
   { id: "pp-09-03", name: "Internal Circlip", category: "Spring Steel", image: "/new_products/ProductsPP_images-img026-page009.png" },
-  { id: "pp-09-04", name: "Starlock Washer", category: "Spring Steel", image: "/productspp/p09-04-starlock-washer.png" },
+  
   { id: "pp-10-01", name: "Spring Clip", category: "Spring Steel", image: "/new_products/ProductsPP_images-img028-page010.png" },
   { id: "pp-10-02", name: "Split Pin", category: "Spring Steel", image: "/new_products/ProductsPP_images-img029-page010.png" },
   { id: "pp-10-03", name: "Selloc Pin", category: "Spring Steel", image: "/new_products/ProductsPP_images-img030-page010.png" },
