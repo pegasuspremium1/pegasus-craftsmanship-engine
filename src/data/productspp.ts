@@ -63,14 +63,13 @@ export const pdfProducts: PdfProduct[] = [
 
   // Bolts (pages 18-19)
   { id: "pp-18-01", name: "Cup Square Bolt", category: "Bolts", image: "/new_products/ProductsPP_images-img060-page018.png" },
-  { id: "pp-18-02", name: "Hexagon Coach Screw", category: "Bolts", image: "/new_products/ProductsPP_images-img061-page018.png" },
   { id: "pp-18-03", name: "Hexagon Set Screw", category: "Bolts", image: "/new_products/ProductsPP_images-img062-page018.png" },
-  { id: "pp-18-04", name: "Hexagon Bolt", category: "Bolts", image: "/new_products/ProductsPP_images-img063-page018.png" },
+  { id: "pp-18-04", name: "Hexagon Bolt", category: "Bolts", image: "/products/hexagon-bolt.png" },
   { id: "pp-19-01", name: "Hexagon Flange", category: "Bolts", image: "/new_products/ProductsPP_images-img064-page019.png" },
-  { id: "pp-19-02", name: "Coach Screw", category: "Bolts", image: "/new_products/ProductsPP_images-img065-page019.png" },
-  { id: "pp-19-03", name: "CSK Socket Cap Screw", category: "Bolts", image: "/new_products/ProductsPP_images-img066-page019.png" },
-  { id: "pp-19-04", name: "Hexagon Socket Cap Screw", category: "Bolts", image: "/new_products/ProductsPP_images-img067-page019.png" },
-  { id: "pp-add-1", name: "Button Head Cap Screw", category: "Bolts", image: "/new_products/ProductsPP_images-img053-page016.png" },
+  { id: "pp-19-02", name: "Coach Screw", category: "Bolts", image: "/new_products/ProductsPP_images-img061-page018.png" },
+  { id: "pp-19-03", name: "CSK Socket Cap Screw", category: "Bolts", image: "/products/csk-socket-cap-screw.png" },
+  { id: "pp-19-04", name: "Hexagon Socket Cap Screw", category: "Bolts", image: "/new_products/ProductsPP_images-img066-page019.png" },
+  { id: "pp-add-1", name: "Button Head Cap Screw", category: "Bolts", image: "/new_products/ProductsPP_images-img067-page019.png" },
 
   // Nuts (pages 20-22)
   { id: "pp-20-01", name: "Channel Nut", category: "Nuts", image: "/new_products/ProductsPP_images-img068-page020.png" },
