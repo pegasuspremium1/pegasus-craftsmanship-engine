@@ -8,7 +8,7 @@ export type PdfProduct = {
 export const pdfProducts: PdfProduct[] = [
   // Anchors & Lifting (pages 3-5)
   { id: "pp-03-01", name: "U-Bolt", category: "Anchors & Lifting", image: "/new_products/ProductsPP_images-img001-page003.png" },
-  { id: "pp-03-04", name: "Screw Bolt", category: "Anchors & Lifting", image: "/new_products/ProductsPP_images-img004-page003.png" },
+  { id: "pp-03-04", name: "Screw Bolt", category: "Anchors & Lifting", image: "/products/screw-bolt.png" },
   { id: "pp-03-02", name: "Shield Anchor With Bolt", category: "Anchors & Lifting", image: "/new_products/ProductsPP_images-img002-page003.png" },
   { id: "pp-03-03", name: "Sleeve Anchor", category: "Anchors & Lifting", image: "/new_products/ProductsPP_images-img003-page003.png" },
   { id: "pp-04-01", name: "Through Bolt", category: "Anchors & Lifting", image: "/new_products/ProductsPP_images-img005-page004.png" },
@@ -35,13 +35,12 @@ export const pdfProducts: PdfProduct[] = [
   { id: "pp-09-01", name: "E-Clip", category: "Spring Steel", image: "/new_products/ProductsPP_images-img024-page009.png" },
   { id: "pp-09-02", name: "External Circlip", category: "Spring Steel", image: "/new_products/ProductsPP_images-img025-page009.png" },
   { id: "pp-09-03", name: "Internal Circlip", category: "Spring Steel", image: "/new_products/ProductsPP_images-img026-page009.png" },
-  { id: "pp-09-04", name: "Starlock Washer", category: "Spring Steel", image: "/productspp/p09-04-starlock-washer.png" },
+  
   { id: "pp-10-01", name: "Spring Clip", category: "Spring Steel", image: "/new_products/ProductsPP_images-img028-page010.png" },
   { id: "pp-10-02", name: "Split Pin", category: "Spring Steel", image: "/new_products/ProductsPP_images-img029-page010.png" },
   { id: "pp-10-03", name: "Selloc Pin", category: "Spring Steel", image: "/new_products/ProductsPP_images-img030-page010.png" },
   { id: "pp-10-04", name: "Push On Fix Washer", category: "Spring Steel", image: "/new_products/ProductsPP_images-img031-page010.png" },
-  { id: "pp-11-02", name: "R-Clip", category: "Spring Steel", image: "/new_products/ProductsPP_images-img033-page011.png" },
-  { id: "pp-11-04", name: "Captive Nut", category: "Spring Steel", image: "/new_products/ProductsPP_images-img035-page011.png" },
+  { id: "pp-11-02", name: "R-Clip", category: "Spring Steel", image: "/new_products/ProductsPP_images-img035-page011.png" },
 
   // Thread Forming/Cutting Fasteners (pages 12-14)
   { id: "pp-12-01", name: "Hex Flange Lag Screw", category: "Thread Forming/Cutting Fasteners", image: "/new_products/ProductsPP_images-img036-page012.png" },
@@ -55,23 +54,22 @@ export const pdfProducts: PdfProduct[] = [
   { id: "pp-14-02", name: "Chipboard Screw", category: "Thread Forming/Cutting Fasteners", image: "/new_products/ProductsPP_images-img045-page014.png" },
 
   // Machine Screws (pages 15-17)
-  { id: "pp-15-01", name: "CSK Pozi", category: "Machine Screws", image: "/productspp/p15-01-csk-pozi.png" },
-  { id: "pp-15-02", name: "Pan Pozi", category: "Machine Screws", image: "/productspp/p15-02-pan-pozi.png" },
-  { id: "pp-15-03", name: "CSK Slot", category: "Machine Screws", image: "/productspp/p15-03-csk-slot.png" },
-  { id: "pp-15-04", name: "Cheese Head Slot", category: "Machine Screws", image: "/new_products/ProductsPP_images-img051-page015.png" },
+  { id: "pp-15-01", name: "CSK Pozi", category: "Machine Screws", image: "/products/csk-pozi.png" },
+  { id: "pp-15-02", name: "Pan Pozi", category: "Machine Screws", image: "/products/pan-pozi.png" },
+  { id: "pp-15-03", name: "CSK Slot", category: "Machine Screws", image: "/products/csk-slot.png" },
+  { id: "pp-15-04", name: "Cheese Head Slot", category: "Machine Screws", image: "/products/cheese-head-slot.png" },
   { id: "pp-16-04", name: "CSK Slot Brass", category: "Machine Screws", image: "/new_products/ProductsPP_images-img055-page016.png" },
   { id: "pp-17-02", name: "Cheese Head Brass", category: "Machine Screws", image: "/new_products/ProductsPP_images-img057-page017.png" },
 
   // Bolts (pages 18-19)
   { id: "pp-18-01", name: "Cup Square Bolt", category: "Bolts", image: "/new_products/ProductsPP_images-img060-page018.png" },
-  { id: "pp-18-02", name: "Hexagon Coach Screw", category: "Bolts", image: "/new_products/ProductsPP_images-img061-page018.png" },
   { id: "pp-18-03", name: "Hexagon Set Screw", category: "Bolts", image: "/new_products/ProductsPP_images-img062-page018.png" },
-  { id: "pp-18-04", name: "Hexagon Bolt", category: "Bolts", image: "/new_products/ProductsPP_images-img063-page018.png" },
+  { id: "pp-18-04", name: "Hexagon Bolt", category: "Bolts", image: "/products/hexagon-bolt.png" },
   { id: "pp-19-01", name: "Hexagon Flange", category: "Bolts", image: "/new_products/ProductsPP_images-img064-page019.png" },
-  { id: "pp-19-02", name: "Coach Screw", category: "Bolts", image: "/new_products/ProductsPP_images-img065-page019.png" },
-  { id: "pp-19-03", name: "CSK Socket Cap Screw", category: "Bolts", image: "/new_products/ProductsPP_images-img066-page019.png" },
-  { id: "pp-19-04", name: "Hexagon Socket Cap Screw", category: "Bolts", image: "/new_products/ProductsPP_images-img067-page019.png" },
-  { id: "pp-add-1", name: "Button Head Cap Screw", category: "Bolts", image: "/new_products/ProductsPP_images-img053-page016.png" },
+  { id: "pp-19-02", name: "Coach Screw", category: "Bolts", image: "/new_products/ProductsPP_images-img061-page018.png" },
+  { id: "pp-19-03", name: "CSK Socket Cap Screw", category: "Bolts", image: "/products/csk-socket-cap-screw.png" },
+  { id: "pp-19-04", name: "Hexagon Socket Cap Screw", category: "Bolts", image: "/new_products/ProductsPP_images-img066-page019.png" },
+  { id: "pp-add-1", name: "Button Head Cap Screw", category: "Bolts", image: "/new_products/ProductsPP_images-img067-page019.png" },
 
   // Nuts (pages 20-22)
   { id: "pp-20-01", name: "Channel Nut", category: "Nuts", image: "/new_products/ProductsPP_images-img068-page020.png" },
@@ -103,7 +101,7 @@ export const pdfProducts: PdfProduct[] = [
   // Washers (pages 26-28)
   { id: "pp-26-01", name: "Penny Washer", category: "Washers", image: "/new_products/ProductsPP_images-img092-page026.png" },
   { id: "pp-26-02", name: "Internal Star Lock Washer", category: "Washers", image: "/new_products/ProductsPP_images-img093-page026.png" },
-  { id: "pp-26-03", name: "Spring Washer Flat Medium", category: "Washers", image: "/new_products/ProductsPP_images-img094-page026.png" },
+  { id: "pp-26-03", name: "Spring Washer Flat", category: "Washers", image: "/new_products/ProductsPP_images-img094-page026.png" },
   { id: "pp-26-04", name: "External Lock Washer", category: "Washers", image: "/new_products/ProductsPP_images-img095-page026.png" },
   { id: "pp-27-03", name: "Cup Washer", category: "Washers", image: "/new_products/ProductsPP_images-img097-page027.png" },
   { id: "pp-27-04", name: "Copper Washer", category: "Washers", image: "/new_products/ProductsPP_images-img098-page027.png" },
