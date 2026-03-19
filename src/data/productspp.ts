@@ -101,7 +101,7 @@ export const pdfProducts: PdfProduct[] = [
   // Washers (pages 26-28)
   { id: "pp-26-01", name: "Penny Washer", category: "Washers", image: "/new_products/ProductsPP_images-img092-page026.png" },
   { id: "pp-26-02", name: "Internal Star Lock Washer", category: "Washers", image: "/new_products/ProductsPP_images-img093-page026.png" },
-  { id: "pp-26-03", name: "Spring Washer Flat Medium", category: "Washers", image: "/new_products/ProductsPP_images-img094-page026.png" },
+  { id: "pp-26-03", name: "Spring Washer Flat", category: "Washers", image: "/new_products/ProductsPP_images-img094-page026.png" },
   { id: "pp-26-04", name: "External Lock Washer", category: "Washers", image: "/new_products/ProductsPP_images-img095-page026.png" },
   { id: "pp-27-03", name: "Cup Washer", category: "Washers", image: "/new_products/ProductsPP_images-img097-page027.png" },
   { id: "pp-27-04", name: "Copper Washer", category: "Washers", image: "/new_products/ProductsPP_images-img098-page027.png" },
