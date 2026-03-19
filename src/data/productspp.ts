@@ -8,7 +8,7 @@ export type PdfProduct = {
 export const pdfProducts: PdfProduct[] = [
   // Anchors & Lifting (pages 3-5)
   { id: "pp-03-01", name: "U-Bolt", category: "Anchors & Lifting", image: "/new_products/ProductsPP_images-img001-page003.png" },
-  { id: "pp-03-04", name: "Screw Bolt", category: "Anchors & Lifting", image: "/new_products/ProductsPP_images-img004-page003.png" },
+  { id: "pp-03-04", name: "Screw Bolt", category: "Anchors & Lifting", image: "/products/screw-bolt.png" },
   { id: "pp-03-02", name: "Shield Anchor With Bolt", category: "Anchors & Lifting", image: "/new_products/ProductsPP_images-img002-page003.png" },
   { id: "pp-03-03", name: "Sleeve Anchor", category: "Anchors & Lifting", image: "/new_products/ProductsPP_images-img003-page003.png" },
   { id: "pp-04-01", name: "Through Bolt", category: "Anchors & Lifting", image: "/new_products/ProductsPP_images-img005-page004.png" },
