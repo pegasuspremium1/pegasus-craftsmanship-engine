@@ -54,9 +54,9 @@ export const pdfProducts: PdfProduct[] = [
   { id: "pp-14-02", name: "Chipboard Screw", category: "Thread Forming/Cutting Fasteners", image: "/new_products/ProductsPP_images-img045-page014.png" },
 
   // Machine Screws (pages 15-17)
-  { id: "pp-15-01", name: "CSK Pozi", category: "Machine Screws", image: "/productspp/p15-01-csk-pozi.png" },
-  { id: "pp-15-02", name: "Pan Pozi", category: "Machine Screws", image: "/productspp/p15-02-pan-pozi.png" },
-  { id: "pp-15-03", name: "CSK Slot", category: "Machine Screws", image: "/productspp/p15-03-csk-slot.png" },
+  { id: "pp-15-01", name: "CSK Pozi", category: "Machine Screws", image: "/products/csk-pozi.png" },
+  { id: "pp-15-02", name: "Pan Pozi", category: "Machine Screws", image: "/products/pan-pozi.png" },
+  { id: "pp-15-03", name: "CSK Slot", category: "Machine Screws", image: "/products/csk-slot.png" },
   { id: "pp-15-04", name: "Cheese Head Slot", category: "Machine Screws", image: "/new_products/ProductsPP_images-img051-page015.png" },
   { id: "pp-16-04", name: "CSK Slot Brass", category: "Machine Screws", image: "/new_products/ProductsPP_images-img055-page016.png" },
   { id: "pp-17-02", name: "Cheese Head Brass", category: "Machine Screws", image: "/new_products/ProductsPP_images-img057-page017.png" },
