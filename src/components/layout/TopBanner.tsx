@@ -33,11 +33,11 @@ export function TopBanner() {
               <span>066 416 6743</span>
             </a>
             <a 
-              href="mailto:info@pegasuspremium.online" 
+              href="mailto:lee@pegasuspremium.online" 
               className="flex items-center gap-2 text-sm hover:text-accent transition-colors"
             >
               <Mail className="w-4 h-4" />
-              <span>info@pegasuspremium.online</span>
+              <span>lee@pegasuspremium.online</span>
             </a>
           </div>
           <div className="flex items-center gap-2 text-sm">

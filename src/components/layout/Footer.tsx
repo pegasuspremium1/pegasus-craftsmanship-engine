@@ -47,9 +47,9 @@ export function Footer() {
                 <Phone className="w-4 h-4" />
                 <span>Lee Quinn: 066 416 6743</span>
               </a>
-              <a href="mailto:info@pegasuspremium.online" className="flex items-center gap-2 md:gap-3 text-white/70 hover:text-accent transition-colors text-sm md:text-base">
+              <a href="mailto:lee@pegasuspremium.online" className="flex items-center gap-2 md:gap-3 text-white/70 hover:text-accent transition-colors text-sm md:text-base">
                 <Mail className="w-4 h-4" />
-                <span className="truncate">info@pegasuspremium.online</span>
+                <span className="truncate">lee@pegasuspremium.online</span>
               </a>
               <div className="flex items-start gap-2 md:gap-3 text-white/70 text-sm md:text-base">
                 <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />

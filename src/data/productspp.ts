@@ -8,18 +8,16 @@ export type PdfProduct = {
 export const pdfProducts: PdfProduct[] = [
   // Anchors & Lifting (pages 3-5)
   { id: "pp-03-01", name: "U-Bolt", category: "Anchors & Lifting", image: "/new_products/ProductsPP_images-img001-page003.png" },
-  { id: "pp-03-04", name: "Screw Bolt", category: "Anchors & Lifting", image: "/products/screw-bolt.png" },
-  { id: "pp-03-02", name: "Shield Anchor With Bolt", category: "Anchors & Lifting", image: "/new_products/ProductsPP_images-img002-page003.png" },
+  { id: "pp-03-02", name: "Shield Anchor With Bolt", category: "Anchors & Lifting", image: "/products/shield-anchor.png" },
   { id: "pp-03-03", name: "Sleeve Anchor", category: "Anchors & Lifting", image: "/new_products/ProductsPP_images-img003-page003.png" },
-  { id: "pp-04-01", name: "Through Bolt", category: "Anchors & Lifting", image: "/new_products/ProductsPP_images-img005-page004.png" },
+  { id: "pp-04-01", name: "Through Bolt", category: "Anchors & Lifting", image: "/products/through-bolt.png" },
   { id: "pp-04-02", name: "Nylon Plug", category: "Anchors & Lifting", image: "/new_products/ProductsPP_images-img006-page004.png" },
   { id: "pp-04-03", name: "Chemical Anchor + Stud", category: "Anchors & Lifting", image: "/new_products/ProductsPP_images-img007-page004.png" },
   { id: "pp-04-04", name: "Nail In Anchor Nylon", category: "Anchors & Lifting", image: "/new_products/ProductsPP_images-img008-page004.png" },
-  { id: "pp-05-01", name: "Nail In Anchor Steel", category: "Anchors & Lifting", image: "/new_products/ProductsPP_images-img009-page005.png" },
   { id: "pp-05-02", name: "Eye Bolt (Forged)", category: "Anchors & Lifting", image: "/new_products/ProductsPP_images-img010-page005.png" },
   { id: "pp-05-03", name: "Rope Clamp", category: "Anchors & Lifting", image: "/new_products/ProductsPP_images-img011-page005.png" },
 
-  // Sheet Metal Fasteners & Clinching (pages 6-8) — Cage Nut removed from this category
+  // Sheet Metal Fasteners & Clinching (pages 6-8)
   { id: "pp-06-01", name: "Riv Nut Large Flange", category: "Sheet Metal Fasteners & Clinching", image: "/new_products/ProductsPP_images-img013-page006.png" },
   { id: "pp-06-02", name: "Self-Clinching Nut", category: "Sheet Metal Fasteners & Clinching", image: "/new_products/ProductsPP_images-img014-page006.png" },
   { id: "pp-06-03", name: "Riv Nut Low Profile", category: "Sheet Metal Fasteners & Clinching", image: "/new_products/ProductsPP_images-img015-page006.png" },
@@ -44,8 +42,7 @@ export const pdfProducts: PdfProduct[] = [
 
   // Thread Forming/Cutting Fasteners (pages 12-14)
   { id: "pp-12-01", name: "Hex Flange Lag Screw", category: "Thread Forming/Cutting Fasteners", image: "/new_products/ProductsPP_images-img036-page012.png" },
-  { id: "pp-12-02", name: "Hex Flange Self Drilling", category: "Thread Forming/Cutting Fasteners", image: "/new_products/ProductsPP_images-img037-page012.png" },
-  { id: "pp-12-03", name: "Hex Self Drilling", category: "Thread Forming/Cutting Fasteners", image: "/new_products/ProductsPP_images-img038-page012.png" },
+  { id: "pp-12-02", name: "Hex Self Drilling", category: "Thread Forming/Cutting Fasteners", image: "/new_products/ProductsPP_images-img037-page012.png" },
   { id: "pp-12-04", name: "Wafer Phillips Self Drilling", category: "Thread Forming/Cutting Fasteners", image: "/new_products/ProductsPP_images-img039-page012.png" },
   { id: "pp-13-01", name: "Pan Pozi Self Tapping", category: "Thread Forming/Cutting Fasteners", image: "/new_products/ProductsPP_images-img040-page013.png" },
   { id: "pp-13-02", name: "Pan Combi Self Tapping", category: "Thread Forming/Cutting Fasteners", image: "/new_products/ProductsPP_images-img041-page013.png" },
@@ -100,9 +97,8 @@ export const pdfProducts: PdfProduct[] = [
 
   // Washers (pages 26-28)
   { id: "pp-26-01", name: "Penny Washer", category: "Washers", image: "/new_products/ProductsPP_images-img092-page026.png" },
-  { id: "pp-26-02", name: "Internal Star Lock Washer", category: "Washers", image: "/new_products/ProductsPP_images-img093-page026.png" },
-  { id: "pp-26-03", name: "Spring Washer Flat", category: "Washers", image: "/new_products/ProductsPP_images-img094-page026.png" },
-  { id: "pp-26-04", name: "External Lock Washer", category: "Washers", image: "/new_products/ProductsPP_images-img095-page026.png" },
+  { id: "pp-26-03", name: "Spring Washer Flat", category: "Washers", image: "/new_products/ProductsPP_images-img095-page026.png" },
+  { id: "pp-26-04", name: "Star Lock Washer", category: "Washers", image: "/new_products/ProductsPP_images-img094-page026.png" },
   { id: "pp-27-03", name: "Cup Washer", category: "Washers", image: "/new_products/ProductsPP_images-img097-page027.png" },
   { id: "pp-27-04", name: "Copper Washer", category: "Washers", image: "/new_products/ProductsPP_images-img098-page027.png" },
   { id: "pp-28-01", name: "Steel Flat Washer", category: "Washers", image: "/new_products/ProductsPP_images-img100-page028.png" },
@@ -115,5 +111,4 @@ export const pdfProducts: PdfProduct[] = [
   { id: "pp-29-02", name: "Coloured Rivet", category: "Rivets & Specials", image: "/new_products/ProductsPP_images-img105-page029.png" },
   { id: "pp-29-03", name: "Large Flange Rivet", category: "Rivets & Specials", image: "/new_products/ProductsPP_images-img106-page029.png" },
   { id: "pp-30-01", name: "Semi Tubular Rivet", category: "Rivets & Specials", image: "/new_products/ProductsPP_images-img108-page030.png" },
-  { id: "pp-30-04", name: "Peel Rivet", category: "Rivets & Specials", image: "/new_products/ProductsPP_images-img111-page030.png" },
 ] as const;

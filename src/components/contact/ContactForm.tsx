@@ -55,7 +55,7 @@ export function ContactForm({ initialMessage }: ContactFormProps) {
     const body = encodeURIComponent(
       `From: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`
     );
-    const mailtoLink = `mailto:info@pegasuspremium.online?subject=${subject}&body=${body}`;
+    const mailtoLink = `mailto:lee@pegasuspremium.online?subject=${subject}&body=${body}`;
     
     window.location.href = mailtoLink;
     
