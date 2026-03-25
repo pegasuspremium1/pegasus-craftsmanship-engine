@@ -13,7 +13,7 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email",
-    details: ["info@pegasuspremium.online"],
+    details: ["lee@pegasuspremium.online"],
   },
   {
     icon: MapPin,
