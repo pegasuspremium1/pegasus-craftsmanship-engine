@@ -68,7 +68,7 @@ export const pdfProducts: PdfProduct[] = [
   { id: "pp-19-03", name: "CSK Socket Cap Screw", category: "Bolts", image: "/products/csk-socket-cap-screw.png" },
   { id: "pp-19-04", name: "Hexagon Socket Cap Screw", category: "Bolts", image: "/new_products/ProductsPP_images-img066-page019.png" },
   { id: "pp-add-1", name: "Button Head Cap Screw", category: "Bolts", image: "/new_products/ProductsPP_images-img067-page019.png" },
-  { id: "pp-add-2", name: "Threaded Rod", category: "Bolts", image: "/new_products/threaded_rod.png" },
+  { id: "pp-add-2", name: "Threaded Rod", category: "Bolts", image: "/products/threaded-rod.png" },
 
   // Nuts (pages 20-22)
   { id: "pp-20-01", name: "Channel Nut", category: "Nuts", image: "/new_products/ProductsPP_images-img068-page020.png" },
