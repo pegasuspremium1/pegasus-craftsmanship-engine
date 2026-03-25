@@ -8,7 +8,7 @@ export type PdfProduct = {
 export const pdfProducts: PdfProduct[] = [
   // Anchors & Lifting (pages 3-5)
   { id: "pp-03-01", name: "U-Bolt", category: "Anchors & Lifting", image: "/new_products/ProductsPP_images-img001-page003.png" },
-  { id: "pp-03-02", name: "Shield Anchor With Bolt", category: "Anchors & Lifting", image: "/products/shield-anchor.png" },
+  { id: "pp-03-02", name: "Shield Anchor", category: "Anchors & Lifting", image: "/products/shield-anchor.png" },
   { id: "pp-03-03", name: "Sleeve Anchor", category: "Anchors & Lifting", image: "/new_products/ProductsPP_images-img003-page003.png" },
   { id: "pp-04-01", name: "Through Bolt", category: "Anchors & Lifting", image: "/products/through-bolt.png" },
   { id: "pp-04-02", name: "Nylon Plug", category: "Anchors & Lifting", image: "/new_products/ProductsPP_images-img006-page004.png" },
@@ -49,6 +49,7 @@ export const pdfProducts: PdfProduct[] = [
   { id: "pp-13-03", name: "Hex Flange Tapping", category: "Thread Forming/Cutting Fasteners", image: "/new_products/ProductsPP_images-img042-page013.png" },
   { id: "pp-13-04", name: "CSK Pozi Self Tapping", category: "Thread Forming/Cutting Fasteners", image: "/new_products/ProductsPP_images-img043-page013.png" },
   { id: "pp-14-02", name: "Chipboard Screw", category: "Thread Forming/Cutting Fasteners", image: "/new_products/ProductsPP_images-img045-page014.png" },
+  { id: "pp-14-03", name: "Drywall Screw", category: "Thread Forming/Cutting Fasteners", image: "/new_products/ProductsPP_images-img087-page024.png" },
 
   // Machine Screws (pages 15-17)
   { id: "pp-15-01", name: "CSK Pozi", category: "Machine Screws", image: "/products/csk-pozi.png" },
@@ -67,6 +68,7 @@ export const pdfProducts: PdfProduct[] = [
   { id: "pp-19-03", name: "CSK Socket Cap Screw", category: "Bolts", image: "/products/csk-socket-cap-screw.png" },
   { id: "pp-19-04", name: "Hexagon Socket Cap Screw", category: "Bolts", image: "/new_products/ProductsPP_images-img066-page019.png" },
   { id: "pp-add-1", name: "Button Head Cap Screw", category: "Bolts", image: "/new_products/ProductsPP_images-img067-page019.png" },
+  { id: "pp-add-2", name: "Threaded Rod", category: "Bolts", image: "/new_products/threaded_rod.png" },
 
   // Nuts (pages 20-22)
   { id: "pp-20-01", name: "Channel Nut", category: "Nuts", image: "/new_products/ProductsPP_images-img068-page020.png" },
@@ -90,14 +92,14 @@ export const pdfProducts: PdfProduct[] = [
   { id: "pp-24-01", name: "Cross Dowel", category: "Furniture Fasteners", image: "/new_products/ProductsPP_images-img084-page024.png" },
   { id: "pp-24-02", name: "Pan Head Joint Bolt", category: "Furniture Fasteners", image: "/new_products/ProductsPP_images-img085-page024.png" },
   { id: "pp-24-03", name: "Confirmat Screw", category: "Furniture Fasteners", image: "/new_products/ProductsPP_images-img086-page024.png" },
-  { id: "pp-24-04", name: "Drywall Screw", category: "Furniture Fasteners", image: "/new_products/ProductsPP_images-img087-page024.png" },
+
   { id: "pp-25-01", name: "Pozi Bits", category: "Furniture Fasteners", image: "/new_products/ProductsPP_images-img088-page025.png" },
   { id: "pp-25-03", name: "Wood Insert Type D", category: "Furniture Fasteners", image: "/new_products/ProductsPP_images-img090-page025.png" },
   { id: "pp-25-04", name: "Tee Nut", category: "Furniture Fasteners", image: "/new_products/ProductsPP_images-img091-page025.png" },
 
   // Washers (pages 26-28)
   { id: "pp-26-01", name: "Penny Washer", category: "Washers", image: "/new_products/ProductsPP_images-img092-page026.png" },
-  { id: "pp-26-03", name: "Spring Washer Flat", category: "Washers", image: "/new_products/ProductsPP_images-img095-page026.png" },
+  { id: "pp-26-03", name: "Spring Washer", category: "Washers", image: "/new_products/ProductsPP_images-img095-page026.png" },
   { id: "pp-26-04", name: "Star Lock Washer", category: "Washers", image: "/new_products/ProductsPP_images-img094-page026.png" },
   { id: "pp-27-03", name: "Cup Washer", category: "Washers", image: "/new_products/ProductsPP_images-img097-page027.png" },
   { id: "pp-27-04", name: "Copper Washer", category: "Washers", image: "/new_products/ProductsPP_images-img098-page027.png" },
