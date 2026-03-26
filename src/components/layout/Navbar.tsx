@@ -45,9 +45,8 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const [isCartOpen, setIsCartOpen] = useState(false);
   const location = useLocation();
-  const { items } = useCart();
+  const { items, setIsOpen } = useCart();
   const cartCount = items.reduce((sum, item) => sum + item.quantity, 0);
 
   useEffect(() => {
@@ -134,7 +133,7 @@ export function Navbar() {
           {/* Right side - CTA & Cart */}
           <div className="hidden lg:flex items-center gap-4">
             <button 
-              onClick={() => setIsCartOpen(true)}
+              onClick={() => setIsOpen(true)}
               className="relative p-2 text-foreground hover:text-accent transition-colors"
             >
               <ShoppingCart className="w-5 h-5" />
@@ -152,7 +151,7 @@ export function Navbar() {
           {/* Mobile menu button */}
           <div className="flex items-center gap-3 lg:hidden">
             <button 
-              onClick={() => setIsCartOpen(true)}
+              onClick={() => setIsOpen(true)}
               className="relative p-2 text-foreground"
             >
               <ShoppingCart className="w-5 h-5" />
@@ -216,7 +215,7 @@ export function Navbar() {
       </div>
 
       {/* Cart Sidebar */}
-      <CartSidebar isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+      <CartSidebar />
     </header>
   );
 }

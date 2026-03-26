@@ -9,9 +9,11 @@ interface CartSidebarProps {
   onClose: () => void;
 }
 
-export function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
+export function CartSidebar() {
   const navigate = useNavigate();
-  const { items, removeItem, updateQuantity, total, clearCart } = useCart();
+  const { items, removeItem, updateQuantity, clearCart, isOpen, setIsOpen } = useCart();
+
+  const onClose = () => setIsOpen(false);
 
   const handleRequestQuote = () => {
     if (items.length === 0) {
@@ -19,19 +21,21 @@ export function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
       return;
     }
     
-    // Build message with cart items
+    // Total number of items
+    const totalCount = items.reduce((sum, i) => sum + i.quantity, 0);
+    
+    // Build message with cart items (NO PRICE)
     const cartMessage = items.map(item => 
-      `- ${item.name} x${item.quantity} @ R${item.price.toFixed(2)} = R${(item.price * item.quantity).toFixed(2)}`
+      `- ${item.name} (Quantity: ${item.quantity})`
     ).join('\n');
     
-    const fullMessage = `Quote Request:\n\n${cartMessage}\n\nTotal: R${total.toFixed(2)}\n\nPlease provide pricing and availability for these items.`;
+    const fullMessage = `Quote Request (Total Items: ${totalCount}):\n\n${cartMessage}\n\nPlease provide pricing and availability for these items.`;
     
     // Navigate to contact with cart data
     navigate('/contact', { 
       state: { 
         quoteMessage: fullMessage,
         cartItems: items,
-        cartTotal: total
       } 
     });
     
@@ -59,7 +63,7 @@ export function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
             <div className="flex flex-col h-full">
               {/* Header */}
               <div className="flex items-center justify-between p-6 border-b border-border">
-                <h2 className="text-xl font-bold text-foreground">Your Cart</h2>
+                <h2 className="text-xl font-bold text-foreground">Your Order Request</h2>
                 <button
                   onClick={onClose}
                   className="p-2 text-muted-foreground hover:text-foreground"
@@ -73,7 +77,7 @@ export function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
                 {items.length === 0 ? (
                   <div className="text-center py-12">
                     <ShoppingCart className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
-                    <p className="text-muted-foreground">Your cart is empty</p>
+                    <p className="text-muted-foreground">Your request list is empty</p>
                   </div>
                 ) : (
                   <div className="space-y-4">
@@ -86,7 +90,6 @@ export function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
                         />
                         <div className="flex-1">
                           <h4 className="font-medium text-foreground">{item.name}</h4>
-                          <p className="text-sm text-muted-foreground">R{item.price.toFixed(2)}</p>
                           <div className="flex items-center gap-2 mt-2">
                             <button
                               onClick={() => updateQuantity(item.id, item.quantity - 1)}
@@ -104,9 +107,6 @@ export function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
                           </div>
                         </div>
                         <div className="text-right">
-                          <p className="font-bold text-foreground">
-                            R{(item.price * item.quantity).toFixed(2)}
-                          </p>
                           <button
                             onClick={() => removeItem(item.id)}
                             className="text-xs text-destructive mt-2"
@@ -124,21 +124,23 @@ export function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
               {items.length > 0 && (
                 <div className="p-6 border-t border-border">
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-lg font-medium text-foreground">Total:</span>
-                    <span className="text-2xl font-bold text-foreground">R{total.toFixed(2)}</span>
+                    <span className="text-lg font-medium text-foreground">Total Items:</span>
+                    <span className="text-2xl font-bold text-foreground">
+                      {items.reduce((sum, i) => sum + i.quantity, 0)}
+                    </span>
                   </div>
                   <button 
                     onClick={handleRequestQuote}
                     className="btn-accent w-full mb-3"
                   >
-                    <span>Request Quote</span>
+                    <span>Request Quotation</span>
                     <ArrowRight className="w-4 h-4" />
                   </button>
                   <button
                     onClick={clearCart}
                     className="w-full text-sm text-muted-foreground hover:text-destructive"
                   >
-                    Clear Cart
+                    Clear List
                   </button>
                 </div>
               )}
