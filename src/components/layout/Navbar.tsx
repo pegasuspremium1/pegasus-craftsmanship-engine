@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, ShoppingCart } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { useCart } from "@/hooks/useCart";
-import { CartSidebar } from "@/components/cart/CartSidebar";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -213,9 +212,6 @@ export function Navbar() {
           )}
         </AnimatePresence>
       </div>
-
-      {/* Cart Sidebar */}
-      <CartSidebar />
     </header>
   );
 }
