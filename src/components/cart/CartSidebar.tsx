@@ -58,7 +58,7 @@ export function CartSidebar() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="fixed right-0 top-0 bottom-0 w-full md:max-w-md bg-white shadow-[0_0_50px_rgba(0,0,0,0.15)] overflow-hidden"
+            className="fixed inset-0 md:left-auto md:right-0 md:w-full md:max-w-md bg-white shadow-[0_0_50px_rgba(0,0,0,0.15)] z-[60] overflow-hidden h-full flex flex-col"
           >
             <div className="flex flex-col h-full">
               {/* Header */}

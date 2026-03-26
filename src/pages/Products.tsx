@@ -80,6 +80,10 @@ const Products = () => {
     el?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
+  const getItemQuantity = (id: string) => {
+    return items.find(i => i.id === id)?.quantity || 0;
+  };
+
   const handleAddToCart = (product: typeof products[0]) => {
     addItem({
       id: product.id,
@@ -87,7 +91,6 @@ const Products = () => {
       price: product.price,
       image: product.image,
     });
-    setIsOpen(true);
     toast.success(`${product.name} added to list`);
   };
 
@@ -229,13 +232,33 @@ const Products = () => {
                                 {product.name}
                               </h3>
                               <div className="flex items-center justify-end mt-2">
-                                <button
-                                  onClick={() => handleAddToCart(product)}
-                                  className="flex items-center gap-1 md:gap-2 px-2 md:px-4 py-1.5 md:py-2 bg-accent text-white rounded-lg text-xs md:text-sm font-medium hover:bg-accent/90 transition-colors"
-                                >
-                                  <Plus className="w-3 h-3 md:w-4 md:h-4" />
-                                  <span className="hidden sm:inline">Add</span>
-                                </button>
+                                {getItemQuantity(product.id) > 0 ? (
+                                  <div className="flex items-center gap-2 bg-accent/5 rounded-lg p-1 border border-accent/20">
+                                    <button
+                                      onClick={() => updateQuantity(product.id, getItemQuantity(product.id) - 1)}
+                                      className="p-1 rounded bg-white border border-border hover:bg-accent/10 transition-colors"
+                                    >
+                                      <Minus className="w-3 h-3 md:w-4 md:h-4 text-accent" />
+                                    </button>
+                                    <span className="w-6 text-center font-bold text-sm md:text-base text-accent">
+                                      {getItemQuantity(product.id)}
+                                    </span>
+                                    <button
+                                      onClick={() => updateQuantity(product.id, getItemQuantity(product.id) + 1)}
+                                      className="p-1 rounded bg-white border border-border hover:bg-accent/10 transition-colors"
+                                    >
+                                      <Plus className="w-3 h-3 md:w-4 md:h-4 text-accent" />
+                                    </button>
+                                  </div>
+                                ) : (
+                                  <button
+                                    onClick={() => handleAddToCart(product)}
+                                    className="flex items-center gap-1 md:gap-2 px-3 md:px-5 py-2 bg-accent text-white rounded-lg text-xs md:text-sm font-bold shadow-sm hover:shadow-md transition-all active:scale-95"
+                                  >
+                                    <Plus className="w-3 h-3 md:w-4 md:h-4" />
+                                    <span>Add</span>
+                                  </button>
+                                )}
                               </div>
                             </div>
                           </motion.div>
