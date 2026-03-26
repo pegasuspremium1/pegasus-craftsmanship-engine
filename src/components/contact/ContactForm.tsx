@@ -50,19 +50,37 @@ export function ContactForm({ initialMessage }: ContactFormProps) {
 
     setIsSubmitting(true);
     
-    // Open email client with pre-filled details
-    const subject = encodeURIComponent(`Quote Request from ${formData.name}`);
-    const body = encodeURIComponent(
-      `From: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`
-    );
-    const mailtoLink = `mailto:lee@pegasuspremium.online?subject=${subject}&body=${body}`;
-    
-    window.location.href = mailtoLink;
-    
-    // Short delay to allow mailto to open, then show success
-    await new Promise((resolve) => setTimeout(resolve, 500));
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+    try {
+      // Replace 'YOUR_FORM_ID' with the ID from Formspree
+      const response = await fetch("https://formspree.io/f/xnjoqowq", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          _subject: `New Quote Request from ${formData.name}`,
+        }),
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        setFormData({ name: "", email: "", message: "" });
+        console.log("Form successfully submitted");
+      } else {
+        const errorData = await response.json();
+        console.error("Submission failed", errorData);
+        alert("Something went wrong. Please try again or contact us directly.");
+      }
+    } catch (error) {
+      console.error("Submission error", error);
+      alert("Failed to send message. Please check your connection and try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (isSubmitted) {
@@ -84,13 +102,10 @@ export function ContactForm({ initialMessage }: ContactFormProps) {
           Message Sent Successfully
         </h3>
         <p className="text-muted-foreground mb-8">
-          Thank you for reaching out. Our team will get back to you within 24 hours.
+          Thank you for reaching out. We've received your message and will get back to you shortly.
         </p>
         <button
-          onClick={() => {
-            setIsSubmitted(false);
-            setFormData({ name: "", email: "", message: "" });
-          }}
+          onClick={() => setIsSubmitted(false)}
           className="btn-outline"
         >
           Send Another Message
