@@ -283,8 +283,6 @@ const Products = () => {
         </span>
         <span className="font-bold text-sm md:text-base">Request Quote</span>
       </button>
-<<<<<<< HEAD
-=======
 
       {/* Cart Sidebar */}
       {isCartOpen && (
