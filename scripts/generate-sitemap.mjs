@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 
-const siteUrl = process.env.SITE_URL || process.env.VITE_SITE_URL || process.env.CF_PAGES_URL || "https://pegasuspremium.co.za";
+const siteUrl = process.env.SITE_URL || process.env.VITE_SITE_URL || process.env.CF_PAGES_URL || "https://www.pegasuspremium.online";
 
 const base = siteUrl.replace(/\/+$/, "");
 const now = new Date().toISOString();
