@@ -69,24 +69,6 @@ const solutionsData: Record<string, {
       { title: "Fast Delivery", description: "Nationwide delivery across South Africa on orders placed before 2pm." },
     ],
   },
-  "delivery": {
-    title: "Delivery Services",
-    description: "Reliable logistics with nationwide South African delivery and efficient service. We ensure your fasteners arrive when you need them.",
-    heroImage: catToolsHardware,
-    benefits: [
-      "Fast delivery across Gauteng",
-      "Same-day dispatch on orders before 2pm",
-      "Nationwide delivery across South Africa",
-      "Live tracking on all shipments",
-      "Flexible delivery scheduling options",
-    ],
-    features: [
-      { title: "Gauteng Express", description: "Orders placed before 2pm dispatched same day for next-day Gauteng delivery." },
-      { title: "National Coverage", description: "Reliable delivery to all major centers across South Africa." },
-      { title: "Scheduled Delivery", description: "Choose your preferred delivery date and time window." },
-      { title: "Track & Trace", description: "Real-time tracking information sent directly to your inbox." },
-    ],
-  },
 };
 
 const Solutions = () => {
