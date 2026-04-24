@@ -29,7 +29,6 @@ const navigation = [
     children: [
       { name: "Pre-Packing", href: "/solutions/pre-packing" },
       { name: "Retail Sales", href: "/solutions/retail-sales" },
-      { name: "Delivery", href: "/solutions/delivery" },
       { name: "How to Order", href: "/solutions/how-to-order" },
     ]
   },
