@@ -20,11 +20,8 @@ const solutionsData: Record<string, {
     description: "Custom packing solutions tailored to your production line requirements. Reduce handling time, minimize errors, and increase efficiency with our bespoke packaging services.",
     heroImage: catBoltsScrews,
     benefits: [
-      "Reduce assembly line handling time by up to 40%",
       "Eliminate counting and sorting at point of use",
       "Custom quantities matched to your production runs",
-      "Clear labeling and barcoding options",
-      "Reduced inventory management overhead",
     ],
     features: [
       { title: "Custom Quantities", description: "Fasteners packed in exact quantities you need, from single units to thousands." },
@@ -40,7 +37,6 @@ const solutionsData: Record<string, {
     benefits: [
       "Attractive, professional retail packaging",
       "Ready-to-shelf display solutions",
-      "Competitive pricing for resellers",
       "Flexible order quantities",
       "Rapid restocking capabilities",
     ],
@@ -59,14 +55,11 @@ const solutionsData: Record<string, {
       "Simple online or phone ordering",
       "Dedicated account management",
       "Flexible payment terms available",
-      "Order tracking and notifications",
-      "Easy reordering of previous purchases",
     ],
     features: [
       { title: "Request a Quote", description: "Submit your requirements and receive a detailed quotation within 24 hours." },
       { title: "Place Your Order", description: "Order via phone, email, or your dedicated account portal." },
-      { title: "Order Confirmation", description: "Receive confirmation with expected delivery date and tracking information." },
-      { title: "Fast Delivery", description: "Nationwide delivery across South Africa on orders placed before 2pm." },
+      { title: "Order Confirmation", description: "Receive confirmation with your expected delivery date." },
     ],
   },
 };
