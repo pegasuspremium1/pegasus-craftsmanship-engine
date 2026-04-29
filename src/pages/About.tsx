@@ -45,8 +45,7 @@ const About = () => {
               </h1>
               <p className="text-lg text-white/80">
                 Pegasus Premium is at the forefront of industrial fastener supply, 
-                serving manufacturers across South Africa with precision, reliability, 
-                and expertise.
+                serving manufacturing teams with precision, reliability, and expert support.
               </p>
             </ScrollReveal>
 
@@ -91,8 +90,8 @@ const About = () => {
                   and reliability matter above all else.
                 </p>
                 <p>
-                  We serve clients across construction, automotive, and general engineering 
-                  sectors throughout South Africa and beyond.
+                  We serve clients in the manufacturing sector with consistent supply, clear specifications,
+                  and dependable quality—so your production lines keep moving without delays.
                 </p>
               </div>
             </ScrollReveal>

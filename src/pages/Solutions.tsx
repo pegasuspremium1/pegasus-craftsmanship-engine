@@ -55,7 +55,7 @@ const solutionsData: Record<string, {
     ],
     features: [
       { title: "Gauteng Express", description: "Orders placed before 2pm dispatched same day for next-day Gauteng delivery." },
-      { title: "Major Centers", description: "Reliable delivery to major centers across South Africa." },
+      { title: "Major Centers", description: "Reliable delivery to major centers." },
       { title: "Scheduled Delivery", description: "Choose your preferred delivery date and time window." },
     ],
   },
