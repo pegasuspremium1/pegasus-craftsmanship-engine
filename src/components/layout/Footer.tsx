@@ -15,7 +15,6 @@ const footerLinks = {
   ],
   solutions: [
     { name: "Pre-Packing", href: "/solutions/pre-packing" },
-    { name: "Retail Sales", href: "/solutions/retail-sales" },
     { name: "How to Order", href: "/solutions/how-to-order" },
   ],
 };
@@ -37,7 +36,7 @@ export function Footer() {
             </Link>
             <p className="text-white/70 mb-4 md:mb-6 max-w-sm text-sm md:text-base">
               Your trusted partner for quality industrial fasteners in South Africa. 
-              Serving businesses nationwide with premium products and expert service.
+              Serving businesses with premium products and expert service.
             </p>
             
             {/* Contact info */}

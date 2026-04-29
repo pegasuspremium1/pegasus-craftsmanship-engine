@@ -28,7 +28,6 @@ const navigation = [
     href: "/solutions",
     children: [
       { name: "Pre-Packing", href: "/solutions/pre-packing" },
-      { name: "Retail Sales", href: "/solutions/retail-sales" },
       { name: "How to Order", href: "/solutions/how-to-order" },
     ]
   },

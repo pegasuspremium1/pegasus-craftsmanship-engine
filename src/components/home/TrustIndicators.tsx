@@ -11,7 +11,7 @@ const features = [
   {
     icon: Truck,
     title: "Fast Delivery",
-    description: "Nationwide delivery across South Africa",
+    description: "Delivery across South Africa",
   },
   {
     icon: Headphones,

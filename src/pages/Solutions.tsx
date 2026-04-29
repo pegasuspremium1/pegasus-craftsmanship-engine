@@ -4,7 +4,6 @@ import { Layout } from "@/components/layout/Layout";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { motion } from "framer-motion";
 import catBoltsScrews from "@/assets/cat-bolts-screws.jpg";
-import catNutsWashers from "@/assets/cat-nuts-washers.jpg";
 import catAnchorsFixings from "@/assets/cat-anchors-fixings.jpg";
 import catToolsHardware from "@/assets/cat-tools-hardware.jpg";
 
@@ -30,23 +29,6 @@ const solutionsData: Record<string, {
       { title: "Quality Sealed", description: "Protected packaging ensures components arrive in perfect condition." },
     ],
   },
-  "retail-sales": {
-    title: "Retail Sales Solutions",
-    description: "Point-of-sale ready packaging and display solutions for retail environments, trade counters, and hardware stores. Professional presentation that drives sales.",
-    heroImage: catNutsWashers,
-    benefits: [
-      "Attractive, professional retail packaging",
-      "Ready-to-shelf display solutions",
-      "Flexible order quantities",
-      "Rapid restocking capabilities",
-    ],
-    features: [
-      { title: "Display Ready", description: "Packaging designed for immediate shelf placement with hanging tabs and barcodes." },
-      { title: "Bulk Pricing", description: "Competitive wholesale pricing structures for retailers of all sizes." },
-      { title: "Quick Turnaround", description: "Fast order processing and dispatch for efficient inventory replenishment." },
-      { title: "Marketing Support", description: "POS materials and product information sheets available." },
-    ],
-  },
   "how-to-order": {
     title: "How to Order",
     description: "Our streamlined ordering process is designed to make procurement simple and efficient. From quote request to delivery, we handle every detail with precision.",
@@ -60,6 +42,21 @@ const solutionsData: Record<string, {
       { title: "Request a Quote", description: "Submit your requirements and receive a detailed quotation within 24 hours." },
       { title: "Place Your Order", description: "Order via phone, email, or your dedicated account portal." },
       { title: "Order Confirmation", description: "Receive confirmation with your expected delivery date." },
+    ],
+  },
+  "delivery": {
+    title: "Delivery Services",
+    description: "Reliable logistics and efficient service. We ensure your fasteners arrive when you need them.",
+    heroImage: catToolsHardware,
+    benefits: [
+      "Fast delivery across Gauteng",
+      "Same-day dispatch on orders before 2pm",
+      "Flexible delivery scheduling options",
+    ],
+    features: [
+      { title: "Gauteng Express", description: "Orders placed before 2pm dispatched same day for next-day Gauteng delivery." },
+      { title: "Major Centers", description: "Reliable delivery to major centers across South Africa." },
+      { title: "Scheduled Delivery", description: "Choose your preferred delivery date and time window." },
     ],
   },
 };

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, Package, Store, Settings } from "lucide-react";
+import { ArrowRight, Package, Settings } from "lucide-react";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 const solutions = [
@@ -9,12 +9,6 @@ const solutions = [
     title: "Pre-Packing",
     description: "Custom packing solutions tailored to your production line",
     href: "/solutions/pre-packing",
-  },
-  {
-    icon: Store,
-    title: "Retail Sales",
-    description: "Point-of-sale ready packaging for retail environments",
-    href: "/solutions/retail-sales",
   },
   {
     icon: Settings,
