@@ -24,7 +24,6 @@ const solutionsData: Record<string, {
     ],
     features: [
       { title: "Custom Quantities", description: "Fasteners packed in exact quantities you need, from single units to thousands." },
-      { title: "Branded Packaging", description: "Your logo and specifications on every pack for easy identification." },
       { title: "Kitting Services", description: "Multiple components assembled into single kits for production stations." },
       { title: "Quality Sealed", description: "Protected packaging ensures components arrive in perfect condition." },
     ],
@@ -42,21 +41,6 @@ const solutionsData: Record<string, {
       { title: "Request a Quote", description: "Submit your requirements and receive a detailed quotation within 24 hours." },
       { title: "Place Your Order", description: "Order via phone, email, or your dedicated account portal." },
       { title: "Order Confirmation", description: "Receive confirmation with your expected delivery date." },
-    ],
-  },
-  "delivery": {
-    title: "Delivery Services",
-    description: "Reliable logistics and efficient service. We ensure your fasteners arrive when you need them.",
-    heroImage: catToolsHardware,
-    benefits: [
-      "Fast delivery across Gauteng",
-      "Same-day dispatch on orders before 2pm",
-      "Flexible delivery scheduling options",
-    ],
-    features: [
-      { title: "Gauteng Express", description: "Orders placed before 2pm dispatched same day for next-day Gauteng delivery." },
-      { title: "Major Centers", description: "Reliable delivery to major centers." },
-      { title: "Scheduled Delivery", description: "Choose your preferred delivery date and time window." },
     ],
   },
 };
@@ -205,7 +189,7 @@ const Solutions = () => {
               Tailored to Your Business
             </h1>
             <p className="text-lg text-white/80 max-w-2xl">
-              End-to-end fastener solutions designed to streamline your operations 
+              Fastener solutions designed to streamline your operations 
               and maximize efficiency.
             </p>
           </ScrollReveal>
