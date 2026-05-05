@@ -10,8 +10,8 @@ const features = [
   },
   {
     icon: Truck,
-    title: "Fast Delivery",
-    description: "Reliable delivery when you need it",
+    title: "Gauteng Delivery",
+    description: "We deliver across Gauteng",
   },
   {
     icon: Headphones,
